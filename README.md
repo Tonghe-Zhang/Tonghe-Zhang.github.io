@@ -23,9 +23,37 @@ See more info at https://academicpages.github.io/
 When you are initially working your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
 
 1. Clone the repository and made updates as detailed above.
-1. Make sure you have ruby-dev, bundler, and nodejs installed: `sudo apt install ruby-dev ruby-bundler nodejs`
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+1. Make sure you have ruby-dev, bundler, and nodejs installed:
+`sudo apt install ruby-dev ruby-bundler nodejs`
+2. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
+
+# if it still doesn't work, run 
+#      bundle config set --local path 'vendor/bundle'
+#      bundle install
+
+Please ensure that your Gemfiles and .gemspecs are suitably restrictive
+to avoid an unexpected breakage when 3.0 is released (e.g. ~> 2.3.0).
+See https://github.com/rubyzip/rubyzip for details. The Changelog also
+lists other enhancements and bugfixes that have been implemented since
+version 2.3.0.
+
+2.1 also remember to install jekyll:
+sudo apt install jekyll
+
+3. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000`
+
+
+3.1 if some dependencies(e.g. bigdecimal) in bundle are outdated, run
+
+gem update bigdecimal
+
+3.2 
+You have already activated bigdecimal 3.0.0, but your Gemfile requires bigdecimal 3.1.6. 
+Since bigdecimal is a default gem, you can either remove your dependency on it or try 
+updating to a newer version of bundler that supports 
+bigdecimal as a default gem. (Gem::LoadError)
+
+4. the local server will automatically rebuild and refresh the pages on change.
 
 
 # Maintenance 

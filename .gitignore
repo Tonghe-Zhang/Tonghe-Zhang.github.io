@@ -2,4 +2,4 @@
 _site/
 
 # Ignore the Gemfile that is generated
-Gemfile.lock
+#Gemfile.lock
