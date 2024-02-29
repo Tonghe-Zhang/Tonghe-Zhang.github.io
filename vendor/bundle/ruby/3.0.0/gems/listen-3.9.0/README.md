@@ -359,7 +359,7 @@ You may also need to pay attention to the values of `max_queued_events` and `max
 
 #### More info
 Man page for [inotify(7)](https://linux.die.net/man/7/inotify).
-Blog post: [limit of inotify](https://blog.sorah.jp/2012/01/24/inotify-limitation).
+
 
 ### Issues and Troubleshooting
 

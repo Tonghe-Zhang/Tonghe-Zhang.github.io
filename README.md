@@ -40,7 +40,8 @@ version 2.3.0.
 2.1 also remember to install jekyll:
 sudo apt install jekyll
 
-3. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000`
+3. Run `bash`
+   then run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000`
 
 
 3.1 if some dependencies(e.g. bigdecimal) in bundle are outdated, run
@@ -53,7 +54,7 @@ Since bigdecimal is a default gem, you can either remove your dependency on it o
 updating to a newer version of bundler that supports 
 bigdecimal as a default gem. (Gem::LoadError)
 
-4. the local server will automatically rebuild and refresh the pages on change.
+1. the local server will automatically rebuild and refresh the pages on change.
 
 
 # Maintenance 
