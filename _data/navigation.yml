@@ -1,6 +1,5 @@
 # main links
 main:
-
   - title: "CV"
     url: /cv/
 
@@ -12,6 +11,3 @@ main:
   
   - title: "Leadership"
     url: /leadership/  
-
-  - title: "Talks"
-    url: /talks/    
