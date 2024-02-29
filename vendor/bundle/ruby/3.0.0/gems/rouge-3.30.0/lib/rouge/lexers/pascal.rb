@@ -6,7 +6,7 @@ module Rouge
     class Pascal < RegexLexer
       tag 'pascal'
       title "Pascal"
-      desc 'a procedural programming language commonly used as a teaching language.'
+      desc 'a procedural programming language commonly used as a projects language.'
       filenames '*.pas', '*.lpr', '*.pp'
 
       mimetypes 'text/x-pascal'

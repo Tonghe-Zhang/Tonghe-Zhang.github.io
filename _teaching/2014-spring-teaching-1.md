@@ -1,8 +1,8 @@
 ---
-title: "Teaching experience sample"
-collection: teaching
+title: "Projects experience sample"
+collection: projects
 type: "Undergraduate course"
-permalink: /teaching/2024-spring-teaching-1
+permalink: /projects/2024-spring-projects-1
 venue: "University 1, Department"
 date: 2024-01-01
 location: "City, Country"

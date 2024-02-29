@@ -1,4 +1,4 @@
-# main links links
+# main links
 main:
 
   - title: "CV"
@@ -7,14 +7,11 @@ main:
   - title: "Publications"
     url: /publications/
 
+  - title: "Projects"
+    url: /projects/  
+  
   - title: "Leadership"
     url: /leadership/  
 
   - title: "Talks"
     url: /talks/    
-
-  - title: "Teaching"
-    url: /teaching/  
-        
-
-

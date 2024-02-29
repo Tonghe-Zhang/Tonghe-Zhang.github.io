@@ -10,7 +10,7 @@
 locale                   : "en-US"
 title                    : "Welcome"
 title_separator          : "-"
-name                     : &name "Your Name"
+name                     : &name "Tonghe Zhang"
 description              : &description "personal description"
 url                      : https://tonghe-zhang.github.io/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -197,7 +197,7 @@ kramdown:
 
 # Collections
 collections:
-  teaching:
+  projects:
     output: true
     permalink: /:collection/:path/
   publications:
@@ -231,10 +231,10 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
+  # _projects
   - scope:
       path: ""
-      type: teaching
+      type: projects
     values:
       layout: single
       author_profile: true
