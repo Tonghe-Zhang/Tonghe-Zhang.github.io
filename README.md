@@ -1,13 +1,15 @@
 
+# The url for the personal webpage of Tonghe Zhang is...
+https://tonghe-zhang.github.io/
+
+
+
 # Academic Pages
-
 ![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-
 Academic Pages is a Github Pages template for academic websites.
 
 
 # Getting Started
-
 1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
 1. Click the "Use this template" button in the top right.
 1. On the "New repository" page, enter your repository name as "[your GitHub username].github.io", which will also be your website's URL.
@@ -27,9 +29,7 @@ When you are initially working your website, it is very useful to be able to pre
 `sudo apt install ruby-dev ruby-bundler nodejs`
 2. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
 
-# if it still doesn't work, run 
-#      bundle config set --local path 'vendor/bundle'
-#      bundle install
+# if it still doesn't work, run bundle config set --local path 'vendor/bundle' and then bundle install
 
 Please ensure that your Gemfiles and .gemspecs are suitably restrictive
 to avoid an unexpected breakage when 3.0 is released (e.g. ~> 2.3.0).
