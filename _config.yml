@@ -12,12 +12,7 @@ title                    : "Welcome"
 title_separator          : "-"
 name                     : &name "Tonghe Zhang"
 description              : &description "personal description"
-<<<<<<< Updated upstream
 url                      : https://tonghe-zhang.github.io/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-=======
-url                      : https://
-# the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
->>>>>>> Stashed changes
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : Tonghe-Zhang/Tonghe-Zhang.github.io #"academicpages/academicpages.github.io"
 
