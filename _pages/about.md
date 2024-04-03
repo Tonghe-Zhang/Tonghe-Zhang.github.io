@@ -13,4 +13,4 @@ I also have a keen interest in interconnected fields such as statistics, optimiz
 
 I am fortunate to be advised by Prof. [Longbo Huang](https://people.iiis.tsinghua.edu.cn/~huang/) at [IIIS](https://iiis.tsinghua.edu.cn/en), Tsinghua University.
 
-Click [here](https://pronouncenames.com/pronounce/Zhang) to learn how to pronounce my familiy name 'Zhang'.
+Click [here](https://pronouncenames.com/pronounce/Zhang) to learn how to pronounce my family name 'Zhang'.
