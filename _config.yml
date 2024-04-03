@@ -12,7 +12,12 @@ title                    : "Welcome"
 title_separator          : "-"
 name                     : &name "Tonghe Zhang"
 description              : &description "personal description"
+<<<<<<< Updated upstream
 url                      : https://tonghe-zhang.github.io/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+=======
+url                      : https://
+# the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+>>>>>>> Stashed changes
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : Tonghe-Zhang/Tonghe-Zhang.github.io #"academicpages/academicpages.github.io"
 
@@ -24,7 +29,7 @@ author:
   avatar           : "TongheZhangPhoto.jpg"
   name             : "Tonghe Zhang"
   pronouns         : # example: "she/her"  
-  bio              : "Personal webpage"
+  bio              : "Contact:"
   affiliation      : Department of Electronic Engineer, Tsinghua University
   location         : Beijing, China
   #ur              : # URL
@@ -42,7 +47,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : https://github.com/Tonghe-Zhang #"academicpages"
+  github           : Tonghe-Zhang #"academicpages"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -64,13 +69,12 @@ author:
   steam            : # Username
   telegram         : # URL
   tumblr           : # Username
-  twitter          : "UniofOxford"  # Replace this with your X / Twitter handle
+  twitter          : # Replace this with your X / Twitter handle
   vine             : # Username
   weibo            : # Username
   wikipedia        : # Username
   xing             : # Username
   youtube          : # Username
-  zhihu            : # URL
 
 
 # Site Settings
