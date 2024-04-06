@@ -11,6 +11,15 @@ redirect_from:
 ### Education
 * B.S. in Electronic Engineering, Tsinghua University, 2025 (expected)
 
+  
+
+
+### Publications and Preprints
+* **Zhang, T.**, Chen, Y., & Huang, L. (2024). Provably Efficient Partially Observable Risk-Sensitive Reinforcement Learning with Hindsight Observation. arXiv preprint [arXiv:2402.18149](http://arxiv.org/abs/2402.18149).
+
+
+
+
 ### Honors and Awards
 
 * National Scholarship Granted by the Government of China, Oct 2023
