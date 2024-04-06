@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -16,6 +16,20 @@ redirect_from:
 
 ### Publications and Preprints
 * **Zhang, T.**, Chen, Y., & Huang, L. (2024). Provably Efficient Partially Observable Risk-Sensitive Reinforcement Learning with Hindsight Observation. arXiv preprint [arXiv:2402.18149](http://arxiv.org/abs/2402.18149).
+
+
+
+### Skills
+
+* Programming languages: C, C++, Python, MATLAB, Verilog, LATEX
+
+* Software Frameworks:      PyTorch, Numpy, Cadence Virtuoso, Vivado
+
+* Hardware Technologies:   Designing and analyzing digital and analog circuits; 
+
+  ​					       Conducting semiconductor and fiber optic experiments;
+
+  ​					       Familiar with single-chip computer systems and PID algorithm. 
 
 
 
