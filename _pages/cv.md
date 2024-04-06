@@ -22,14 +22,8 @@ redirect_from:
 ### Skills
 
 * Programming languages: C, C++, Python, MATLAB, Verilog, LATEX
-
 * Software Frameworks:      PyTorch, Numpy, Cadence Virtuoso, Vivado
-
-* Hardware Technologies:   Designing and analyzing digital and analog circuits; 
-
-  ​					       Conducting semiconductor and fiber optic experiments;
-
-  ​					       Familiar with single-chip computer systems and PID algorithm. 
+* Hardware Technologies:   Designing and analyzing digital and analog circuits; Conducting semiconductor and fiber optic experiments; Familiar with single-chip computer systems and PID algorithm. 
 
 
 
