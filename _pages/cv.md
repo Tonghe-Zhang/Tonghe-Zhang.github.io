@@ -14,6 +14,7 @@ redirect_from:
 ### Honors and Awards
 
 * National Scholarship Granted by the Government of China, Oct 2023
+
 (Awarded to the top 0.2% of undergraduates nationwide, representing the highest honor.)
 
 * Excellent Student Leader of Tsinghua University, Oct 2023
