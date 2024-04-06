@@ -23,3 +23,5 @@ redirect_from:
 * Excellent Academic Scholarship of Tsinghua University, Jan 2023
   
 * Outstanding Work of the Twenty-Fifth Hardware Design Contest of Tsinghua University, Sep 2022
+
+Please contact [Tonghe](mailto:zhang-th21@mails.tsinghua.edu.cn) for a more comprehensive curriculum vitae.
