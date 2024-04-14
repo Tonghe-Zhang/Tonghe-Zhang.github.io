@@ -48,4 +48,4 @@ redirect_from:
   
 * Outstanding Work of the Twenty-Fifth Hardware Design Contest of Tsinghua University, Sep 2022
 
-Please contact [Tonghe](mailto:zhang-th21@mails.tsinghua.edu.cn) for a more comprehensive curriculum vitae.
+Please contact [Tonghe](mailto:zhang-th21@mails.tsinghua.edu.cn) for a more comprehensive curriculum vitae, including detailed information about his research experience and academic background.
