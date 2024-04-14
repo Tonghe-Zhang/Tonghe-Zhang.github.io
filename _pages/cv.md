@@ -26,11 +26,12 @@ redirect_from:
 * Hardware Technologies: Designing and analyzing digital and analog circuits; Conducting semiconductor and fiber optic experiments; Familiar with single-chip computer systems and PID algorithm.
 
 ### Language Proficiency
-Mandarin(native), English(fluent)
 
-TOEFL test score: 115/120 (Reading: 29/30 Listening: 29/30 Speaking: 28/30 Writing: 29/30)
+* Mandarin(native), English(fluent)
 
-GRE test score: 335/340 (Verbal Reasoning: 166/170 Quantitative Reasoning: 169/170 Academic Writing: 4.0/6.0 )
+* TOEFL test score: 115/120 (Reading: 29/30 Listening: 29/30 Speaking: 28/30 Writing: 29/30)
+
+* GRE test score: 335/340 (Verbal Reasoning: 166/170 Quantitative Reasoning: 169/170 Academic Writing: 4.0/6.0 )
 
 
 ### Honors and Awards
