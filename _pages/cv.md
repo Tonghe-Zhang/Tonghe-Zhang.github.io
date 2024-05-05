@@ -12,10 +12,9 @@ redirect_from:
 * B.S. in Electronic Engineering, Tsinghua University, 2025 (expected)
 
 ### Publications and Preprints
-* $\textcolor{blue}{\text{Provably Efficient Partially Observable Risk-Sensitive Reinforcement Learning with Hindsight Observation}}$
-  
+
+* Provably Efficient Partially Observable Risk-Sensitive Reinforcement Learning with Hindsight Observation
   **Tonghe Zhang**, Yu Chen, Longbo Huang. 
-  
   International Conference on Machine Learning (ICML), 2024. [arXiv:2402.18149](http://arxiv.org/abs/2402.18149)
 
 ### Research Experience
