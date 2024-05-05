@@ -11,7 +11,7 @@ redirect_from:
 ### Education
 * B.S. in Electronic Engineering, Tsinghua University, 2025 (expected)
 
-### Publications and Preprints
+### Publications
 
 * Provably Efficient Partially Observable Risk-Sensitive Reinforcement Learning with Hindsight Observation
   
