@@ -14,8 +14,8 @@ redirect_from:
 ### Publications and Preprints
 
 * Provably Efficient Partially Observable Risk-Sensitive Reinforcement Learning with Hindsight Observation
-  **Tonghe Zhang**, Yu Chen, Longbo Huang. 
-  International Conference on Machine Learning (ICML), 2024. [arXiv:2402.18149](http://arxiv.org/abs/2402.18149)
+  
+  **Tonghe Zhang**, Yu Chen, Longbo Huang. International Conference on Machine Learning (ICML), 2024. [arXiv Link](http://arxiv.org/abs/2402.18149)
 
 ### Research Experience
 
