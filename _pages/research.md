@@ -8,9 +8,9 @@ author_profile: true
 * Reinforcement learning theory. July 2023 - Feb 2024. 
 
 Brief introduction:
-> We introduce a novel formulation of risk-sensitive reinforcement learning in partially observable environments with hindsight observation, 
-which finds various application scenarios but lacks theortical investigation.  We develop the first provably efficient RL algorithm tailored for this setting and proved by rigorous analysis that our algorithm achieves polynomial regret that outperforms or matches existing upper bounds when the model degenerates to simpler settings. 
-We adopt novel analytical techniques and validated the theoretical findings through numerical experiments, which demonstrates the algorithm’s versatility in solving POMDP problems across various levels of risk sensitivity. This work will be presented in ICML 2024. 
+> We introduce a novel formulation of risk-sensitive RL in partially observable environments with hindsight observation, 
+which finds various application scenarios but lacks theortical investigation. We develop the first provably sample-efficient algorithm
+tailored for this setting and showed by rigorous analysis that our algorithm outperforms or matches existing regret bounds when the environment degenerates to simpler settings. We adopt novel analytical techniques and validated the theoretical findings through numerical experiments. This work will be presented in ICML 2024. 
 
 We summarized our findings in this [paper](https://tonghe-zhang.github.io/files/risk-pomdp-2024-ICML-camera.pdf) and you can find 
 the numerical experiments in this [Github repository](https://github.com/Tonghe-Zhang/Beta-vector-value-iteration).  
