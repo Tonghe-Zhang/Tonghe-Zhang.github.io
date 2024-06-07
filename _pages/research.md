@@ -5,23 +5,15 @@ permalink: /research/
 author_profile: true
 ---
 
-* Reinforcement learning: theory and algorithm.
+* Reinforcement learning theory. July 2023 - Feb 2024. 
 
-In this study, we introduce a novel formulation of **risk-sensitive RL** in a **partially observable** environment with hindsight observations.
-We provide the first provably sample-efficient algorithm tailored for the new setting,
-whose regret improves existing upper bounds and nearly reaches the lower bounds in the degenerated cases.
-Our analysis also explains how the sample complexity is affected by the risk-awareness and history-dependency inherent in our problem.
-We validate the theoretical findings through numerical experiments, which demonstrates the algorithm’s capability in solving POMDP problems across various levels of risk sensitivity. We summarized our findings in [the paper](https://tonghe-zhang.github.io/files/risk-pomdp-2024-ICML-camera.pdf) accepted by ICML 2024. 
-Our codes are available at [the github repository](https://github.com/Tonghe-Zhang/Beta-vector-value-iteration). 
+Brief introduction:
+> We introduce a novel formulation of risk-sensitive reinforcement learning in partially observable environments with hindsight observation, 
+which finds various application scenarios but lacks theortical investigation.  We develop the first provably efficient RL algorithm tailored for this setting and proved by rigorous analysis that our algorithm achieves polynomial regret that outperforms or matches existing upper bounds when the model degenerates to simpler settings. 
+We adopt novel analytical techniques and validated the theoretical findings through numerical experiments, which demonstrates the algorithm’s versatility in solving POMDP problems across various levels of risk sensitivity. This work will be presented in ICML 2024. 
 
-<!-- 
+We summarized our findings in this [paper](https://tonghe-zhang.github.io/files/risk-pomdp-2024-ICML-camera.pdf) and you can find 
+the numerical experiments in this [Github repository](https://github.com/Tonghe-Zhang/Beta-vector-value-iteration).  
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
-{% include base_path %}
-
-{% for post in site.research reversed %}
-  {% include archive-single.html %}
-{% endfor %} -->
+To cite our work:
+> **Tonghe Zhang**, Yu Chen, Longbo Huang. Provably Efficient Partially Observable Risk-sensitive Reinforcement Learning with Hindsight Observation. In International Conference on Machine Learning (ICML). PMLR, 2024. 
