@@ -21,7 +21,8 @@ permalink: /publication/2009-10-01-paper-title-number-1
 excerpt: ''
 date: 2024-2-28
 venue: 'Journal 1'
-paperurl: 'https://tonghe-zhang.github.io/files/risk-pomdp-2024-ICML-camera.pdf'
+paperurl: 'https://openreview.net/pdf?id=5S8ukkEQr2'
+<!-- paperurl: 'https://tonghe-zhang.github.io/files/risk-pomdp-2024-ICML-camera.pdf' -->
 citation: 'Tonghe Zhang, Yu Chen, Longbo Huang. Provably Efficient Partially Observable Risk-sensitive Reinforcement
 Learning with Hindsight Observation. In International Conference on Machine Learning (ICML). PMLR, 2024. '
 ---
