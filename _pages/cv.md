@@ -23,7 +23,6 @@ redirect_from:
 * Pretraining and finetuning of language models.
 
 ### Skills
-* Hi
 * Programming languages: C, C++, Python, MATLAB, Verilog, LATEX
 * Frameworks and Libraries: PyTorch, Numpy, Cadence Virtuoso, Vivado
 * Hardware Technologies: Designing and analyzing digital and analog circuits; Conducting semiconductor and fiber optic experiments; Familiar with single-chip computer systems and PID algorithm.
