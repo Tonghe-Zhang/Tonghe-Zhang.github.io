@@ -24,15 +24,15 @@ author:
   avatar           : "TongheZhangPhoto.jpg"
   name             : "Tonghe Zhang"
   pronouns         : # example: "she/her"  
-  bio              : "Contact:"
+  bio              : ""
   affiliation      : Department of Electronic Engineer, Tsinghua University
   location         : Beijing, China
   #ur              : # URL
-  email            : "zhang-th21@mails.tsinghua.edu.cn" 
+  email            : "tonghezhang01@gmail.com"  #"zhang-th21@mails.tsinghua.edu.cn" 
 
   # Academic websites
   arxiv            : #
-  googlescholar    : #"https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar    : "https://scholar.google.com/citations?user=Tk747_gAAAAJ&hl=en"
   impactstory      : # URL
   orcid            : #"http://orcid.org/yourorcidurl"
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
