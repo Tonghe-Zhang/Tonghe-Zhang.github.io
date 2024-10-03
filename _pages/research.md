@@ -9,12 +9,8 @@ author_profile: true
 ## Short Research Statement
 
 I have experience using deep reinforcement and imitation learning for robot learning tasks, such as teaching robots to develop flexible and human-like movement or manipulation skills with strong generalization abilities. 
-
 Additionally, I have conducted independent research in theoretical reinforcement learning,  focusing on the design and analysis of efficient algorithms for large-scale, partially observable systems, which are common in robotics and finance. 
-
 My theoretical research is informed by practical RL projects, and I use insights from my theoretical work to explain or enhance empirical studies. 
-
-
 
 ## Generalization in Humanoid Locomotion using Imitation and Reinforcement Learning
 
