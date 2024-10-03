@@ -18,27 +18,7 @@ Internship at embodied AI startup [Noetix Robotics](https://noetixrobotics.com/)
 
 We successfully trained the company's first-generation humanoid robot to navigate uneven terrains, achieving zero-shot transfer from IsaacGym to MuJoCo, Gazebo, and the real world. Additionally, we integrated the AMP algorithm with contrastive learning and the DreamWaq RL module to train another 18 DoF humanoid robot for multitasking capabilities (running, spinning, sidestepping) and to generalize to unseen human-like motions under varied commands. We have submitted a paper to ICRA 2025 detailing these research advancements. I am a co-first author and was responsible for 90% of the simulation experiments, as well as contributing to most of the writing. 
 
-![Robot](./research.assets/locomotion.png)
-
-<img src="./research.assets/locomotion.png" alt="Robot" width="64%" align="left"/> <img src="./research.assets/generalize.png" alt="Robot" width="35%" align="right"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<img src="./research.assets/reward.png" alt="Robot" width="50%" align="left" /><img src="./research.assets/track.png" alt="Robot" width="45%" align="right"/>
-
-
-
-
+![Robot](./research.assets/locomotion_4_in_1.png)
 
 
 
@@ -56,8 +36,7 @@ Duration: July 2024 - Oct 2024.    Advisor: [Yuejie Chi](https://users.ece.cmu.e
 
 Inspired by empirical deep reinforcement learning algorithms in robot locomotion research, we propose a novel framework for analyzing massively parallel policy optimization for continuous-state Partially Observable Markov Decision Processes. We design an actor-critic algorithm with noisy gradients, periodic synchronization, and minimal computation cost, and rigorously establish global convergence rates for a wide range of softmax policies under linear function approximation, achieving linear speedup in sample complexity along with sublinear communication complexity.  This work is in preparation for International Conference on Artificial Intelligence and Statistics (AISTATS 2025). 
 
-<img src="./research.assets/dist-pomdp.jpg" alt="Our research focus" width="60%" />
-
+![Our research focus](./research.assets/dist-pomdp.jpg)
 
 
 ## Risk-sensitive Reinforcement Learning
@@ -74,4 +53,4 @@ We conduct a sample complexity analysis with a change-of-measure technique, and 
 > **Zhang, T**., Chen, Y. &amp; Huang, L.. (2024). Provably Efficient Partially Observable Risk-sensitive Reinforcement Learning with Hindsight Observation. <i>Proceedings of the 41st International Conference on Machine Learning</i>, in <i>Proceedings of Machine Learning Research</i> 235:58680-58716 Available from https://proceedings.mlr.press/v235/zhang24g.html.
 
 
-<img src="./research.assets/bvvi.jpg" alt="Our algorithm BVVI" width="60%" />
+![Our algorithm BVVI](./research.assets/bvvi.jpg)
