@@ -8,6 +8,7 @@ redirect_from:
 ---
 {% include base_path %}
 
+
 ### Education
 
 * Bachelor of Engineering (B.Eng.) in Electronic Engineering, Tsinghua University, Expected Graduation: 2025
@@ -25,9 +26,9 @@ redirect_from:
 
 ### Research Experience
 
+I have extensive independent research experience in theoretical reinforcement learning and in applying deep reinforcement learning and imitation learning to humanoid locomotion.
 
-
-
+Please refer to the Research webpage for details.
 
 ### Skills
 

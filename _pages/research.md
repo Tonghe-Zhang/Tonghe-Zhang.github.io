@@ -12,6 +12,8 @@ I have experience using deep reinforcement and imitation learning for robot lear
 Additionally, I have conducted independent research in theoretical reinforcement learning,  focusing on the design and analysis of efficient algorithms for large-scale, partially observable systems, which are common in robotics and finance. 
 My theoretical research is informed by practical RL projects, and I use insights from my theoretical work to explain or enhance empirical studies. 
 
+
+
 ## Generalization in Humanoid Locomotion using Imitation and Reinforcement Learning
 
 Internship at embodied AI startup [Noetix Robotics](https://noetixrobotics.com/). May 2024 - Sep 2024
@@ -22,21 +24,14 @@ We successfully trained the company's first-generation humanoid robot to navigat
 
 
 
-
-
-
-
-
-
-
-
 ## Distributed Partially-observable Reinforcement Learning
 
 Duration: July 2024 - Oct 2024.    Advisor: [Yuejie Chi](https://users.ece.cmu.edu/~yuejiec/), Department of Electrical and Computer Engineering, Carnegie Mellon University
 
 Inspired by empirical deep reinforcement learning algorithms in robot locomotion research, we propose a novel framework for analyzing massively parallel policy optimization for continuous-state Partially Observable Markov Decision Processes. We design an actor-critic algorithm with noisy gradients, periodic synchronization, and minimal computation cost, and rigorously establish global convergence rates for a wide range of softmax policies under linear function approximation, achieving linear speedup in sample complexity along with sublinear communication complexity.  This work is in preparation for International Conference on Artificial Intelligence and Statistics (AISTATS 2025). 
 
-![Our research focus](./research.assets/dist-pomdp.jpg)
+![Our research focus](./research.assets/dist-pomdp_3_in_1.jpg)
+
 
 
 ## Risk-sensitive Reinforcement Learning
