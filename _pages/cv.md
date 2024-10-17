@@ -26,7 +26,7 @@ redirect_from:
 ### Preprints
 * Distributed Policy Optimization under Partial Observability: Tractability, Linear Speedup, and Communication Efficiency
   **Tonghe Zhang**, Sudeep Salgia, Yuejie Chi. Under review for International Conference on Artificial Intelligence and Statistics (AISTATS 2025). 
-  [Paper](https://tonghe-zhang.github.io/files/ICRA2025_Think_on_Your_Feet.pdf)
+  [Paper](https://tonghe-zhang.github.io/files/AISTATS2025_arXiv_DistPOMDP.pdf)
 
 * Think on your feet: Seamless and Command-adaptive Transition between Human-like Locomotions. 
    Huaxing Huang∗, Wenhao Cui∗, **Tonghe Zhang∗**, Shengtao Li, Jinchao Han, Bangyu Qin, Liang Zheng, Ziyang Tang, Chenxu Hu, Shipu Zhang, Zheyuan Jiang. Under review for the International Conference on Robotics and Automation (ICRA 2025). ∗ Denotes equal contribution. 
