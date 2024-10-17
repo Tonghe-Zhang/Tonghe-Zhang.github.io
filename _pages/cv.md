@@ -16,13 +16,20 @@ redirect_from:
 * TOEFL test score: 115/120 (Reading: 29/30 Listening: 29/30 Speaking: 28/30 Writing: 29/30)
 * GRE test score: 335/340 (Verbal Reasoning: 166/170 Quantitative Reasoning: 169/170 Academic Writing: 4.0/6.0 )
 
-### Publications and Preprints
+### Publications
 
 * Provably Efficient Partially Observable Risk-Sensitive Reinforcement Learning with Hindsight Observation
-  **Tonghe Zhang**, Yu Chen, Longbo Huang. International Conference on Machine Learning (ICML), 2024. [PMLR Website](https://proceedings.mlr.press/v235/zhang24g.html)
+  **Tonghe Zhang**, Yu Chen, Longbo Huang. International Conference on Machine Learning (ICML), 2024. 
+  [PMLR Website](https://proceedings.mlr.press/v235/zhang24g.html)
+
+### Preprints
+* Distributed Policy Optimization under Partial Observability: Tractability, Linear Speedup, and Communication Efficiency
+  **Tonghe Zhang**, Sudeep Salgia, Yuejie Chi. Under review for International Conference on Artificial Intelligence and Statistics (AISTATS 2025). 
+  [Paper](files/_ICRA2025__Think_on_Your_Feet_.pdf)
 
 * Think on your feet: Seamless and Command-adaptive Transition between Human-like Locomotions. 
-   Huaxing Huang∗, Wenhao Cui∗, **Tonghe Zhang∗**, Shengtao Li, Jinchao Han, Bangyu Qin, Liang Zheng, Ziyang Tang, Chenxu Hu, Shipu Zhang, Zheyuan Jiang. Under review for the International Conference on Robotics and Automation (ICRA 2025). ∗ Denotes equal contribution.
+   Huaxing Huang∗, Wenhao Cui∗, **Tonghe Zhang∗**, Shengtao Li, Jinchao Han, Bangyu Qin, Liang Zheng, Ziyang Tang, Chenxu Hu, Shipu Zhang, Zheyuan Jiang. Under review for the International Conference on Robotics and Automation (ICRA 2025). ∗ Denotes equal contribution. 
+   [Paper](files/_ICRA2025__Think_on_Your_Feet_.pdf)
 
 ### Research Experience
 
