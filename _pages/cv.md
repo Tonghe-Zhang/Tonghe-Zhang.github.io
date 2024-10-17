@@ -36,7 +36,7 @@ redirect_from:
 
 I have extensive independent research experience in theoretical reinforcement learning and in applying deep reinforcement learning and imitation learning to humanoid locomotion.
 
-Please refer to the Research webpage for details.
+Please refer to the [Research](https://tonghe-zhang.github.io//research/) webpage for details.
 
 ### Skills
 
@@ -47,9 +47,10 @@ Please refer to the Research webpage for details.
 
 ### Honors and Awards
 
-* National Scholarship Granted by the Government of China, Oct 2023 (0.2% of undergraduates nationwide, representing the highest honor.)
+* National Scholarship Granted by the Government of China, Oct 2024 (0.2% nationwide, highest honor to undergraduates)
+* National Scholarship Granted by the Government of China, Oct 2023 (0.2% nationwide, highest honor to undergraduates)
 * Excellent Student Leader of Tsinghua University, Oct 2023
-* First Prize in the Fourteenth National Undergraduate Mathematics Contest of China(Beijing), Jan 2023
+* First Prize in the Fourteenth National Undergraduate Mathematics Contest of China, Jan 2023
 * Excellent Academic Scholarship of Tsinghua University, Jan 2023
 * Outstanding Work of the Twenty-Fifth Hardware Design Contest of Tsinghua University, Sep 2022
 
