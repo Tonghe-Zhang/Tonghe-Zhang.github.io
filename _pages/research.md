@@ -18,6 +18,7 @@ Internship at embodied AI startup [Noetix Robotics](https://noetixrobotics.com/)
 
 We successfully trained the company's first-generation humanoid robot to navigate uneven terrains, achieving zero-shot transfer from IsaacGym to MuJoCo, Gazebo, and the real world. Additionally, we integrated the AMP algorithm with contrastive learning and the DreamWaq RL module to train another 18 DoF humanoid robot for multitasking capabilities (running, spinning, sidestepping) and to generalize to unseen human-like motions under varied commands. We have submitted a paper to ICRA 2025 detailing these research advancements. I am a co-first author and was responsible for 90% of the simulation experiments, as well as contributing to most of the writing. 
 
+
 [Paper under review for ICRA 2025](https://tonghe-zhang.github.io/files/ICRA2025_Think_on_Your_Feet.pdf)
 
 ![Robot](./research.assets/locomotion_4_in_1.jpg)
