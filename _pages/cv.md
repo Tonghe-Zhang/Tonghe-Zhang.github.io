@@ -30,12 +30,12 @@ redirect_from:
    
    [Paper](https://tonghe-zhang.github.io/files/ICRA2025_Think_on_Your_Feet.pdf)
 
-### Preprints
+<!-- ### Preprints
 * Distributed Policy Optimization under Partial Observability: Tractability, Linear Speedup, and Communication Efficiency.
   
   **Tonghe Zhang**, Sudeep Salgia, Yuejie Chi. The 27th International Conference on Artificial Intelligence and Statistics (AISTATS 2025). 
   
-  [Paper](https://tonghe-zhang.github.io/files/AISTATS2025_arXiv_DistPOMDP.pdf)
+  [Paper](https://tonghe-zhang.github.io/files/AISTATS2025_arXiv_DistPOMDP.pdf) -->
 
 
 ### Research Experience
