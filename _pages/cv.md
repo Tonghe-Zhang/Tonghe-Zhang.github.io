@@ -22,26 +22,20 @@ redirect_from:
 
   **Tonghe Zhang**, Yu Chen, Longbo Huang. 
   
-  The 41st International Conference on Machine Learning (ICML), 2024. 
-  
-  [Website](https://proceedings.mlr.press/v235/zhang24g.html), [Paper](https://openreview.net/pdf?id=5S8ukkEQr2)
+  The 41st International Conference on Machine Learning (ICML), 2024.  [Website](https://proceedings.mlr.press/v235/zhang24g.html), [Paper](https://openreview.net/pdf?id=5S8ukkEQr2) 
 
 * Think on your feet: Seamless and Command-adaptive Transition between Human-like Locomotions. 
   
    Huaxing Huang∗, Wenhao Cui∗, **Tonghe Zhang∗**, Shengtao Li, Jinchao Han, Bangyu Qin, Liang Zheng, Ziyang Tang, Chenxu Hu, Shipu Zhang, Zheyuan Jiang. 
    
-   International Conference on Robotics and Automation (ICRA), 2025. 
-   
-   [Paper](https://tonghe-zhang.github.io/files/ICRA2025_Think_on_Your_Feet.pdf)
+   International Conference on Robotics and Automation (ICRA), 2025. [Paper](https://tonghe-zhang.github.io/files/ICRA2025_Think_on_Your_Feet.pdf)
 
 
 * Distributed Policy Optimization under Partial Observability: Tractability, Linear Speedup, and Communication Efficiency.
   
   **Tonghe Zhang**, Sudeep Salgia, Yuejie Chi. 
   
-  The 27th International Conference on Artificial Intelligence and Statistics (AISTATS), 2025. 
-  
-  [Paper](https://tonghe-zhang.github.io/files/AISTATS2025_arXiv_DistPOMDP.pdf)
+  The 27th International Conference on Artificial Intelligence and Statistics (AISTATS), 2025. [Paper](https://tonghe-zhang.github.io/files/AISTATS2025_arXiv_DistPOMDP.pdf)
 
 ### Preprints
 
