@@ -12,9 +12,8 @@ redirect_from:
 ### Education
 
 * Bachelor of Engineering (B.Eng.) in Electronic Engineering, Tsinghua University, Expected Graduation: 2025
-<!-- *  First three years GPA: 3.96/4.00  Rank: 7/267 (2.6%)
-* TOEFL test score: 115/120 (Reading: 29/30 Listening: 29/30 Speaking: 28/30 Writing: 29/30)
-* GRE test score: 335/340 (Verbal Reasoning: 166/170 Quantitative Reasoning: 169/170 Academic Writing: 4.0/6.0 ) -->
+
+
 
 ### Publications
    ∗ Denotes equal contribution.
@@ -68,4 +67,6 @@ Please refer to the [Research](https://tonghe-zhang.github.io//research/) webpag
 * Excellent Academic Scholarship of Tsinghua University, Jan 2023
 * Outstanding Work of the Twenty-Fifth Hardware Design Contest of Tsinghua University, Sep 2022
 
-<!-- _Please contact [Tonghe](mailto:zhang-th21@mails.tsinghua.edu.cn) for a more comprehensive curriculum vitae, including detailed information about his research experience and academic background._ -->
+<!-- _Please contact [Tonghe](mailto:zhang-th21@mails.tsinghua.edu.cn) for a more comprehensive curriculum vitae, including detailed information about his research experience and academic background._ *  First three years GPA: 3.96/4.00  Rank: 7/267 (2.6%)
+* TOEFL test score: 115/120 (Reading: 29/30 Listening: 29/30 Speaking: 28/30 Writing: 29/30)
+* GRE test score: 335/340 (Verbal Reasoning: 166/170 Quantitative Reasoning: 169/170 Academic Writing: 4.0/6.0 ) -->
