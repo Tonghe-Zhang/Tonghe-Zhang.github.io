@@ -19,7 +19,7 @@ I have industrial experience in training humanoid bipedal robots for locomotion.
 
 I am open to collaborating with professionals from diverse fields. Please feel free to contact me via email at zhang-th21[at]mails[dot]tsinghua[dot]edu[dot]cn or tonghezhang01[at]gmail[dot]com.
 
-**I am currently seeking a PhD or Master's position for Fall 2025.**
+<!-- **I am currently seeking a PhD or Master's position for Fall 2025.** -->
 
 <!-- in risk-sensitive or partially observable environments,  -->
 <!-- with Prof. [Longbo Huang](https://people.iiis.tsinghua.edu.cn/~huang/) at [IIIS, Tsinghua University](https://iiis.tsinghua.edu.cn/en)  -->

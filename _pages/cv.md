@@ -13,8 +13,6 @@ redirect_from:
 
 * Bachelor of Engineering (B.Eng.) in Electronic Engineering, Tsinghua University, Expected Graduation: 2025
 
-
-
 ### Publications
    ∗ Denotes equal contribution.
 
@@ -24,11 +22,11 @@ redirect_from:
    
    International Conference on Robotics and Automation (ICRA), 2025. [Paper](https://tonghe-zhang.github.io/files/ICRA2025_Think_on_Your_Feet.pdf)
 
-<!-- * Distributed Policy Optimization under Partial Observability: Tractability, Linear Speedup, and Communication Efficiency
+* Distributed Policy Optimization under Partial Observability: Tractability, Linear Speedup, and Communication Efficiency
   
   **Tonghe Zhang**, Sudeep Salgia, Yuejie Chi. 
   
-  The 27th International Conference on Artificial Intelligence and Statistics (AISTATS), 2025. [Paper](https://tonghe-zhang.github.io/files/AISTATS2025_DistPOMDP.pdf) -->
+  The 27th International Conference on Artificial Intelligence and Statistics (AISTATS), 2025. [Paper](https://tonghe-zhang.github.io/files/AISTATS2025_DistPOMDP.pdf)
 
 * Provably Efficient Partially Observable Risk-Sensitive Reinforcement Learning with Hindsight Observation
 
