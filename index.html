@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tonghe Zhang - Personal Academic Webpage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .profile-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f0f0f0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .header-content {
+            flex: 1;
+            padding-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .header .email {
+            font-size: 1.3em;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .header .intro {
+            font-size: 1.2em;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+        }
+
+        .header .intro a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .header .intro a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-size: 2.0em;
+            font-weight: 400;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+
+        .section-content {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #555;
+            min-height: 60px;
+            padding: 20px 0;
+        }
+
+        .placeholder {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .header-content {
+                padding-top: 0;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .header .email {
+                font-size: 1.1em;
+            }
+            
+            .header .intro {
+                font-size: 1.1em;
+                text-align: center;
+            }
+            
+            .section h2 {
+                font-size: 1.7em;
+            }
+            
+            .section-content {
+                font-size: 1.1em;
+            }
+            
+            .profile-photo {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="figs/TongheZhangPhotoUpscaled.jpg" alt="Tonghe Zhang" class="profile-photo">
+        <div class="header-content">
+            <h1>Tonghe Zhang</h1>
+            <p class="email">tonghez@andrew.cmu.edu</p>
+            <p class="intro">I am a Master of Science in Robotics student at <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, <a href="https://www.cmu.edu/">Carnegie Mellon University</a>. 
+                I am interested in self-improving robot systems that act efficiently and reliably in the real world. 
+                Previously, I completed my B.Eng. in Electronic Engineering at <a href="https://www.tsinghua.edu.cn/">Tsinghua University</a>.</p>
+        </div>
+    </div>
+
+
+
+    <div class="main-content">
+        <section class="section">
+            <h2>News</h2>
+            <div class="section-content">
+                <div class="placeholder">
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <h2>Research</h2>
+            <div class="section-content">
+                <div class="placeholder">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Education and Experience</h2>
+            <div class="section-content">
+                <div class="placeholder">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Awards and Social Services</h2>
+            <div class="section-content">
+                <div class="placeholder">
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
