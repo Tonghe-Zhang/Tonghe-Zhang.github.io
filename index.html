@@ -243,16 +243,17 @@
             font-size: 1.38em;
         }
         .toc a {
-            color: #2980b9;
+            color: #111;
             text-decoration: none;
             font-weight: 500;
             padding: 2px 0;
             border-bottom: 1.5px solid transparent;
-            transition: border 0.2s;
+            transition: border 0.2s, color 0.2s;
         }
         .toc a:hover {
-            color: #3498db;
-            border-bottom: 1.5px solid #3498db;
+            color: #000;
+            border-bottom: 1.5px solid #000;
+            font-weight: 600;
         }
         #clustrmaps, #clustrmaps iframe {
             transform: scale(0.6); /* Reduces size to 60% of original (40% reduction) */
