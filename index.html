@@ -95,10 +95,19 @@
         .section h2 {
             font-size: 2.0em;
             font-weight: 400;
-            margin-bottom: 25px;
+            margin-bottom: 10px; /* Reduced from 25px */
             color: #2c3e50;
             border-bottom: 2px solid #34495e;
             padding-bottom: 10px;
+        }
+        /* Compact News list */
+        .section-content ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 22px;
+        }
+        .section-content ul li {
+            margin-bottom: 0.5em; /* Reduce space below bullet */
         }
 
         .section-content {
@@ -114,6 +123,42 @@
             font-style: italic;
             text-align: center;
             padding: 40px 0;
+        }
+
+        /* Timeline-aligned list for Education and Experience */
+        .timeline-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.7em;
+        }
+        .timeline-date {
+            min-width: 140px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
+        }
+        .timeline-desc {
+            flex: 1;
+            padding-left: 10px;
+        }
+        @media (max-width: 600px) {
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .timeline-date {
+                min-width: 0;
+                margin-bottom: 2px;
+            }
+            .timeline-desc {
+                padding-left: 0;
+            }
         }
 
         @media (max-width: 768px) {
@@ -158,28 +203,41 @@
                 height: 180px;
             }
         }
+
+        /* Indent paragraphs in the Research section for readability */
+        .section-content.research-block p {
+            text-indent: 2em;
+            margin-bottom: 1em;
+        }
+        .section-content.research-block p strong {
+            text-indent: 0;
+            margin-right: 0.5em;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="figs/TongheZhangPhotoUpscaled.jpg" alt="Tonghe Zhang" class="profile-photo">
+        <img src="figs/TongheZhangFormalPhotoHighResolution.jpg" alt="Tonghe Zhang" class="profile-photo">
         <div class="header-content">
             <h1>Tonghe Zhang</h1>
-            <p class="email"><a href="mailto:tonghez@andrew.cmu.edu">tonghez@andrew.cmu.edu</a></p>
+            <p class="email">Contact: <a href="mailto:tonghez@andrew.cmu.edu">tonghez@andrew.cmu.edu</a></p>
             <p class="intro">I am a Master of Science in Robotics student at <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, <a href="https://www.cmu.edu/">Carnegie Mellon University</a>. 
                 <em>I am interested in self-improving robot systems that act efficiently and reliably in the real world.</em> 
                 Previously, I completed my B.Eng. in Electronic Engineering at <a href="https://www.tsinghua.edu.cn/">Tsinghua University</a>.</p>
         </div>
     </div>
 
-
-
     <div class="main-content">
         <section class="section">
             <h2>News</h2>
             <div class="section-content">
-                <div class="placeholder">
-                </div>
+                <ul>
+                    <li><strong>[2025-06-26]</strong> ReinFlow is now online! This work demonstrates how to fine-tune flow policies with reinforcement learning. Check it out on 
+                        <a href="https://arxiv.org/abs/2505.22094" target="_blank">arXiv</a>, 
+                        <a href="https://huggingface.co/papers/2505.22094" target="_blank">HuggingFace</a>, and
+                        <a href="https://reinflow.github.io/" target="_blank">GitHub</a>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -191,19 +249,67 @@
             </div>
         </section>
 
-
         <section class="section">
             <h2>Research</h2>
-            <div class="section-content">
-                <div class="placeholder">
-                </div>
+            <div class="section-content research-block">
+                <p><strong>Focus.</strong> My research centers on the intersection of robotics and machine learning, 
+                    aiming to enable robots to learn efficiently from prior knowledge and trial-and-error. 
+                    I strive to develop intelligent, reliable, and cost-effective robotic systems.</p>
+        
+                <p><strong>Methodology.</strong> I develop algorithms based on decision-making theory, reinforcement learning (RL), imitation learning, and generative modeling. 
+                    I build and analyze robotic systems drawing on my expertise in control, mechatronics, and computer science.</p>
+        
+                <p><strong>Philosophy.</strong> With experience in both theoretical and empirical research, 
+                    I am committed to making theory applicable to real-world robotics and ensuring that experiments are well-grounded and reproducible.</p>
+        
+                <p><strong>Vision.</strong> My work is driven by scientific curiosity and also practical needs, 
+                    aiming to develop intelligent solutions suitable for commercialization and large-scale deployment.</p>
             </div>
         </section>
 
         <section class="section">
-            <h2>Education and Experience</h2>
+            <h2>Education and Professional Experience</h2>
             <div class="section-content">
-                <div class="placeholder">
+                <div style="margin-bottom: 20px;">
+                    <h3 style="font-size:1.3em; font-weight:500; color:#2c3e50; margin-bottom:10px;">Education</h3>
+                    <ul class="timeline-list">
+                        <li class="timeline-item">
+                            <span class="timeline-date">2025-07 – Present</span>
+                            <span class="timeline-desc">M.S. student in Robotics, 
+                                <a href="https://www.ri.cmu.edu/" target="_blank">Robotics Institute</a>, 
+                                <a href="https://www.cs.cmu.edu/" target="_blank">School of Computer Science</a>, 
+                                <a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>
+                            </span>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-date">2021-09 – 2025-06</span>
+                            <span class="timeline-desc">B.Eng. in 
+                                <a href="https://www.ee.tsinghua.edu.cn/en/" target="_blank">Electronic Engineering</a>, 
+                                <a href="https://www.tsinghua.edu.cn/" target="_blank">Tsinghua University</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size:1.3em; font-weight:500; color:#2c3e50; margin-bottom:10px;">Professional Experience</h3>
+                    <ul class="timeline-list">
+                        <li class="timeline-item">
+                            <span class="timeline-date">2024-11 – 2025-05</span>
+                            <span class="timeline-desc">Led research on fine-tuning diffusion and flow matching policies with online RL at <a href="https://www.tsinghua.edu.cn/en/" target="_blank">Tsinghua University</a>.</span>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-date">2024-07 – 2024-10</span>
+                            <span class="timeline-desc">Developed humanoid locomotion algorithm via sim-to-real RL and GAN-based imitation learning at <a href="https://en.noetixrobotics.com/" target="_blank">Noetix Robotics</a>.</span>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-date">2024-02 – 2024-09</span>
+                            <span class="timeline-desc">Led research on distributed policy optimization theory under partial observability at <a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>.</span>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-date">2023-07 – 2024-02</span>
+                            <span class="timeline-desc">Led research on statistical theory of risk-sensitive partially observable RL at <a href="https://iiis.tsinghua.edu.cn/en/" target="_blank">IIIS, Tsinghua University</a>.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -211,8 +317,15 @@
         <section class="section">
             <h2>Awards and Social Services</h2>
             <div class="section-content">
-                <div class="placeholder">
-                </div>
+                <ul>
+                    <li><strong>2025-07</strong> Beijing Municipal Outstanding Graduate</li>
+                    <li><strong>2025-07</strong> Tsinghua University Excellent Graduate</li>
+                    <li><strong>2024-10</strong> National Scholarship of China (Top 0.2% nationwide, highest honor for Chinese undergraduates)</li>
+                    <li><strong>2023-10</strong> National Scholarship of China (Top 0.2% nationwide, highest honor for Chinese undergraduates)</li>
+                    <li><strong>2023-10</strong> Excellent Student Leader, Tsinghua University (Top 1%)</li>
+                    <li><strong>2023-01</strong> First Prize in the Fourteenth National Undergraduate Mathematics Contest of China</li>
+                    <li><strong>2023-01</strong> Tsinghua University Excellent Academic Scholarship</li>
+                </ul>
             </div>
         </section>
     </div>
