@@ -25,7 +25,7 @@
             display: flex;
             align-items: flex-start;
             gap: 40px;
-            margin-bottom: 60px;
+            margin-bottom: 12px;
             padding-bottom: 40px;
             border-bottom: 1px solid #e0e0e0;
         }
@@ -239,7 +239,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 0;
-            margin-bottom: 0;
+            margin-bottom: 30px;
             font-size: 1.38em;
         }
         .toc a {
@@ -253,6 +253,10 @@
         .toc a:hover {
             color: #3498db;
             border-bottom: 1.5px solid #3498db;
+        }
+        #clustrmaps, #clustrmaps iframe {
+            transform: scale(0.6); /* Reduces size to 60% of original (40% reduction) */
+            transform-origin: center; /* Ensures scaling is centered */
         }
     </style>
 </head>
@@ -274,7 +278,7 @@
             <a href="#talks">Talks & Blogs</a>
             <a href="#research">Research</a>
             <a href="#education">Education & Experience</a>
-            <a href="#awards">Awards</a>
+            <a href="#awards">Awards & Social Services</a>
         </nav>
         <section class="section" id="news">
             <h2>News</h2>
@@ -381,9 +385,7 @@
             </div>
         </section>
         
-        <div style="transform: scale(0.6); transform-origin: top left; width: fit-content;">
-            <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=_ob9I33uItY0GbD2X2HiN-IKXAPELxjLpSHlQH0dd8E&cl=ffffff&w=a"></script>
-        </div>
+        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=_ob9I33uItY0GbD2X2HiN-IKXAPELxjLpSHlQH0dd8E&cl=ffffff&w=a"></script>
         
     </div>
 </body>
