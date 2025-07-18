@@ -90,6 +90,10 @@
 
         .section {
             margin-bottom: 50px;
+            margin-top: 0;
+        }
+        .section:first-of-type {
+            margin-top: 0;
         }
 
         .section h2 {
@@ -228,6 +232,28 @@
             color: #3498db;
             text-decoration: underline;
         }
+        /* Minimal horizontal table of contents */
+        .toc {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 1.38em;
+        }
+        .toc a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 2px 0;
+            border-bottom: 1.5px solid transparent;
+            transition: border 0.2s;
+        }
+        .toc a:hover {
+            color: #3498db;
+            border-bottom: 1.5px solid #3498db;
+        }
     </style>
 </head>
 <body>
@@ -243,7 +269,14 @@
     </div>
 
     <div class="main-content">
-        <section class="section">
+        <nav class="toc" aria-label="Table of Contents">
+            <a href="#news">News</a>
+            <a href="#talks">Talks & Blogs</a>
+            <a href="#research">Research</a>
+            <a href="#education">Education & Experience</a>
+            <a href="#awards">Awards</a>
+        </nav>
+        <section class="section" id="news">
             <h2>News</h2>
             <div class="section-content">
                 <ul>
@@ -256,17 +289,17 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="talks">
             <h2>Talks and Blogs</h2>
             <div class="section-content">
                 <ul>
-                    <li><strong>[2025-06-26]</strong> Talk at Tsinghua University on flow policies, RL, and what a practical robot learning pipeline should look like in my eyes. 
+                    <li><strong>[2025-06-16]</strong> Talk at Tsinghua University on flow policies, RL, and what a practical robot learning pipeline should look like in my eyes. 
                     </li>
                 </ul>
             </div>
         </section>
-
-        <section class="section">
+        
+        <section class="section" id="research">
             <h2>Research</h2>
             <div class="section-content research-block">
                 <p><strong>Focus.</strong> My research centers on the intersection of robotics and machine learning, 
@@ -279,12 +312,12 @@
                 <p><strong>Philosophy.</strong> With experience in both theoretical and empirical research, 
                     I am committed to making theory applicable to real-world robotics and ensuring that experiments are well-grounded and reproducible.</p>
         
-                <p><strong>Vision.</strong> My work is driven by scientific curiosity and also, equally importantly, practical needs. 
-                    I aim to develop economically reasonable solutions for future mass production.</p>
+                <p><strong>Vision.</strong> My work is driven by scientific curiosity and also practical market needs. 
+                    I aim to develop economically reasonable solutions for mass deployment in the future.</p>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="education">
             <h2>Education and Professional Experience</h2>
             <div class="section-content">
                 <div style="margin-bottom: 20px;">
@@ -331,20 +364,25 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="awards">
             <h2>Awards and Social Services</h2>
             <div class="section-content">
                 <ul>
                     <li><strong>2025-07</strong> Beijing Municipal Outstanding Graduate</li>
                     <li><strong>2025-07</strong> Tsinghua University Excellent Graduate</li>
-                    <li><strong>2024-10</strong> National Scholarship of China (Top 0.2% nationwide, highest honor for Chinese undergraduates)</li>
-                    <li><strong>2023-10</strong> National Scholarship of China (Top 0.2% nationwide, highest honor for Chinese undergraduates)</li>
-                    <li><strong>2023-10</strong> Excellent Student Leader, Tsinghua University (Top 1%)</li>
+                    <li><strong>2024-10</strong> National Scholarship of China</li>
+                    <!-- (Top 0.2% nationwide, highest honor for Chinese undergraduates) -->
+                    <li><strong>2023-10</strong> National Scholarship of China</li>
+                    <li><strong>2023-10</strong> Excellent Student Leader, Tsinghua University</li>
+                    <!-- (Top 1%) -->
                     <li><strong>2023-01</strong> First Prize in the Fourteenth National Undergraduate Mathematics Contest of China</li>
                     <li><strong>2023-01</strong> Tsinghua University Excellent Academic Scholarship</li>
                 </ul>
             </div>
         </section>
+
+        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=_ob9I33uItY0GbD2X2HiN-IKXAPELxjLpSHlQH0dd8E&cl=ffffff&w=a"></script>
+        
     </div>
 </body>
 </html>
