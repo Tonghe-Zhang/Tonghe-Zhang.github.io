@@ -15,9 +15,12 @@
     <style>
         body { font-family: 'Times New Roman', serif; max-width: 1400px; margin: 0 auto; padding: 40px 20px; color: #333; background: #fff; }
         .timeline-list { list-style: none; padding-left: 0; margin: 0; }
-        .timeline-item { display: flex; align-items: flex-start; margin-bottom: 0.7em; flex-wrap: nowrap; }
-        .timeline-date { min-width: 140px; font-weight: bold; color: #111; font-variant-numeric: tabular-nums; flex-shrink: 0; white-space: nowrap; }
-        .timeline-desc { flex: 1; padding-left: 10px; min-width: 0; word-break: break-word; }
+        .timeline-item { display: flex; align-items: flex-start; margin-bottom: 1.5em; }
+        .timeline-logo { width: 12em; height: 4em; flex-shrink: 0; margin-right: 20px; display: flex; align-items: center; justify-content: center; }
+        .timeline-logo img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+        .timeline-content { flex: 1; }
+        .timeline-date { display: block; font-weight: bold; color: #111; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
+        .timeline-desc { display: block; word-break: break-word; }
         h1 { color: #111; font-weight: 600; border-bottom: 1.5px solid #000; padding-bottom: 6px; margin-bottom: 24px; }
         h3 { font-size:1.3em; font-weight:500; color:#111; margin-bottom:10px; }
         a { color: #2980b9; text-decoration: none; font-weight: 500; }
@@ -30,20 +33,40 @@
     <div>
         <ul class="timeline-list">
             <li class="timeline-item">
-                <span class="timeline-date">2024-11 – 2025-05</span>
-                <span class="timeline-desc">Led research on fine-tuning diffusion and flow matching policies with online RL at <a href="https://www.ee.tsinghua.edu.cn/en/" target="_blank">EE, Tsinghua University</a>.</span>
+                <div class="timeline-logo">
+                    <img src="./figs/ee_tsinghua_logo.png" alt="EE Tsinghua Logo">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2024-11 – 2025-05</span>
+                    <span class="timeline-desc">Led research on fine-tuning diffusion and flow matching policies with online RL at <a href="https://www.ee.tsinghua.edu.cn/en/" target="_blank">EE, Tsinghua University</a>.</span>
+                </div>
             </li>
             <li class="timeline-item">
-                <span class="timeline-date">2024-07 – 2024-10</span>
-                <span class="timeline-desc">Developed humanoid locomotion algorithm via sim-to-real RL and GAN-based imitation learning at <a href="https://en.noetixrobotics.com/" target="_blank">Noetix Robotics</a>.</span>
+                <div class="timeline-logo">
+                    <img src="./figs/noetix_logo.png" alt="Noetix Robotics Logo">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2024-07 – 2024-10</span>
+                    <span class="timeline-desc">Developed humanoid locomotion algorithm via sim-to-real RL and GAN-based imitation learning at <a href="https://en.noetixrobotics.com/" target="_blank">Noetix Robotics</a>.</span>
+                </div>
             </li>
             <li class="timeline-item">
-                <span class="timeline-date">2024-02 – 2024-09</span>
-                <span class="timeline-desc">Led research on distributed policy optimization theory under partial observability at <a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>.</span>
+                <div class="timeline-logo">
+                    <img src="./figs/cmu-logo-horizontal.png" alt="CMU SCS Logo">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2024-02 – 2024-09</span>
+                    <span class="timeline-desc">Led research on distributed policy optimization theory under partial observability at <a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>.</span>
+                </div>
             </li>
             <li class="timeline-item">
-                <span class="timeline-date">2023-07 – 2024-02</span>
-                <span class="timeline-desc">Led research on statistical theory of risk-sensitive partially observable RL at <a href="https://iiis.tsinghua.edu.cn/en/" target="_blank">IIIS, Tsinghua University</a>.</span>
+                <div class="timeline-logo">
+                    <img src="./figs/iiis_tsinghua_logo_horizontal.png" alt="IIIS Tsinghua Logo">
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2023-07 – 2024-02</span>
+                    <span class="timeline-desc">Led research on statistical theory of risk-sensitive partially observable RL at <a href="https://iiis.tsinghua.edu.cn/en/" target="_blank">IIIS, Tsinghua University</a>.</span>
+                </div>
             </li>
         </ul>
     </div>
