@@ -25,7 +25,6 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 40px 20px;
-            font-size: 1.2em; /* Set base font-size for consistency */
         }
 
         .header {
@@ -54,20 +53,20 @@
 
         .header h1 {
             font-size: 2.8em;
-            font-weight: bold; /* Make bold */
+            font-weight: 400;
             margin-bottom: 15px;
             color: #2c3e50;
         }
 
         .header .email {
-            font-size: 1.2em; /* Consistent with base */
+            font-size: 1.3em;
             color: #666;
             font-style: normal;
             margin-bottom: 25px;
         }
 
         .header .intro {
-            font-size: 1.2em; /* Consistent */
+            font-size: 1.3em;
             line-height: 1.7;
             color: #444;
             text-align: justify;
@@ -105,22 +104,15 @@
 
         .section h2 {
             font-size: 2.0em;
-            font-weight: bold; /* Make bold */
+            font-weight: 400;
             margin-bottom: 10px; /* Reduced from 25px */
             color: #2c3e50;
             border-bottom: 2px solid #34495e;
             padding-bottom: 10px;
         }
-
-        .section h3 {
-            font-size: 1.5em;
-            font-weight: bold; /* Make bold */
-            margin-top: 30px;
-        }
-
         /* Compact News list */
         .section-content ul {
-            font-size: 1.2em; /* Consistent */
+            font-size: 1.3em;
             margin-top: 0;
             margin-bottom: 0;
             padding-left: 22px;
@@ -130,7 +122,7 @@
         }
 
         .section-content {
-            font-size: 1.2em; /* Consistent */
+            font-size: 1.3em; /* ← increased from 1.2em */
             line-height: 1.9;  /* ← optional: slightly more vertical spacing */
             color: #555;
             min-height: 60px;
@@ -189,7 +181,6 @@
         @media (max-width: 768px) {
             body {
                 padding: 20px 15px;
-                font-size: 1.0em; /* Adjust base for mobile */
             }
             
             .header {
@@ -208,11 +199,11 @@
             }
             
             .header .email {
-                font-size: 1.0em; /* Consistent mobile */
+                font-size: 1.1em;
             }
             
             .header .intro {
-                font-size: 1.0em; /* Consistent mobile */
+                font-size: 1.1em;
                 text-align: center;
             }
             
@@ -221,7 +212,7 @@
             }
             
             .section-content {
-                font-size: 1.0em; /* Consistent mobile */
+                font-size: 1.1em;
             }
             
             .profile-photo {
@@ -256,7 +247,7 @@
             align-items: center;
             margin-top: 0;
             margin-bottom: 30px;
-            font-size: 1.2em; /* Consistent */
+            font-size: 1.38em;
         }
         .toc a {
             color: #111;
@@ -274,11 +265,6 @@
         #clustrmaps, #clustrmaps iframe {
             transform: scale(0.6); /* Reduces size to 60% of original (40% reduction) */
             transform-origin: center; /* Ensures scaling is centered */
-        }
-
-        /* Ensure paper lists are consistent */
-        ul[style*="font-size: 1.2em"] {
-            font-size: 1.2em; /* Already set, but reinforce consistency */
         }
     </style>
 </head>
@@ -378,7 +364,7 @@
                     I aim to develop economically reasonable solutions for mass deployment in the future.</p>
             </div> -->
 
-            <h3>Preprints</h3>
+            <h3 style="font-family: 'Times New Roman', serif; font-weight: 400; margin-top: 30px; font-size: 1.5em;">Preprints</h3>
             <ul style="font-family: 'Times New Roman', serif; font-size: 1.2em; line-height: 1.8; list-style-type: none; padding-left: 0;">
                 <li style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
                     <img src="figs/reinflow-icon.gif" alt="ReinFlow Icon" style="width: 150px; height: 150px; border-radius: 8px;">
@@ -398,7 +384,7 @@
                 </li>
             </ul>
             <div style="margin-bottom: 60px;"></div>
-            <h3>Publications</h3>
+            <h3 style="font-family: 'Times New Roman', serif; font-weight: 400; margin-top: 30px; font-size: 1.5em;">Publications</h3>
             <div style="font-family: 'Times New Roman', serif; font-size: 1.0em; margin-bottom: 10px; ">* denotes equal contribution</div>
             <ul style="font-family: 'Times New Roman', serif; font-size: 1.2em; line-height: 1.8; list-style-type: none; padding-left: 0;">
                 <li style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
