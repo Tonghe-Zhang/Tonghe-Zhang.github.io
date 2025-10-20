@@ -14,6 +14,19 @@
     <!-- LaTeX-style fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Computer+Modern+Serif:wght@400;700&family=Computer+Modern+Sans:wght@400;700&family=Computer+Modern+Typewriter:wght@400&display=swap" rel="stylesheet">
     
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -350,69 +363,69 @@
         <p>To fully understand the proof of FP equations, we need to recall several results from probability, analysis and linear algebra.</p>
         
         <h3>1.1 Wiener Process</h3>
-        <p>Recall that a Wiener process <span class="math">W<sub>t</sub></span> in <span class="math">ℝ<sup>d</sup></span> possesses the following property:</p>
+        <p>Recall that a Wiener process $W_t$ in $\mathbb{R}^d$ possesses the following property:</p>
         
         <div class="equation">
-            <span class="math">∀ t, h ∈ ℝ<sub>+</sub>: W<sub>t+h</sub> - W<sub>t</sub> ~ 𝒩(0, h𝕀<sub>d×d</sub>)</span>
+            $$\forall t, h \in \mathbb{R}_+: \quad W_{t+h} - W_t \sim \mathcal{N}(0, h\mathbb{I}_{d\times d})$$
         </div>
         
-        <p>This naturally implies that, for any matrix <span class="math">A ∈ ℝ<sup>d×d</sup></span> independent of <span class="math">W<sub>t</sub></span>,</p>
+        <p>This naturally implies that, for any matrix $A \in \mathbb{R}^{d\times d}$ independent of $W_t$,</p>
         
         <div class="equation">
-            <span class="math">𝔼[W<sub>t+h</sub> - W<sub>t</sub>] = 0</span><br>
-            <span class="math">𝔼[(W<sub>t+h</sub> - W<sub>t</sub>)<sup>⊤</sup> A (W<sub>t+h</sub> - W<sub>t</sub>)] = 𝔼<sub>ε~𝒩(0,h𝕀<sub>d×d</sub>)</sub>[ε<sup>⊤</sup> A ε]</span>
+            $$\mathbb{E}[W_{t+h} - W_t] = 0$$
+            $$\mathbb{E}[(W_{t+h} - W_t)^\top A (W_{t+h} - W_t)] = \mathbb{E}_{\epsilon \sim \mathcal{N}(0,h\mathbb{I}_{d\times d})}[\epsilon^\top A \epsilon]$$
         </div>
         
-        <p>Here, <span class="math">ε ∈ ℝ<sup>d</sup></span>, which has independent coordinates. The expectations are taken with respect to the randomness in <span class="math">W<sub>t</sub></span>.</p>
+        <p>Here, $\epsilon \in \mathbb{R}^d$, which has independent coordinates. The expectations are taken with respect to the randomness in $W_t$.</p>
 
         <h3>1.2 Hutchinson's Trace Estimator</h3>
-        <p>For <span class="math">ε ~ 𝒩(0, h𝕀<sub>d×d</sub>)</span> and matrix <span class="math">A ∈ ℝ<sup>d×d</sup></span>, the trace of <span class="math">A</span> is the expected quadratic form of <span class="math">ε</span> and <span class="math">A</span>.</p>
+        <p>For $\epsilon \sim \mathcal{N}(0, h\mathbb{I}_{d\times d})$ and matrix $A \in \mathbb{R}^{d\times d}$, the trace of $A$ is the expected quadratic form of $\epsilon$ and $A$.</p>
         
         <div class="equation">
-            <span class="math">𝔼<sub>ε</sub>[ε<sup>⊤</sup> A ε] = 𝔼<sub>ε₁,ε₂,...,ε<sub>d</sub></sub>[∑<sub>i,j</sub> ε<sub>i</sub> A<sub>i,j</sub> ε<sub>j</sub>] = ∑<sub>i,j</sub> A<sub>i,j</sub> 𝔼<sub>ε₁,ε₂,...,ε<sub>d</sub></sub>[ε<sub>i</sub> ε<sub>j</sub>] = ∑<sub>i,j</sub> A<sub>i,j</sub> δ<sub>i,j</sub> = tr A</span>
+            $$\mathbb{E}_\epsilon[\epsilon^\top A \epsilon] = \mathbb{E}_{\epsilon_1,\epsilon_2,\ldots,\epsilon_d}\left[\sum_{i,j} \epsilon_i A_{i,j} \epsilon_j\right] = \sum_{i,j} A_{i,j} \mathbb{E}_{\epsilon_1,\epsilon_2,\ldots,\epsilon_d}[\epsilon_i \epsilon_j] = \sum_{i,j} A_{i,j} \delta_{i,j} = \text{tr} A$$
         </div>
         
-        <p>Consequently, <span class="math">Â<sub>ε</sub> = ε<sup>⊤</sup> A ε</span> is an unbiased estimator of <span class="math">tr A</span>.</p>
+        <p>Consequently, $\hat{A}_\epsilon = \epsilon^\top A \epsilon$ is an unbiased estimator of $\text{tr} A$.</p>
 
         <h3>1.3 Hessian Matrix and Laplacian</h3>
-        <p>For a scalar functional <span class="math">u: ℝ<sup>d</sup> → ℝ</span> (which usually takes the physical meaning of a potential field over <span class="math">ℝ<sup>d</sup></span>), the Hessian matrix is defined by packing the second-order derivatives into a matrix:</p>
+        <p>For a scalar functional $u: \mathbb{R}^d \to \mathbb{R}$ (which usually takes the physical meaning of a potential field over $\mathbb{R}^d$), the Hessian matrix is defined by packing the second-order derivatives into a matrix:</p>
         
         <div class="equation">
-            <span class="math">H<sub>u</sub> = ∇²u = (∂²/∂x<sub>i</sub>∂x<sub>j</sub> u(x⃗))<sub>i,j∈[d]²</sub> ∈ ℝ<sup>d×d</sup></span>
+            $$H_u = \nabla^2 u = \left(\frac{\partial^2}{\partial x_i \partial x_j} u(\vec{x})\right)_{i,j \in [d]^2} \in \mathbb{R}^{d \times d}$$
         </div>
         
-        <p>The Laplacian of <span class="math">u</span> is defined as the sum of second order derivatives at the same coordinates:</p>
+        <p>The Laplacian of $u$ is defined as the sum of second order derivatives at the same coordinates:</p>
         
         <div class="equation">
-            <span class="math">Δu = ∇ · ∇u = ∑<sub>i=1</sub><sup>d</sup> ∂/∂x<sub>i</sub> u(x⃗) ∈ ℝ</span>
+            $$\Delta u = \nabla \cdot \nabla u = \sum_{i=1}^d \frac{\partial}{\partial x_i} u(\vec{x}) \in \mathbb{R}$$
         </div>
         
         <p>By definition, the trace of the Hessian matrix is the Laplacian.</p>
         
         <div class="equation">
-            <span class="math">tr ∇²u = Δu</span>
+            $$\text{tr} \nabla^2 u = \Delta u$$
         </div>
         
         <div class="corollary">
             <h3>Corollary</h3>
-            <p>For a scalar functional <span class="math">u: ℝ<sup>d</sup> → ℝ</span> and white Gaussian vector <span class="math">ε ~ 𝒩(0, h𝕀<sub>d×d</sub>)</span>, the expected value of the quadratic form obtained from the difference of Wiener process <span class="math">W<sub>t</sub></span> and Hessian matrix <span class="math">∇²u</span> is equivalent to the Laplacian of the potential field <span class="math">u</span>.</p>
+            <p>For a scalar functional $u: \mathbb{R}^d \to \mathbb{R}$ and white Gaussian vector $\epsilon \sim \mathcal{N}(0, h\mathbb{I}_{d\times d})$, the expected value of the quadratic form obtained from the difference of Wiener process $W_t$ and Hessian matrix $\nabla^2 u$ is equivalent to the Laplacian of the potential field $u$.</p>
             
             <div class="equation">
-                <span class="math">𝔼[(W<sub>t+h</sub> - W<sub>t</sub>)<sup>⊤</sup> ∇²u (W<sub>t+h</sub> - W<sub>t</sub>)] = Δu</span>
+                $$\mathbb{E}[(W_{t+h} - W_t)^\top \nabla^2 u (W_{t+h} - W_t)] = \Delta u$$
             </div>
         </div>
 
         <h3>1.4 The Laplacian of probability density; score function</h3>
-        <p>The Laplacian of a probability density function <span class="math">p</span> often appears in the literature of diffusion models. By definition, we have</p>
+        <p>The Laplacian of a probability density function $p$ often appears in the literature of diffusion models. By definition, we have</p>
         
         <div class="equation">
-            <span class="math">∇²p = ∇ · (∇p)</span>
+            $$\nabla^2 p = \nabla \cdot (\nabla p)$$
         </div>
         
-        <p>Furthermore, we relate the density gradient to the score function, <span class="math">s(x) = ∇ log p(x) = ∇p(x)/p(x)</span>, which implies</p>
+        <p>Furthermore, we relate the density gradient to the score function, $s(x) = \nabla \log p(x) = \frac{\nabla p(x)}{p(x)}$, which implies</p>
         
         <div class="equation">
-            <span class="math">∇²p = ∇ · (p ∇ log p)</span>
+            $$\nabla^2 p = \nabla \cdot (p \nabla \log p)$$
         </div>
         
         <div class="theorem">
@@ -420,7 +433,7 @@
             <p>The Laplacian of a probability density is the divergence of the product between density and its score function:</p>
             
             <div class="equation">
-                <span class="math">∇²p = ∇ · (p(x) s(x))</span>
+                $$\nabla^2 p = \nabla \cdot (p(x) s(x))$$
             </div>
         </div>
 
@@ -429,10 +442,10 @@
         
         <div class="theorem">
             <h3>Theorem</h3>
-            <p>For arbitrary integrable functions <span class="math">g₁, g₂: ℝ<sup>d</sup> → ℝ</span> it holds that</p>
+            <p>For arbitrary integrable functions $g_1, g_2: \mathbb{R}^d \to \mathbb{R}$ it holds that</p>
             
             <div class="equation">
-                <span class="math">g₁(x) = g₂(x) for all x ∈ ℝ<sup>d</sup> ⟺ ∫ f(x) g₁(x) dx = ∫ f(x) g₂(x) dx for all test functions f</span>
+                $$g_1(x) = g_2(x) \text{ for all } x \in \mathbb{R}^d \quad \Leftrightarrow \quad \int f(x) g_1(x) dx = \int f(x) g_2(x) dx \text{ for all test functions } f$$
             </div>
         </div>
         
@@ -441,26 +454,26 @@
         <h4>More properties of test functions</h4>
         <p>First, test functions are zero at infinity, or the border of the compact support, due to definition.</p>
         
-        <p>Second, for arbitrary test functions <span class="math">f₁, f₂</span>, we can use integration by parts to derive</p>
+        <p>Second, for arbitrary test functions $f_1, f_2$, we can use integration by parts to derive</p>
         
         <div class="equation">
-            <span class="math">∫<sub>D</sub> f₁(x) ∂/∂x<sub>i</sub> f₂(x) dx = f₁(x)f₂(x)|<sub>∂D</sub> - ∫ f₂(x) ∂/∂x<sub>i</sub> f₁(x) dx = 0 - ∫ f₂(x) ∂/∂x<sub>i</sub> f₁(x) dx = -∫ f₂(x) ∂/∂x<sub>i</sub> f₁(x) dx</span>
+            $$\int_D f_1(x) \frac{\partial}{\partial x_i} f_2(x) dx = f_1(x)f_2(x)\bigg|_{\partial D} - \int f_2(x) \frac{\partial}{\partial x_i} f_1(x) dx = 0 - \int f_2(x) \frac{\partial}{\partial x_i} f_1(x) dx = -\int f_2(x) \frac{\partial}{\partial x_i} f_1(x) dx$$
         </div>
         
         <p>By using this together with the definition of the divergence and Laplacian, we get the identities:</p>
         
         <div class="equation">
-            <span class="math">∫ ∇<sup>T</sup>u(x) v⃗(x) dx = -∫ u(x) div(v⃗)(x) dx</span><br>
-            <span class="math">∫ u(x) Δv(x) dx = ∫ v(x) Δu(x) dx</span>
+            $$\int \nabla^T u(x) \vec{v}(x) dx = -\int u(x) \text{div}(\vec{v})(x) dx \quad (u: \mathbb{R}^d \to \mathbb{R}, \vec{v}: \mathbb{R}^d \to \mathbb{R}^d)$$
+            $$\int u(x) \Delta v(x) dx = \int v(x) \Delta u(x) dx \quad (u: \mathbb{R}^d \to \mathbb{R}, v: \mathbb{R}^d \to \mathbb{R})$$
         </div>
         
-        <p>Notice that in each equation, <span class="math">x</span> is understood as <span class="math">(x₁,x₂,...,x<sub>d</sub>)</span> and</p>
+        <p>Notice that in each equation, $x$ is understood as $(x_1,x_2,\ldots,x_d)$ and</p>
         
         <div class="equation">
-            <span class="math">∫<sub>Ω</sub> f(x) dx = ∫<sub>Ω₁×...×Ω<sub>d</sub></sub> f(x₁,x₂,...,x<sub>d</sub>) dx₁dx₂...dx<sub>d</sub></span>
+            $$\int_\Omega f(x) dx = \int_{\Omega_1\times \ldots \times \Omega_d} f(x_1,x_2,\ldots,x_d) \mathrm{d}x_1 \mathrm{d}x_2 \ldots \mathrm{d}x_d$$
         </div>
         
-        <p>We can show the first equation by recursively calling integration by parts on each coordinate <span class="math">x<sub>i</sub></span>. The second identity is proved by calling the integration by parts twice.</p>
+        <p>We can show the first equation by recursively calling integration by parts on each coordinate $x_i$. The second identity is proved by calling the integration by parts twice.</p>
     </section>
 
     <section class="section" id="fokker-planck">
@@ -468,10 +481,10 @@
         <p>For a stochastic process determined by a stochastic differential equation (SDE),</p>
         
         <div class="equation">
-            <span class="math">dX<sub>t</sub> = some function of X<sub>t</sub>, t, and random noise</span>
+            $$\mathrm{d}X_t = \text{some function of } X_t, t, \text{ and random noise}$$
         </div>
         
-        <p>the Fokker-Planck (FP) equation tells us how the marginal density of this process <span class="math">X<sub>t</sub> ~ p<sub>t</sub>(·)</span> changes when the time evolves, and it expresses the marginal density in terms of the coefficients of the underlying SDE. The FP equations precisely characterize the <em>dynamics</em> of this stochastic process, connecting the <em>differential equations</em> of evolution with the <em>statistical</em> properties of this system.</p>
+        <p>the Fokker-Planck (FP) equation tells us how the marginal density of this process $X_t \sim p_t(\cdot)$ changes when the time evolves, and it expresses the marginal density in terms of the coefficients of the underlying SDE. The FP equations precisely characterize the <em>dynamics</em> of this stochastic process, connecting the <em>differential equations</em> of evolution with the <em>statistical</em> properties of this system.</p>
         
         <p>In the following sections, we will detail the proof of the Fokker-Planck equation in its most general form. Afterwards, we will use the FP equation to study two special types of stochastic processes, the first one is deterministic, and the second is stochastic, but the noise is irrelevant to the current state. These two cases are of particular interest to machine learning studies, as the former leads to flow-matching process, and the latter leads to diffusion models.</p>
 
@@ -480,69 +493,80 @@
         
         <div class="theorem">
             <h3>Theorem (Fokker-Planck Equation)</h3>
-            <p>Let <span class="math">p<sub>t</sub></span> be a probability path and consider Itô SDE</p>
+            <p>Let $p_t$ be a probability path and consider Itô SDE</p>
             
             <div class="equation">
-                <span class="math">X<sub>0</sub> ~ p<sub>0</sub>, dX<sub>t</sub> = μ(X<sub>t</sub>, t) dt + σ(X<sub>t</sub>, t) dW<sub>t</sub></span>
+                $$X_0 \sim p_0, \quad \mathrm{d}X_t = \mu(X_t, t) \mathrm{d}t + \sigma(X_t, t) dW_t$$
             </div>
             
-            <p>where <span class="math">X<sub>t</sub> ∈ ℝ<sup>d</sup></span>. Then <span class="math">X<sub>t</sub></span> has distribution <span class="math">p<sub>t</sub></span> for all <span class="math">0 ≤ t ≤ 1</span> if and only if the Fokker-Planck equation holds:</p>
+            <p>where $X_t \in \mathbb{R}^d$. Then $X_t$ has distribution $p_t$ for all $0 \leq t \leq 1$ if and only if the Fokker-Planck equation holds:</p>
             
             <div class="equation">
-                <span class="math">∂<sub>t</sub>p<sub>t</sub>(x) = -∇ · (p<sub>t</sub> μ<sub>t</sub>)(x) + ½ Δ(σ<sub>t</sub>²p<sub>t</sub>)(x) for all x ∈ ℝ<sup>d</sup>, 0 ≤ t ≤ 1</span>
+                $$\partial_t p_t(x) = -\nabla \cdot (p_t \mu_t)(x) + \frac{1}{2} \Delta(\sigma_t^2 p_t)(x) \quad \text{for all } x \in \mathbb{R}^d, 0 \leq t \leq 1$$
             </div>
             
-            <p>where we use the abbreviations <span class="math">μ<sub>t</sub>(x) = μ(x<sub>t</sub>, t)</span> and <span class="math">σ²<sub>t</sub>(x) = ⟨σ(x<sub>t</sub>, t), σ(x<sub>t</sub>, t)⟩</span>.</p>
+            <p>where we use the abbreviations $\mu_t(x) = \mu(x_t, t)$ and $\sigma_t^2(x) = \langle \sigma(x_t, t), \sigma(x_t, t) \rangle$.</p>
         </div>
 
         <div class="proof">
             <h3>Proof</h3>
             <p>We only show the necessary condition, which is nontrivial.</p>
             
-            <p>This equation shows point-wise equivalence between two real functionals. To show that, we pick an arbitrary test function <span class="math">f: ℝ<sup>d</sup> → ℝ</span>, and show that the left and the right are equivalent after applying <span class="math">f</span> to form inner products. We want to show that</p>
+            <p>This equation shows point-wise equivalence between two real functionals. To show that, we pick an arbitrary test function $f: \mathbb{R}^d \to \mathbb{R}$, and show that the left and the right are equivalent after applying $f$ to form inner products. We want to show that</p>
             
             <div class="equation">
-                <span class="math">∫ ∂<sub>t</sub>p<sub>t</sub>(x) f(x) dx = ∫ [-∇ · (p<sub>t</sub> μ<sub>t</sub>)(x) + ½ Δ(σ<sub>t</sub>²p<sub>t</sub>)(x)] f(x) dx</span>
+                $$\int \partial_t p_t(x) f(x) dx = \int \left[-\nabla \cdot (p_t \mu_t)(x) + \frac{1}{2} \Delta(\sigma_t^2 p_t)(x)\right] f(x) dx$$
             </div>
             
-            <p>holds for all test functions. And then for any point <span class="math">x</span>, we pick <span class="math">f(z) = δ(z-x)</span> and finish proving that LHS=RHS at any point.</p>
+            <p>holds for all test functions. And then for any point $x$, we pick $f(z) = \delta(z-x)$ and finish proving that LHS=RHS at any point.</p>
             
-            <p>Let us start from LHS. We will use the property that <span class="math">p<sub>t</sub>(x)</span> is in fact a probability density, and the test function is time-irrelevant. Consequently, LHS can be written into an expectation:</p>
+            <p>Let us start from LHS. We will use the property that $p_t(x)$ is in fact a probability density, and the test function is time-irrelevant. Consequently, LHS can be written into an expectation:</p>
             
             <div class="equation">
-                <span class="math">LHS = ∂<sub>t</sub> 𝔼<sub>x~p<sub>t</sub></sub>[f(x)] = lim<sub>h→0</sub> (1/h) 𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>)] = lim<sub>h→0</sub> (1/h) 𝔼[𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>) | X<sub>t</sub>]]</span>
+                $$\text{LHS} = \partial_t \mathbb{E}_{x \sim p_t}[f(x)] = \lim_{h\to 0}\frac{1}{h} \mathbb{E}[f(X_{t+h}) - f(X_t)] = \lim_{h\to 0}\frac{1}{h} \mathbb{E}\left[\mathbb{E}[f(X_{t+h}) - f(X_t) | X_t]\right]$$
             </div>
             
-            <p>We will use the second-order Taylor expansion to evaluate the enumerator, since this limit eliminates any remaining terms of order <span class="math">o(h)</span>. Then we will call the helper functions derived in the preliminary section and take the limit to finish the proof. In what follows, we neglect the higher order terms for better readability.</p>
+            <p>We will use the second-order Taylor expansion to evaluate the enumerator, since this limit eliminates any remaining terms of order $o(h)$. Then we will call the helper functions derived in the preliminary section and take the limit to finish the proof. In what follows, we neglect the higher order terms for better readability.</p>
             
             <div class="equation">
-                <span class="math">f(X<sub>t+h</sub>) - f(X<sub>t</sub>) = f(X<sub>t</sub> + h μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub>(W<sub>t+h</sub> - W<sub>t</sub>)) - f(X<sub>t</sub>)</span><br>
-                <span class="math">= ∇f(X<sub>t</sub>)<sup>⊤</sup>(h μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub>(W<sub>t+h</sub> - W<sub>t</sub>)) + ½(h μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub>(W<sub>t+h</sub> - W<sub>t</sub>))<sup>⊤</sup> ∇²f(X<sub>t</sub>)(h μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub>(W<sub>t+h</sub> - W<sub>t</sub>)) + o(h²)</span><br>
-                <span class="math">= h ∇f(X<sub>t</sub>)<sup>⊤</sup> μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub> ∇f(X<sub>t</sub>)<sup>⊤</sup>(W<sub>t+h</sub> - W<sub>t</sub>) + ½ σ<sub>t</sub>²(W<sub>t+h</sub> - W<sub>t</sub>)<sup>⊤</sup> ∇²f(X<sub>t</sub>)(W<sub>t+h</sub> - W<sub>t</sub>) + o(h²)</span>
+                $$\begin{aligned}
+                f(X_{t+h}) - f(X_t) &= f(X_t + h \mu_t(X_t) + \sigma_t(W_{t+h} - W_t)) - f(X_t) \\
+                &= \nabla f(X_t)^\top(h \mu_t(X_t) + \sigma_t(W_{t+h} - W_t)) \\
+                &\quad + \frac{1}{2}(h \mu_t(X_t) + \sigma_t(W_{t+h} - W_t))^\top \nabla^2 f(X_t)(h \mu_t(X_t) + \sigma_t(W_{t+h} - W_t)) + o(h^2) \\
+                &= h \nabla f(X_t)^\top \mu_t(X_t) + \sigma_t \nabla f(X_t)^\top(W_{t+h} - W_t) \\
+                &\quad + \frac{1}{2} \sigma_t^2(W_{t+h} - W_t)^\top \nabla^2 f(X_t)(W_{t+h} - W_t) + o(h^2)
+                \end{aligned}$$
             </div>
             
-            <p>Now take the conditional expectation w.r.t. <span class="math">X<sub>t</sub></span> to both sides. We will nullify the second term using the fact that the Wiener process is independent with <span class="math">X<sub>t</sub></span> and has zero mean. The third term on RHS will be simplified by the corollary we derived earlier, which suggests that</p>
+            <p>Now take the conditional expectation w.r.t. $X_t$ to both sides. We will nullify the second term using the fact that the Wiener process is independent with $X_t$ and has zero mean. The third term on RHS will be simplified by the corollary we derived earlier, which suggests that</p>
             
             <div class="equation">
-                <span class="math">𝔼[(W<sub>t+h</sub> - W<sub>t</sub>)<sup>⊤</sup> ∇²u (W<sub>t+h</sub> - W<sub>t</sub>)] = Δu</span>
+                $$\mathbb{E}[(W_{t+h} - W_t)^\top \nabla^2 u (W_{t+h} - W_t)] = \Delta u$$
             </div>
             
             <p>With these observations, we arrive at</p>
             
             <div class="equation">
-                <span class="math">𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>) | X<sub>t</sub>] = h ∇f(X<sub>t</sub>)<sup>⊤</sup> μ<sub>t</sub>(X<sub>t</sub>) + (h/2) σ<sub>t</sub>²(X<sub>t</sub>) Δf(X<sub>t</sub>) + o(h²)</span>
+                $$\mathbb{E}[f(X_{t+h}) - f(X_t) | X_t] = h \nabla f(X_t)^\top \mu_t(X_t) + \frac{h}{2} \sigma_t^2(X_t) \Delta f(X_t) + o(h^2)$$
             </div>
             
             <p>Finally, marginalize the conditional expectation by computing integrals, and call the integration by parts formula for vector fields, we have</p>
             
             <div class="equation">
-                <span class="math">∂<sub>t</sub> 𝔼[f(X<sub>t</sub>)] = ∫ f(x) (∂<sub>t</sub>p<sub>t</sub>(x)) dx = lim<sub>h→0</sub> (1/h) 𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>)] = lim<sub>h→0</sub> (1/h) 𝔼[𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>) | X<sub>t</sub>]] = 𝔼[∇f(X<sub>t</sub>)<sup>⊤</sup> μ<sub>t</sub>(X<sub>t</sub>) + ½ σ<sub>t</sub>²(X<sub>t</sub>) Δf(X<sub>t</sub>)] = ∫ ∇f(x)<sup>⊤</sup> μ<sub>t</sub>(x) p<sub>t</sub>(x) dx + ½ ∫ Δf(x) · σ<sub>t</sub>²(x) p<sub>t</sub>(x) dx = -∫ f(x) div(μ<sub>t</sub> p<sub>t</sub>)(x) dx + ½ ∫ f(x) Δ(σ<sub>t</sub>²p<sub>t</sub>)(x) dx = ∫ f(x)[-div(μ<sub>t</sub> p<sub>t</sub>)(x) + ½ Δ(σ<sub>t</sub>²p<sub>t</sub>)(x)] dx</span>
+                $$\begin{aligned}
+                \partial_t \mathbb{E}[f(X_t)] &= \int f(x) (\partial_t p_t(x)) dx = \lim_{h\to 0} \frac{1}{h} \mathbb{E}[f(X_{t+h}) - f(X_t)] \\
+                &= \lim_{h\to 0} \frac{1}{h} \mathbb{E}[\mathbb{E}[f(X_{t+h}) - f(X_t) | X_t]] \\
+                &= \mathbb{E}[\nabla f(X_t)^\top \mu_t(X_t) + \frac{1}{2} \sigma_t^2(X_t) \Delta f(X_t)] \\
+                &= \int \nabla f(x)^\top \mu_t(x) p_t(x) dx + \frac{1}{2} \int \Delta f(x) \cdot \sigma_t^2(x) p_t(x) dx \\
+                &= -\int f(x) \text{div}(\mu_t p_t)(x) dx + \frac{1}{2} \int f(x) \Delta(\sigma_t^2 p_t)(x) dx \\
+                &= \int f(x)\left[-\text{div}(\mu_t p_t)(x) + \frac{1}{2} \Delta(\sigma_t^2 p_t)(x)\right] dx
+                \end{aligned}$$
             </div>
             
-            <p>Now since this result holds for any test functions, at any point <span class="math">x₀</span> we can pick <span class="math">f(x) = δ(x-x₀)</span> and obtain</p>
+            <p>Now since this result holds for any test functions, at any point $x_0$ we can pick $f(x) = \delta(x-x_0)$ and obtain</p>
             
             <div class="equation">
-                <span class="math">∂<sub>t</sub>p<sub>t</sub>(x)|<sub>x=x₀</sub> = -div(μ<sub>t</sub>(x) p<sub>t</sub>(x)) + ½ Δ(σ<sub>t</sub>²(x)p<sub>t</sub>(x))|<sub>x=x₀</sub></span>
+                $$\partial_t p_t(x)\bigg|_{x=x_0} = -\text{div}(\mu_t(x) p_t(x)) + \frac{1}{2} \Delta(\sigma_t^2(x)p_t(x))\bigg|_{x=x_0}$$
             </div>
             
             <p>thus these two functionals are equivalent point-wise.</p>
@@ -551,23 +575,23 @@
 
     <section class="section" id="special-case-ode">
         <h2>3. Special Case I: ODE, Continuity Equation, and Flow-matching</h2>
-        <p>With the Fokker-Planck equation, we naturally obtain an ODE counterpart by setting the noise magnitude <span class="math">σ<sub>t</sub>(X<sub>t</sub>)</span> to zero. This is known as the continuity equation.</p>
+        <p>With the Fokker-Planck equation, we naturally obtain an ODE counterpart by setting the noise magnitude $\sigma_t(X_t)$ to zero. This is known as the continuity equation.</p>
         
         <div class="corollary">
             <h3>Corollary (Continuity Equation)</h3>
-            <p>Let <span class="math">p<sub>t</sub></span> be a probability path and consider the ODE</p>
+            <p>Let $p_t$ be a probability path and consider the ODE</p>
             
             <div class="equation">
-                <span class="math">X<sub>0</sub> ~ p<sub>0</sub>, dX<sub>t</sub> = μ(X<sub>t</sub>, t) dt</span>
+                $$X_0 \sim p_0, \quad dX_t = \mu(X_t, t) dt$$
             </div>
             
-            <p>where <span class="math">X<sub>t</sub> ∈ ℝ<sup>d</sup></span>. Then <span class="math">X<sub>t</sub></span> has distribution <span class="math">p<sub>t</sub></span> for all <span class="math">0 ≤ t ≤ 1</span> if and only if the continuity equation holds:</p>
+            <p>where $X_t \in \mathbb{R}^d$. Then $X_t$ has distribution $p_t$ for all $0 \leq t \leq 1$ if and only if the continuity equation holds:</p>
             
             <div class="equation">
-                <span class="math">∂<sub>t</sub>p<sub>t</sub>(x) = -∇ · (p<sub>t</sub> μ<sub>t</sub>)(x) for all x ∈ ℝ<sup>d</sup>, 0 ≤ t ≤ 1</span>
+                $$\partial_t p_t(x) = -\nabla \cdot (p_t \mu_t)(x) \quad \text{for all } x \in \mathbb{R}^d, 0 \leq t \leq 1$$
             </div>
             
-            <p>where we use the abbreviations <span class="math">μ<sub>t</sub>(x) = μ(x<sub>t</sub>, t)</span>.</p>
+            <p>where we use the abbreviations $\mu_t(x) = \mu(x_t, t)$.</p>
         </div>
         
         <p>This relationship is very useful in the derivation of flow-matching process's log probabilities.</p>
@@ -581,13 +605,13 @@
             <p>A <strong>diffusion process</strong> is a continuous-time stochastic process <span class="math">{X<sub>t</sub>}<sub>t≥0</sub></span> governed by the Itô stochastic differential equation (SDE):</p>
             
             <div class="equation">
-                <span class="math">dX<sub>t</sub> = f(X<sub>t</sub>, t) dt + g(t) dW<sub>t</sub></span>
+                <span class="math">\mathrm{d}X<sub>t</sub> = f(X<sub>t</sub>, t) \mathrm{d}t + g(t) dW<sub>t</sub></span>
             </div>
             
             <p>where:</p>
             <ul>
-                <li><span class="math">f(X<sub>t</sub>, t): ℝ<sup>d</sup> × ℝ<sub>+</sub> → ℝ<sup>d</sup></span> is the drift coefficient,</li>
-                <li><span class="math">g(t): ℝ<sub>+</sub> → ℝ<sub>+</sub></span> is the state-independent diffusion coefficient,</li>
+                <li><span class="math">f(X<sub>t</sub>, t): \mathbb{R}<sup>d</sup> × \mathbb{R}<sub>+</sub> → \mathbb{R}<sup>d</sup></span> is the drift coefficient,</li>
+                <li><span class="math">g(t): \mathbb{R}<sub>+</sub> → \mathbb{R}<sub>+</sub></span> is the state-independent diffusion coefficient,</li>
                 <li><span class="math">W<sub>t</sub></span> is a standard <span class="math">d</span>-dimensional Brownian motion (Wiener Process)</li>
             </ul>
             
@@ -603,7 +627,7 @@
         <p>It turns out that the forward diffusion process is actually invertible mathematically. In detail, there exists a reverse-time diffusion process with density <span class="math">p̃<sub>s</sub>(x)</span>, such that <span class="math">p̃<sub>s</sub>(x) = p<sub>T-s</sub>(x)</span>. When the reverse-time process evolves from <span class="math">s=0</span> to <span class="math">s=T</span>, the marginal probability is exactly the same as the forward process evolved backward. Next, we find the SDE for the time-reversed process.</p>
 
         <h3>4.1 Time Reversal and Density Evolution</h3>
-        <p>We denote by <span class="math">s</span> the increasing time index of the reverse process, and let <span class="math">t</span> be the increasing time index of the forward process. With a time endpoint <span class="math">T</span>, these two time indices are related with <span class="math">s+t=T</span>. Since <span class="math">ds = -dt</span>, we obtain that the evolution of the reversed density with respect to the forward time <span class="math">s</span> is:</p>
+        <p>We denote by <span class="math">s</span> the increasing time index of the reverse process, and let <span class="math">t</span> be the increasing time index of the forward process. With a time endpoint <span class="math">T</span>, these two time indices are related with <span class="math">s+t=T</span>. Since <span class="math">ds = -\mathrm{d}t</span>, we obtain that the evolution of the reversed density with respect to the forward time <span class="math">s</span> is:</p>
         
         <div class="equation">
             <span class="math">∂p̃<sub>s</sub>(x)/∂s = ∂p<sub>T-s</sub>(x)/∂s = -∂p<sub>t</sub>(x)/∂t|<sub>t=T-s</sub></span>
@@ -673,18 +697,18 @@
         <p>Let us use the original time index <span class="math">t</span>, but define the differential as a negative change <span class="math">d(-t)</span>. Let <span class="math">x(t)</span> be the reverse process, where <span class="math">t</span> now runs from <span class="math">T</span> (start) to <span class="math">0</span> (end). The equation can be written as</p>
         
         <div class="equation">
-            <span class="math">dx<sub>t</sub> = [f(x<sub>t</sub>, t) - g²(t) ∇ log p<sub>t</sub>(x<sub>t</sub>)] (-dt) + g(t) dW̄<sub>t</sub></span>
+            <span class="math">dx<sub>t</sub> = [f(x<sub>t</sub>, t) - g²(t) ∇ log p<sub>t</sub>(x<sub>t</sub>)] (-\mathrm{d}t) + g(t) dW̄<sub>t</sub></span>
         </div>
         
-        <p>and we remind the reader that now <span class="math">t</span> decreases from <span class="math">T</span> to <span class="math">0</span>. Here, <span class="math">(-dt)</span> indicates the backward direction and <span class="math">dW̄<sub>t</sub></span> is a backward Wiener process, which means that when <span class="math">t</span> decreases, it is statistically equivalent to <span class="math">dW<sub>s</sub></span> with <span class="math">s</span> increasing.</p>
+        <p>and we remind the reader that now <span class="math">t</span> decreases from <span class="math">T</span> to <span class="math">0</span>. Here, <span class="math">(-\mathrm{d}t)</span> indicates the backward direction and <span class="math">dW̄<sub>t</sub></span> is a backward Wiener process, which means that when <span class="math">t</span> decreases, it is statistically equivalent to <span class="math">dW<sub>s</sub></span> with <span class="math">s</span> increasing.</p>
         
-        <p>To fully express the backward time, we abuse notations and write <span class="math">-dt</span> as <span class="math">dt</span>, though it violates the convention that infinitesimal time should be positive. Then with a negative <span class="math">dt</span>, we arrive at what is seen in the diffusion model literature:</p>
+        <p>To fully express the backward time, we abuse notations and write <span class="math">-\mathrm{d}t</span> as <span class="math">\mathrm{d}t</span>, though it violates the convention that infinitesimal time should be positive. Then with a negative <span class="math">\mathrm{d}t</span>, we arrive at what is seen in the diffusion model literature:</p>
         
         <div class="equation">
-            <span class="math">Reverse diffusion SDE (ML convention): dx<sub>t</sub> = [f(x<sub>t</sub>, t) - g²(t) ∇ log p<sub>t</sub>(x<sub>t</sub>)] dt + g(t) dW̄<sub>t</sub>, t ∈ [T,0]</span>
+            <span class="math">Reverse diffusion SDE (ML convention): dx<sub>t</sub> = [f(x<sub>t</sub>, t) - g²(t) ∇ log p<sub>t</sub>(x<sub>t</sub>)] \mathrm{d}t + g(t) dW̄<sub>t</sub>, t ∈ [T,0]</span>
         </div>
         
-        <p>and we remind the readers again that this <span class="math">dt</span> is negative in machine learning's convention.</p>
+        <p>and we remind the readers again that this <span class="math">\mathrm{d}t</span> is negative in machine learning's convention.</p>
     </section>
 
     <section class="section" id="discussion">
@@ -693,11 +717,16 @@
         <h3>PDF Reference Material</h3>
         <p>For additional detailed notes and mathematical derivations, view the comprehensive PDF reference:</p>
         
-        <div style="margin: 30px 0; text-align: center;">
-            <a href="./blogs/_Notes__DiffusionMath_.pdf" target="_blank" style="display: inline-block; background: #f0f0f0; padding: 15px 25px; border-radius: 8px; text-decoration: none; color: #070707; font-size: 1.1em; border: 2px solid #ddd;">
-                📄 View PDF Notes
-            </a>
+        <div style="margin: 30px 0;">
+            <iframe src="https://docs.google.com/viewer?url=https://tonghe-zhang.github.io/blogs/_Notes__DiffusionMath_.pdf&embedded=true" width="100%" height="800px" style="border: 2px solid #ddd; border-radius: 8px;">
+            </iframe>
         </div>
+        
+        <p style="text-align: center; margin-top: 15px;">
+            <a href="./blogs/_Notes__DiffusionMath_.pdf" target="_blank" style="display: inline-block; background: #f0f0f0; padding: 10px 20px; border-radius: 6px; text-decoration: none; color: #070707; font-size: 1.0em; border: 2px solid #ddd;">
+                📄 Open PDF in New Tab
+            </a>
+        </p>
     </section>
 </body>
 </html>
