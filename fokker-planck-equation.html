@@ -382,10 +382,10 @@
         <p>For $\epsilon \sim \mathcal{N}(0, h\mathbb{I}_{d\times d})$ and matrix $A \in \mathbb{R}^{d\times d}$, the trace of $A$ is the expected quadratic form of $\epsilon$ and $A$.</p>
         
         <div class="equation">
-            $$\mathbb{E}_\epsilon[\epsilon^\top A \epsilon] = \mathbb{E}_{\epsilon_1,\epsilon_2,\ldots,\epsilon_d}\left[\sum_{i,j} \epsilon_i A_{i,j} \epsilon_j\right] = \sum_{i,j} A_{i,j} \mathbb{E}_{\epsilon_1,\epsilon_2,\ldots,\epsilon_d}[\epsilon_i \epsilon_j] = \sum_{i,j} A_{i,j} \delta_{i,j} = \text{tr} A$$
+            $$\mathbb{E}_\epsilon[\epsilon^\top A \epsilon] = \mathbb{E}_{\epsilon_1,\epsilon_2,\ldots,\epsilon_d}\left[\sum_{i,j} \epsilon_i A_{i,j} \epsilon_j\right] = \sum_{i,j} A_{i,j} \mathbb{E}_{\epsilon_1,\epsilon_2,\ldots,\epsilon_d}[\epsilon_i \epsilon_j] = \sum_{i,j} A_{i,j} h\cdot \delta_{i,j} = h\cdot \text{tr} A$$
         </div>
         
-        <p>Consequently, $\hat{A}_\epsilon = \epsilon^\top A \epsilon$ is an unbiased estimator of $\text{tr} A$.</p>
+        <p>Consequently, $\hat{A}_\epsilon = \frac{1}{h} \epsilon^\top A \epsilon$ is an unbiased estimator of $\text{tr} A$.</p>
 
         <h3>1.3 Hessian Matrix and Laplacian</h3>
         <p>For a scalar functional $u: \mathbb{R}^d \to \mathbb{R}$ (which usually takes the physical meaning of a potential field over $\mathbb{R}^d$), the Hessian matrix is defined by packing the second-order derivatives into a matrix:</p>
@@ -411,7 +411,7 @@
             <p>For a scalar functional $u: \mathbb{R}^d \to \mathbb{R}$ and white Gaussian vector $\epsilon \sim \mathcal{N}(0, h\mathbb{I}_{d\times d})$, the expected value of the quadratic form obtained from the difference of Wiener process $W_t$ and Hessian matrix $\nabla^2 u$ is equivalent to the Laplacian of the potential field $u$.</p>
             
             <div class="equation">
-                $$\mathbb{E}[(W_{t+h} - W_t)^\top \nabla^2 u (W_{t+h} - W_t)] = \Delta u$$
+                $$\mathbb{E}[(W_{t+h} - W_t)^\top \nabla^2 u (W_{t+h} - W_t)] = h\Delta u$$
             </div>
         </div>
 
@@ -445,7 +445,7 @@
             <p>For arbitrary integrable functions $g_1, g_2: \mathbb{R}^d \to \mathbb{R}$ it holds that</p>
             
             <div class="equation">
-                $$g_1(x) = g_2(x) \text{ for all } x \in \mathbb{R}^d \quad \Leftrightarrow \quad \int f(x) g_1(x) dx = \int f(x) g_2(x) dx \text{ for all test functions } f$$
+                $$g_1(x) = g_2(x) \text{ for all } x \in \mathbb{R}^d \quad \Leftrightarrow \quad \int f(x) g_1(x) \mathrm{d}x = \int f(x) g_2(x) \mathrm{d}x \text{ for all test functions } f$$
             </div>
         </div>
         
@@ -457,20 +457,20 @@
         <p>Second, for arbitrary test functions $f_1, f_2$, we can use integration by parts to derive</p>
         
         <div class="equation">
-            $$\int_D f_1(x) \frac{\partial}{\partial x_i} f_2(x) dx = f_1(x)f_2(x)\bigg|_{\partial D} - \int f_2(x) \frac{\partial}{\partial x_i} f_1(x) dx = 0 - \int f_2(x) \frac{\partial}{\partial x_i} f_1(x) dx = -\int f_2(x) \frac{\partial}{\partial x_i} f_1(x) dx$$
+            $$\int_D f_1(x) \frac{\partial}{\partial x_i} f_2(x) \mathrm{d}x = f_1(x)f_2(x)\bigg|_{\partial D} - \int f_2(x) \frac{\partial}{\partial x_i} f_1(x) \mathrm{d}x = 0 - \int f_2(x) \frac{\partial}{\partial x_i} f_1(x) \mathrm{d}x = -\int f_2(x) \frac{\partial}{\partial x_i} f_1(x) \mathrm{d}x$$
         </div>
         
         <p>By using this together with the definition of the divergence and Laplacian, we get the identities:</p>
         
         <div class="equation">
-            $$\int \nabla^T u(x) \vec{v}(x) dx = -\int u(x) \text{div}(\vec{v})(x) dx \quad (u: \mathbb{R}^d \to \mathbb{R}, \vec{v}: \mathbb{R}^d \to \mathbb{R}^d)$$
-            $$\int u(x) \Delta v(x) dx = \int v(x) \Delta u(x) dx \quad (u: \mathbb{R}^d \to \mathbb{R}, v: \mathbb{R}^d \to \mathbb{R})$$
+            $$\int \nabla^T u(x) \vec{v}(x) \mathrm{d}x = -\int u(x) \text{div}(\vec{v})(x) \mathrm{d}x \quad (u: \mathbb{R}^d \to \mathbb{R}, \vec{v}: \mathbb{R}^d \to \mathbb{R}^d)$$
+            $$\int u(x) \Delta v(x) \mathrm{d}x = \int v(x) \Delta u(x) \mathrm{d}x \quad (u: \mathbb{R}^d \to \mathbb{R}, v: \mathbb{R}^d \to \mathbb{R})$$
         </div>
         
         <p>Notice that in each equation, $x$ is understood as $(x_1,x_2,\ldots,x_d)$ and</p>
         
         <div class="equation">
-            $$\int_\Omega f(x) dx = \int_{\Omega_1\times \ldots \times \Omega_d} f(x_1,x_2,\ldots,x_d) \mathrm{d}x_1 \mathrm{d}x_2 \ldots \mathrm{d}x_d$$
+            $$\int_\Omega f(x) \mathrm{d}x = \int_{\Omega_1\times \ldots \times \Omega_d} f(x_1,x_2,\ldots,x_d) \mathrm{d}x_1 \mathrm{d}x_2 \ldots \mathrm{d}x_d$$
         </div>
         
         <p>We can show the first equation by recursively calling integration by parts on each coordinate $x_i$. The second identity is proved by calling the integration by parts twice.</p>
@@ -496,7 +496,7 @@
             <p>Let $p_t$ be a probability path and consider Itô SDE</p>
             
             <div class="equation">
-                $$X_0 \sim p_0, \quad \mathrm{d}X_t = \mu(X_t, t) \mathrm{d}t + \sigma(X_t, t) dW_t$$
+                $$X_0 \sim p_0, \quad \mathrm{d}X_t = \mu(X_t, t) \mathrm{d}t + \sigma(X_t, t) \mathrm{d}W_t$$
             </div>
             
             <p>where $X_t \in \mathbb{R}^d$. Then $X_t$ has distribution $p_t$ for all $0 \leq t \leq 1$ if and only if the Fokker-Planck equation holds:</p>
@@ -515,7 +515,7 @@
             <p>This equation shows point-wise equivalence between two real functionals. To show that, we pick an arbitrary test function $f: \mathbb{R}^d \to \mathbb{R}$, and show that the left and the right are equivalent after applying $f$ to form inner products. We want to show that</p>
             
             <div class="equation">
-                $$\int \partial_t p_t(x) f(x) dx = \int \left[-\nabla \cdot (p_t \mu_t)(x) + \frac{1}{2} \Delta(\sigma_t^2 p_t)(x)\right] f(x) dx$$
+                $$\int \partial_t p_t(x) f(x) \mathrm{d}x = \int \left[-\nabla \cdot (p_t \mu_t)(x) + \frac{1}{2} \Delta(\sigma_t^2 p_t)(x)\right] f(x) \mathrm{d}x$$
             </div>
             
             <p>holds for all test functions. And then for any point $x$, we pick $f(z) = \delta(z-x)$ and finish proving that LHS=RHS at any point.</p>
@@ -541,7 +541,7 @@
             <p>Now take the conditional expectation w.r.t. $X_t$ to both sides. We will nullify the second term using the fact that the Wiener process is independent with $X_t$ and has zero mean. The third term on RHS will be simplified by the corollary we derived earlier, which suggests that</p>
             
             <div class="equation">
-                $$\mathbb{E}[(W_{t+h} - W_t)^\top \nabla^2 u (W_{t+h} - W_t)] = \Delta u$$
+                $$\mathbb{E}[(W_{t+h} - W_t)^\top \nabla^2 u (W_{t+h} - W_t)] = h\Delta u$$
             </div>
             
             <p>With these observations, we arrive at</p>
@@ -554,12 +554,12 @@
             
             <div class="equation">
                 $$\begin{aligned}
-                \partial_t \mathbb{E}[f(X_t)] &= \int f(x) (\partial_t p_t(x)) dx = \lim_{h\to 0} \frac{1}{h} \mathbb{E}[f(X_{t+h}) - f(X_t)] \\
+                \partial_t \mathbb{E}[f(X_t)] &= \int f(x) (\partial_t p_t(x)) \mathrm{d}x = \lim_{h\to 0} \frac{1}{h} \mathbb{E}[f(X_{t+h}) - f(X_t)] \\
                 &= \lim_{h\to 0} \frac{1}{h} \mathbb{E}[\mathbb{E}[f(X_{t+h}) - f(X_t) | X_t]] \\
                 &= \mathbb{E}[\nabla f(X_t)^\top \mu_t(X_t) + \frac{1}{2} \sigma_t^2(X_t) \Delta f(X_t)] \\
-                &= \int \nabla f(x)^\top \mu_t(x) p_t(x) dx + \frac{1}{2} \int \Delta f(x) \cdot \sigma_t^2(x) p_t(x) dx \\
-                &= -\int f(x) \text{div}(\mu_t p_t)(x) dx + \frac{1}{2} \int f(x) \Delta(\sigma_t^2 p_t)(x) dx \\
-                &= \int f(x)\left[-\text{div}(\mu_t p_t)(x) + \frac{1}{2} \Delta(\sigma_t^2 p_t)(x)\right] dx
+                &= \int \nabla f(x)^\top \mu_t(x) p_t(x) \mathrm{d}x + \frac{1}{2} \int \Delta f(x) \cdot \sigma_t^2(x) p_t(x) \mathrm{d}x \\
+                &= -\int f(x) \text{div}(\mu_t p_t)(x) \mathrm{d}x + \frac{1}{2} \int f(x) \Delta(\sigma_t^2 p_t)(x) \mathrm{d}x \\
+                &= \int f(x)\left[-\text{div}(\mu_t p_t)(x) + \frac{1}{2} \Delta(\sigma_t^2 p_t)(x)\right] \mathrm{d}x
                 \end{aligned}$$
             </div>
             
@@ -582,7 +582,7 @@
             <p>Let $p_t$ be a probability path and consider the ODE</p>
             
             <div class="equation">
-                $$X_0 \sim p_0, \quad dX_t = \mu(X_t, t) dt$$
+                $$X_0 \sim p_0, \quad \mathrm{d}X_t = \mu(X_t, t) \mathrm{d}t$$
             </div>
             
             <p>where $X_t \in \mathbb{R}^d$. Then $X_t$ has distribution $p_t$ for all $0 \leq t \leq 1$ if and only if the continuity equation holds:</p>
@@ -605,7 +605,7 @@
             <p>A <strong>diffusion process</strong> is a continuous-time stochastic process $\{X_t\}_{t\geq 0}$ governed by the Itô stochastic differential equation (SDE):</p>
             
             <div class="equation">
-                $$dX_t = f(X_t, t) dt + g(t) dW_t$$
+                $$\mathrm{d}X_t = f(X_t, t) \mathrm{d}t + g(t) \mathrm{d}W_t$$
             </div>
             
             <p>where:</p>
@@ -627,7 +627,7 @@
         <p>It turns out that the forward diffusion process is actually invertible mathematically. In detail, there exists a reverse-time diffusion process with density $\tilde{p}_s(x)$, such that $\tilde{p}_s(x) = p_{T-s}(x)$. When the reverse-time process evolves from $s=0$ to $s=T$, the marginal probability is exactly the same as the forward process evolved backward. Next, we find the SDE for the time-reversed process.</p>
 
         <h3>4.1 Time Reversal and Density Evolution</h3>
-        <p>We denote by $s$ the increasing time index of the reverse process, and let $t$ be the increasing time index of the forward process. With a time endpoint $T$, these two time indices are related with $s+t=T$. Since $ds = -dt$, we obtain that the evolution of the reversed density with respect to the forward time $s$ is:</p>
+        <p>We denote by $s$ the increasing time index of the reverse process, and let $t$ be the increasing time index of the forward process. With a time endpoint $T$, these two time indices are related with $s+t=T$. Since $ds = -\mathrm{d}t$, we obtain that the evolution of the reversed density with respect to the forward time $s$ is:</p>
         
         <div class="equation">
             $$\frac{\partial \tilde{p}_s(x)}{\partial s} = \frac{\partial p_{T-s}(x)}{\partial s} = -\frac{\partial p_t(x)}{\partial t}\bigg|_{t=T-s}$$
@@ -659,7 +659,7 @@
         <p>If the reverse process exists and is also a diffusion process, it must also be governed by an FP equation with state-irrelevant noise. Let the density $\tilde{p}_s(x)$ of the hypothesized reverse-time SDE be determined by</p>
         
         <div class="equation">
-            $$d\tilde{X}_s = h(\tilde{X}_s, s) ds + \tilde{g}(s) dW_s$$
+            $$\mathrm{d}\tilde{X}_s = h(\tilde{X}_s, s) ds + \tilde{g}(s) \mathrm{d}W_s$$
         </div>
         
         <p>since it is the reverse process of $p$, it must also satisfy its own Fokker-Planck equation:</p>
@@ -691,7 +691,7 @@
         <p>Substituting $h(\tilde{X}_s, s)$ back into the reverse SDE and replacing $\tilde{p}_s(\tilde{X}_s)$ with $p_{T-s}(\tilde{X}_s)$, we get the Reverse-Time Diffusion Process Equation:</p>
         
         <div class="equation">
-            $$\text{Reverse diffusion SDE: } \mathrm{d}\tilde{X}_s = [-f(\tilde{X}_s, T-s) + g^2(T-s) \nabla \log p_{T-s}(\tilde{X}_s)] ds + g(T-s) dW_s, \quad s \in [0,T]$$
+            $$\text{Reverse diffusion SDE: } \mathrm{d}\tilde{X}_s = [-f(\tilde{X}_s, T-s) + g^2(T-s) \nabla \log p_{T-s}(\tilde{X}_s)] ds + g(T-s) \mathrm{d}W_s, \quad s \in [0,T]$$
         </div>
 
         <h4>The convention of reversed time index</h4>
@@ -700,15 +700,15 @@
         <p>Let us use the original time index $t$, but define the differential as a negative change $d(-t)$. Let $x(t)$ be the reverse process, where $t$ now runs from $T$ (start) to $0$ (end). The equation can be written as</p>
         
         <div class="equation">
-            $$dx_t = [f(x_t, t) - g^2(t) \nabla \log p_t(x_t)] (-dt) + g(t) d\bar{W}_t$$
+            $$\mathrm{d}x_t = [f(x_t, t) - g^2(t) \nabla \log p_t(x_t)] (-\mathrm{d}t) + g(t) \mathrm{d}\overline{W}_t$$
         </div>
         
-        <p>and we remind the reader that now $t$ decreases from $T$ to $0$. Here, $(-dt)$ indicates the backward direction and $d\bar{W}_t$ is a backward Wiener process, which means that when $t$ decreases, it is statistically equivalent to $dW_s$ with $s$ increasing.</p>
+        <p>and we remind the reader that now $t$ decreases from $T$ to $0$. Here, $(-\mathrm{d}t)$ indicates the backward direction and $\mathrm{d}\overline{W}_t$ is a backward Wiener process, which means that when $t$ decreases, it is statistically equivalent to $\mathrm{d}W_s$ with $s$ increasing.</p>
         
-        <p>To fully express the backward time, we abuse notations and write $-dt$ as $dt$, though it violates the convention that infinitesimal time should be positive. Then with a negative $dt$, we arrive at what is seen in the diffusion model literature:</p>
+        <p>To fully express the backward time, we abuse notations and write $-\mathrm{d}t$ as $\mathrm{d}t$, though it violates the convention that infinitesimal time should be positive. Then with a negative $\mathrm{d}t$, we arrive at what is seen in the diffusion model literature:</p>
         
         <div class="equation">
-            $$\text{Reverse diffusion SDE (ML convention): } dx_t = [f(x_t, t) - g^2(t) \nabla \log p_t(x_t)] dt + g(t) d\bar{W}_t, \quad t \in [T,0]$$
+            $$\text{Reverse diffusion SDE (ML convention): } \mathrm{d}x_t = [f(x_t, t) - g^2(t) \nabla \log p_t(x_t)] \mathrm{d}t + g(t) \mathrm{d}\overline{W}_t, \quad t \in [T,0]$$
         </div>
         
         <p>and we remind the readers again that this $dt$ is negative in machine learning's convention.</p>
