@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mathematical Building Blocks of Diffusion Generative Models - Tonghe Zhang</title>
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="TongheZhang" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    
+    <!-- LaTeX-style fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Computer+Modern+Serif:wght@400;700&family=Computer+Modern+Sans:wght@400;700&family=Computer+Modern+Typewriter:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-size: 1.1em;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .header h1 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            color: #34495e;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .header .author {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .header .date {
+            font-size: 1em;
+            color: #888;
+            font-style: italic;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        .abstract {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2980b9;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .abstract h2 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .abstract p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+        }
+
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .toc h2 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section h4 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        /* Math styling - keep LaTeX style, no italics */
+        .math {
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            font-style: normal;
+        }
+
+        .equation {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .equation-number {
+            float: right;
+            font-weight: bold;
+            color: #666;
+        }
+
+        /* Theorem and proof styling - darker blues */
+        .theorem, .corollary, .definition, .proof {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .theorem {
+            background-color: #e3f2fd;
+            border-left: 4px solid #1976d2;
+        }
+
+        .corollary {
+            background-color: #e8f5e8;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .definition {
+            background-color: #fff8e1;
+            border-left: 4px solid #f57c00;
+        }
+
+        .proof {
+            background-color: #f5f5f5;
+            border-left: 4px solid #424242;
+        }
+
+        .theorem h3, .corollary h3, .definition h3, .proof h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Code and technical terms */
+        code {
+            font-family: 'Computer Modern Typewriter', 'Courier New', monospace;
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        /* Links - darker blue to match index.html */
+        a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1565c0;
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+                font-size: 1.0em;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .section h2 {
+                font-size: 1.5em;
+            }
+            
+            .section h3 {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Special formatting for mathematical content - no italics */
+        .math-inline {
+            font-style: normal;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        /* Highlight important text */
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Fix for vector notation - ensure proper display */
+        .vector {
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            font-style: normal;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="blogs.html" class="back-link">&larr; Back to Blogs</a>
+    
+    <div class="header">
+        <h1>The Mathematical Building Blocks of<br>Diffusion Generative Models</h1>
+        <div class="subtitle">Understanding the Fokker-Planck Equation and Its Applications</div>
+        <div class="author">Tonghe Zhang</div>
+        <div class="date">October, 2025</div>
+    </div>
+
+    <div class="abstract">
+        <h2>Abstract</h2>
+        <p>We provide a proof of the necessary condition of the Fokker-Planck (FP) equation and derive some important conclusions, including the continuity equation and the reverse-time diffusion process. Then we study a typical variant of diffusion process, namely, flow matching processes with linear interpolation paths, and study the relationship between its score and velocity. Finally, we study how to adopt the FP equation to derive an ODE-SDE conversion formula that links flow ODEs with diffusion SDEs.</p>
+    </div>
+
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#preliminaries">1. Preliminaries</a></li>
+            <li><a href="#fokker-planck">2. Fokker-Planck Equations</a></li>
+            <li><a href="#special-case-ode">3. Special Case I: ODE, Continuity Equation, and Flow-matching</a></li>
+            <li><a href="#special-case-diffusion">4. Special Case II: Forward and Reverse-time Diffusion Process</a></li>
+            <li><a href="#discussion">5. Discussion: Connecting Flows with Diffusion</a></li>
+        </ul>
+    </div>
+
+    <section class="section" id="preliminaries">
+        <h2>1. Preliminaries</h2>
+        <p>To fully understand the proof of FP equations, we need to recall several results from probability, analysis and linear algebra.</p>
+        
+        <h3>1.1 Wiener Process</h3>
+        <p>Recall that a Wiener process <span class="math">W<sub>t</sub></span> in <span class="math">ℝ<sup>d</sup></span> possesses the following property:</p>
+        
+        <div class="equation">
+            <span class="math">∀ t, h ∈ ℝ<sub>+</sub>: W<sub>t+h</sub> - W<sub>t</sub> ~ 𝒩(0, h𝕀<sub>d×d</sub>)</span>
+        </div>
+        
+        <p>This naturally implies that, for any matrix <span class="math">A ∈ ℝ<sup>d×d</sup></span> independent of <span class="math">W<sub>t</sub></span>,</p>
+        
+        <div class="equation">
+            <span class="math">𝔼[W<sub>t+h</sub> - W<sub>t</sub>] = 0</span><br>
+            <span class="math">𝔼[(W<sub>t+h</sub> - W<sub>t</sub>)<sup>⊤</sup> A (W<sub>t+h</sub> - W<sub>t</sub>)] = 𝔼<sub>ε~𝒩(0,h𝕀<sub>d×d</sub>)</sub>[ε<sup>⊤</sup> A ε]</span>
+        </div>
+        
+        <p>Here, <span class="math">ε ∈ ℝ<sup>d</sup></span>, which has independent coordinates. The expectations are taken with respect to the randomness in <span class="math">W<sub>t</sub></span>.</p>
+
+        <h3>1.2 Hutchinson's Trace Estimator</h3>
+        <p>For <span class="math">ε ~ 𝒩(0, h𝕀<sub>d×d</sub>)</span> and matrix <span class="math">A ∈ ℝ<sup>d×d</sup></span>, the trace of <span class="math">A</span> is the expected quadratic form of <span class="math">ε</span> and <span class="math">A</span>.</p>
+        
+        <div class="equation">
+            <span class="math">𝔼<sub>ε</sub>[ε<sup>⊤</sup> A ε] = 𝔼<sub>ε₁,ε₂,...,ε<sub>d</sub></sub>[∑<sub>i,j</sub> ε<sub>i</sub> A<sub>i,j</sub> ε<sub>j</sub>] = ∑<sub>i,j</sub> A<sub>i,j</sub> 𝔼<sub>ε₁,ε₂,...,ε<sub>d</sub></sub>[ε<sub>i</sub> ε<sub>j</sub>] = ∑<sub>i,j</sub> A<sub>i,j</sub> δ<sub>i,j</sub> = tr A</span>
+        </div>
+        
+        <p>Consequently, <span class="math">Â<sub>ε</sub> = ε<sup>⊤</sup> A ε</span> is an unbiased estimator of <span class="math">tr A</span>.</p>
+
+        <h3>1.3 Hessian Matrix and Laplacian</h3>
+        <p>For a scalar functional <span class="math">u: ℝ<sup>d</sup> → ℝ</span> (which usually takes the physical meaning of a potential field over <span class="math">ℝ<sup>d</sup></span>), the Hessian matrix is defined by packing the second-order derivatives into a matrix:</p>
+        
+        <div class="equation">
+            <span class="math">H<sub>u</sub> = ∇²u = (∂²/∂x<sub>i</sub>∂x<sub>j</sub> u(x⃗))<sub>i,j∈[d]²</sub> ∈ ℝ<sup>d×d</sup></span>
+        </div>
+        
+        <p>The Laplacian of <span class="math">u</span> is defined as the sum of second order derivatives at the same coordinates:</p>
+        
+        <div class="equation">
+            <span class="math">Δu = ∇ · ∇u = ∑<sub>i=1</sub><sup>d</sup> ∂/∂x<sub>i</sub> u(x⃗) ∈ ℝ</span>
+        </div>
+        
+        <p>By definition, the trace of the Hessian matrix is the Laplacian.</p>
+        
+        <div class="equation">
+            <span class="math">tr ∇²u = Δu</span>
+        </div>
+        
+        <div class="corollary">
+            <h3>Corollary</h3>
+            <p>For a scalar functional <span class="math">u: ℝ<sup>d</sup> → ℝ</span> and white Gaussian vector <span class="math">ε ~ 𝒩(0, h𝕀<sub>d×d</sub>)</span>, the expected value of the quadratic form obtained from the difference of Wiener process <span class="math">W<sub>t</sub></span> and Hessian matrix <span class="math">∇²u</span> is equivalent to the Laplacian of the potential field <span class="math">u</span>.</p>
+            
+            <div class="equation">
+                <span class="math">𝔼[(W<sub>t+h</sub> - W<sub>t</sub>)<sup>⊤</sup> ∇²u (W<sub>t+h</sub> - W<sub>t</sub>)] = Δu</span>
+            </div>
+        </div>
+
+        <h3>1.4 The Laplacian of probability density; score function</h3>
+        <p>The Laplacian of a probability density function <span class="math">p</span> often appears in the literature of diffusion models. By definition, we have</p>
+        
+        <div class="equation">
+            <span class="math">∇²p = ∇ · (∇p)</span>
+        </div>
+        
+        <p>Furthermore, we relate the density gradient to the score function, <span class="math">s(x) = ∇ log p(x) = ∇p(x)/p(x)</span>, which implies</p>
+        
+        <div class="equation">
+            <span class="math">∇²p = ∇ · (p ∇ log p)</span>
+        </div>
+        
+        <div class="theorem">
+            <h3>Theorem</h3>
+            <p>The Laplacian of a probability density is the divergence of the product between density and its score function:</p>
+            
+            <div class="equation">
+                <span class="math">∇²p = ∇ · (p(x) s(x))</span>
+            </div>
+        </div>
+
+        <h3>1.5 Point-wise Equivalence, Test Functions, and Integration by Parts</h3>
+        <p>To prove that two real functionals are point-wise equal, we can resort to evaluating the inner products of these functions with the same test function. If the test results (i.e. the inner products) are always the same for any test function used, then the functions are the same. Rigorously speaking,</p>
+        
+        <div class="theorem">
+            <h3>Theorem</h3>
+            <p>For arbitrary integrable functions <span class="math">g₁, g₂: ℝ<sup>d</sup> → ℝ</span> it holds that</p>
+            
+            <div class="equation">
+                <span class="math">g₁(x) = g₂(x) for all x ∈ ℝ<sup>d</sup> ⟺ ∫ f(x) g₁(x) dx = ∫ f(x) g₂(x) dx for all test functions f</span>
+            </div>
+        </div>
+        
+        <p>Recall that a test function is an infinitely differentiable function with and non-zero on a compact support, and it includes dirac delta functions. So, from RHS to LHS is simple, just pick the dirac delta. The transition from LHS to RHS is also straightforward.</p>
+        
+        <h4>More properties of test functions</h4>
+        <p>First, test functions are zero at infinity, or the border of the compact support, due to definition.</p>
+        
+        <p>Second, for arbitrary test functions <span class="math">f₁, f₂</span>, we can use integration by parts to derive</p>
+        
+        <div class="equation">
+            <span class="math">∫<sub>D</sub> f₁(x) ∂/∂x<sub>i</sub> f₂(x) dx = f₁(x)f₂(x)|<sub>∂D</sub> - ∫ f₂(x) ∂/∂x<sub>i</sub> f₁(x) dx = 0 - ∫ f₂(x) ∂/∂x<sub>i</sub> f₁(x) dx = -∫ f₂(x) ∂/∂x<sub>i</sub> f₁(x) dx</span>
+        </div>
+        
+        <p>By using this together with the definition of the divergence and Laplacian, we get the identities:</p>
+        
+        <div class="equation">
+            <span class="math">∫ ∇<sup>T</sup>u(x) v⃗(x) dx = -∫ u(x) div(v⃗)(x) dx</span><br>
+            <span class="math">∫ u(x) Δv(x) dx = ∫ v(x) Δu(x) dx</span>
+        </div>
+        
+        <p>Notice that in each equation, <span class="math">x</span> is understood as <span class="math">(x₁,x₂,...,x<sub>d</sub>)</span> and</p>
+        
+        <div class="equation">
+            <span class="math">∫<sub>Ω</sub> f(x) dx = ∫<sub>Ω₁×...×Ω<sub>d</sub></sub> f(x₁,x₂,...,x<sub>d</sub>) dx₁dx₂...dx<sub>d</sub></span>
+        </div>
+        
+        <p>We can show the first equation by recursively calling integration by parts on each coordinate <span class="math">x<sub>i</sub></span>. The second identity is proved by calling the integration by parts twice.</p>
+    </section>
+
+    <section class="section" id="fokker-planck">
+        <h2>2. Fokker-Planck Equations</h2>
+        <p>For a stochastic process determined by a stochastic differential equation (SDE),</p>
+        
+        <div class="equation">
+            <span class="math">dX<sub>t</sub> = some function of X<sub>t</sub>, t, and random noise</span>
+        </div>
+        
+        <p>the Fokker-Planck (FP) equation tells us how the marginal density of this process <span class="math">X<sub>t</sub> ~ p<sub>t</sub>(·)</span> changes when the time evolves, and it expresses the marginal density in terms of the coefficients of the underlying SDE. The FP equations precisely characterize the <em>dynamics</em> of this stochastic process, connecting the <em>differential equations</em> of evolution with the <em>statistical</em> properties of this system.</p>
+        
+        <p>In the following sections, we will detail the proof of the Fokker-Planck equation in its most general form. Afterwards, we will use the FP equation to study two special types of stochastic processes, the first one is deterministic, and the second is stochastic, but the noise is irrelevant to the current state. These two cases are of particular interest to machine learning studies, as the former leads to flow-matching process, and the latter leads to diffusion models.</p>
+
+        <h3>2.1 How an SDE Drives the Evolution of Marginal Density</h3>
+        <p>First, we provide a statement of the Fokker-Planck equation.</p>
+        
+        <div class="theorem">
+            <h3>Theorem (Fokker-Planck Equation)</h3>
+            <p>Let <span class="math">p<sub>t</sub></span> be a probability path and consider Itô SDE</p>
+            
+            <div class="equation">
+                <span class="math">X<sub>0</sub> ~ p<sub>0</sub>, dX<sub>t</sub> = μ(X<sub>t</sub>, t) dt + σ(X<sub>t</sub>, t) dW<sub>t</sub></span>
+            </div>
+            
+            <p>where <span class="math">X<sub>t</sub> ∈ ℝ<sup>d</sup></span>. Then <span class="math">X<sub>t</sub></span> has distribution <span class="math">p<sub>t</sub></span> for all <span class="math">0 ≤ t ≤ 1</span> if and only if the Fokker-Planck equation holds:</p>
+            
+            <div class="equation">
+                <span class="math">∂<sub>t</sub>p<sub>t</sub>(x) = -∇ · (p<sub>t</sub> μ<sub>t</sub>)(x) + ½ Δ(σ<sub>t</sub>²p<sub>t</sub>)(x) for all x ∈ ℝ<sup>d</sup>, 0 ≤ t ≤ 1</span>
+            </div>
+            
+            <p>where we use the abbreviations <span class="math">μ<sub>t</sub>(x) = μ(x<sub>t</sub>, t)</span> and <span class="math">σ²<sub>t</sub>(x) = ⟨σ(x<sub>t</sub>, t), σ(x<sub>t</sub>, t)⟩</span>.</p>
+        </div>
+
+        <div class="proof">
+            <h3>Proof</h3>
+            <p>We only show the necessary condition, which is nontrivial.</p>
+            
+            <p>This equation shows point-wise equivalence between two real functionals. To show that, we pick an arbitrary test function <span class="math">f: ℝ<sup>d</sup> → ℝ</span>, and show that the left and the right are equivalent after applying <span class="math">f</span> to form inner products. We want to show that</p>
+            
+            <div class="equation">
+                <span class="math">∫ ∂<sub>t</sub>p<sub>t</sub>(x) f(x) dx = ∫ [-∇ · (p<sub>t</sub> μ<sub>t</sub>)(x) + ½ Δ(σ<sub>t</sub>²p<sub>t</sub>)(x)] f(x) dx</span>
+            </div>
+            
+            <p>holds for all test functions. And then for any point <span class="math">x</span>, we pick <span class="math">f(z) = δ(z-x)</span> and finish proving that LHS=RHS at any point.</p>
+            
+            <p>Let us start from LHS. We will use the property that <span class="math">p<sub>t</sub>(x)</span> is in fact a probability density, and the test function is time-irrelevant. Consequently, LHS can be written into an expectation:</p>
+            
+            <div class="equation">
+                <span class="math">LHS = ∂<sub>t</sub> 𝔼<sub>x~p<sub>t</sub></sub>[f(x)] = lim<sub>h→0</sub> (1/h) 𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>)] = lim<sub>h→0</sub> (1/h) 𝔼[𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>) | X<sub>t</sub>]]</span>
+            </div>
+            
+            <p>We will use the second-order Taylor expansion to evaluate the enumerator, since this limit eliminates any remaining terms of order <span class="math">o(h)</span>. Then we will call the helper functions derived in the preliminary section and take the limit to finish the proof. In what follows, we neglect the higher order terms for better readability.</p>
+            
+            <div class="equation">
+                <span class="math">f(X<sub>t+h</sub>) - f(X<sub>t</sub>) = f(X<sub>t</sub> + h μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub>(W<sub>t+h</sub> - W<sub>t</sub>)) - f(X<sub>t</sub>)</span><br>
+                <span class="math">= ∇f(X<sub>t</sub>)<sup>⊤</sup>(h μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub>(W<sub>t+h</sub> - W<sub>t</sub>)) + ½(h μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub>(W<sub>t+h</sub> - W<sub>t</sub>))<sup>⊤</sup> ∇²f(X<sub>t</sub>)(h μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub>(W<sub>t+h</sub> - W<sub>t</sub>)) + o(h²)</span><br>
+                <span class="math">= h ∇f(X<sub>t</sub>)<sup>⊤</sup> μ<sub>t</sub>(X<sub>t</sub>) + σ<sub>t</sub> ∇f(X<sub>t</sub>)<sup>⊤</sup>(W<sub>t+h</sub> - W<sub>t</sub>) + ½ σ<sub>t</sub>²(W<sub>t+h</sub> - W<sub>t</sub>)<sup>⊤</sup> ∇²f(X<sub>t</sub>)(W<sub>t+h</sub> - W<sub>t</sub>) + o(h²)</span>
+            </div>
+            
+            <p>Now take the conditional expectation w.r.t. <span class="math">X<sub>t</sub></span> to both sides. We will nullify the second term using the fact that the Wiener process is independent with <span class="math">X<sub>t</sub></span> and has zero mean. The third term on RHS will be simplified by the corollary we derived earlier, which suggests that</p>
+            
+            <div class="equation">
+                <span class="math">𝔼[(W<sub>t+h</sub> - W<sub>t</sub>)<sup>⊤</sup> ∇²u (W<sub>t+h</sub> - W<sub>t</sub>)] = Δu</span>
+            </div>
+            
+            <p>With these observations, we arrive at</p>
+            
+            <div class="equation">
+                <span class="math">𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>) | X<sub>t</sub>] = h ∇f(X<sub>t</sub>)<sup>⊤</sup> μ<sub>t</sub>(X<sub>t</sub>) + (h/2) σ<sub>t</sub>²(X<sub>t</sub>) Δf(X<sub>t</sub>) + o(h²)</span>
+            </div>
+            
+            <p>Finally, marginalize the conditional expectation by computing integrals, and call the integration by parts formula for vector fields, we have</p>
+            
+            <div class="equation">
+                <span class="math">∂<sub>t</sub> 𝔼[f(X<sub>t</sub>)] = ∫ f(x) (∂<sub>t</sub>p<sub>t</sub>(x)) dx = lim<sub>h→0</sub> (1/h) 𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>)] = lim<sub>h→0</sub> (1/h) 𝔼[𝔼[f(X<sub>t+h</sub>) - f(X<sub>t</sub>) | X<sub>t</sub>]] = 𝔼[∇f(X<sub>t</sub>)<sup>⊤</sup> μ<sub>t</sub>(X<sub>t</sub>) + ½ σ<sub>t</sub>²(X<sub>t</sub>) Δf(X<sub>t</sub>)] = ∫ ∇f(x)<sup>⊤</sup> μ<sub>t</sub>(x) p<sub>t</sub>(x) dx + ½ ∫ Δf(x) · σ<sub>t</sub>²(x) p<sub>t</sub>(x) dx = -∫ f(x) div(μ<sub>t</sub> p<sub>t</sub>)(x) dx + ½ ∫ f(x) Δ(σ<sub>t</sub>²p<sub>t</sub>)(x) dx = ∫ f(x)[-div(μ<sub>t</sub> p<sub>t</sub>)(x) + ½ Δ(σ<sub>t</sub>²p<sub>t</sub>)(x)] dx</span>
+            </div>
+            
+            <p>Now since this result holds for any test functions, at any point <span class="math">x₀</span> we can pick <span class="math">f(x) = δ(x-x₀)</span> and obtain</p>
+            
+            <div class="equation">
+                <span class="math">∂<sub>t</sub>p<sub>t</sub>(x)|<sub>x=x₀</sub> = -div(μ<sub>t</sub>(x) p<sub>t</sub>(x)) + ½ Δ(σ<sub>t</sub>²(x)p<sub>t</sub>(x))|<sub>x=x₀</sub></span>
+            </div>
+            
+            <p>thus these two functionals are equivalent point-wise.</p>
+        </div>
+    </section>
+
+    <section class="section" id="special-case-ode">
+        <h2>3. Special Case I: ODE, Continuity Equation, and Flow-matching</h2>
+        <p>With the Fokker-Planck equation, we naturally obtain an ODE counterpart by setting the noise magnitude <span class="math">σ<sub>t</sub>(X<sub>t</sub>)</span> to zero. This is known as the continuity equation.</p>
+        
+        <div class="corollary">
+            <h3>Corollary (Continuity Equation)</h3>
+            <p>Let <span class="math">p<sub>t</sub></span> be a probability path and consider the ODE</p>
+            
+            <div class="equation">
+                <span class="math">X<sub>0</sub> ~ p<sub>0</sub>, dX<sub>t</sub> = μ(X<sub>t</sub>, t) dt</span>
+            </div>
+            
+            <p>where <span class="math">X<sub>t</sub> ∈ ℝ<sup>d</sup></span>. Then <span class="math">X<sub>t</sub></span> has distribution <span class="math">p<sub>t</sub></span> for all <span class="math">0 ≤ t ≤ 1</span> if and only if the continuity equation holds:</p>
+            
+            <div class="equation">
+                <span class="math">∂<sub>t</sub>p<sub>t</sub>(x) = -∇ · (p<sub>t</sub> μ<sub>t</sub>)(x) for all x ∈ ℝ<sup>d</sup>, 0 ≤ t ≤ 1</span>
+            </div>
+            
+            <p>where we use the abbreviations <span class="math">μ<sub>t</sub>(x) = μ(x<sub>t</sub>, t)</span>.</p>
+        </div>
+        
+        <p>This relationship is very useful in the derivation of flow-matching process's log probabilities.</p>
+    </section>
+
+    <section class="section" id="special-case-diffusion">
+        <h2>4. Special Case II: Forward and Reverse-time Diffusion Process</h2>
+        
+        <div class="definition">
+            <h3>Definition (Diffusion Process)</h3>
+            <p>A <strong>diffusion process</strong> is a continuous-time stochastic process <span class="math">{X<sub>t</sub>}<sub>t≥0</sub></span> governed by the Itô stochastic differential equation (SDE):</p>
+            
+            <div class="equation">
+                <span class="math">dX<sub>t</sub> = f(X<sub>t</sub>, t) dt + g(t) dW<sub>t</sub></span>
+            </div>
+            
+            <p>where:</p>
+            <ul>
+                <li><span class="math">f(X<sub>t</sub>, t): ℝ<sup>d</sup> × ℝ<sub>+</sub> → ℝ<sup>d</sup></span> is the drift coefficient,</li>
+                <li><span class="math">g(t): ℝ<sub>+</sub> → ℝ<sub>+</sub></span> is the state-independent diffusion coefficient,</li>
+                <li><span class="math">W<sub>t</sub></span> is a standard <span class="math">d</span>-dimensional Brownian motion (Wiener Process)</li>
+            </ul>
+            
+            <p>The key characteristic of a diffusion process is that the diffusion coefficient <span class="math">g(t)</span> depends only on time <span class="math">t</span> and not on the current state <span class="math">X<sub>t</sub></span>, distinguishing it from the general Itô SDE where <span class="math">σ(X<sub>t</sub>, t)</span> may depend on the state.</p>
+        </div>
+        
+        <p>By the Fokker-Planck equation, the marginal probability density of a forward diffusion process is given by</p>
+        
+        <div class="equation">
+            <span class="math">∂p<sub>t</sub>(x)/∂t = -∇ · (f(x, t) p<sub>t</sub>(x)) + ½ g²(t) ∇²p<sub>t</sub>(x)</span>
+        </div>
+        
+        <p>It turns out that the forward diffusion process is actually invertible mathematically. In detail, there exists a reverse-time diffusion process with density <span class="math">p̃<sub>s</sub>(x)</span>, such that <span class="math">p̃<sub>s</sub>(x) = p<sub>T-s</sub>(x)</span>. When the reverse-time process evolves from <span class="math">s=0</span> to <span class="math">s=T</span>, the marginal probability is exactly the same as the forward process evolved backward. Next, we find the SDE for the time-reversed process.</p>
+
+        <h3>4.1 Time Reversal and Density Evolution</h3>
+        <p>We denote by <span class="math">s</span> the increasing time index of the reverse process, and let <span class="math">t</span> be the increasing time index of the forward process. With a time endpoint <span class="math">T</span>, these two time indices are related with <span class="math">s+t=T</span>. Since <span class="math">ds = -dt</span>, we obtain that the evolution of the reversed density with respect to the forward time <span class="math">s</span> is:</p>
+        
+        <div class="equation">
+            <span class="math">∂p̃<sub>s</sub>(x)/∂s = ∂p<sub>T-s</sub>(x)/∂s = -∂p<sub>t</sub>(x)/∂t|<sub>t=T-s</sub></span>
+        </div>
+        
+        <p>Substituting the Forward Fokker-Planck Equation into the above, we can express the probability density of the reverse process in terms of the forward diffusion coefficients:</p>
+        
+        <div class="equation">
+            <span class="math">∂p̃<sub>s</sub>(x)/∂s = -[-∇ · (f(x, t) p<sub>t</sub>(x)) + ½ g²(t) ∇²p<sub>t</sub>(x)]|<sub>t=T-s</sub> = ∇ · (f(x, T-s) p̃<sub>s</sub>(x)) - ½ g²(T-s) ∇²p̃<sub>s</sub>(x)</span>
+        </div>
+
+        <h3>4.2 Diffusion, Laplacian, and Score</h3>
+        <p><strong>Since the magnitude of the noise of a diffusion process is irrelevant to the state, the Laplacian in the Fokker-Planck equation will be applied directly to the probability density. By the theorem we derived earlier, this naturally results in score functions; hence in diffusion processes, the Laplacian are very closely related to the score function. This is why the score appears so many times in diffusion model learning.</strong> Concretely speaking, the Laplacian in the diffusion term can be simplified as</p>
+        
+        <div class="equation">
+            <span class="math">½ g²(T-s) ∇²p̃<sub>s</sub>(x) = ½ g²(T-s) ∇ · (p̃<sub>s</sub>(x) ∇ log p̃<sub>s</sub>(x))</span>
+        </div>
+        
+        <p>Substituting this into the reversed density evolution and factoring out the divergence operator and the reverse density, we have</p>
+        
+        <div class="equation">
+            <span class="math">∂p̃<sub>s</sub>(x)/∂s = ∇ · (p̃<sub>s</sub>(x) [f(x, T-s) - ½ g²(T-s) ∇ log p̃<sub>s</sub>(x)])</span>
+        </div>
+
+        <h3>4.3 The Reverse-Time SDE</h3>
+        <p>If the reverse process exists and is also a diffusion process, it must also be governed by an FP equation with state-irrelevant noise. Let the density <span class="math">p̃<sub>s</sub>(x)</span> of the hypothesized reverse-time SDE be determined by</p>
+        
+        <div class="equation">
+            <span class="math">dp̃<sub>s</sub> = h(p̃<sub>s</sub>, s) ds + g̃(s) dW<sub>s</sub></span>
+        </div>
+        
+        <p>since it is the reverse process of <span class="math">p</span>, it must also satisfy its own Fokker-Planck equation:</p>
+        
+        <div class="equation">
+            <span class="math">∂p̃<sub>s</sub>(x)/∂s = -∇ · (h(x, s) p̃<sub>s</sub>(x)) + ½ g̃²(s) ∇²p̃<sub>s</sub>(x)</span>
+        </div>
+        
+        <p><strong>If we assume that the diffusion coefficient remains the same, <span class="math">g̃(s) = g(T-s)</span></strong>, we can equate the two equations to determine the reverse drift <span class="math">h(x, s)</span>.</p>
+        
+        <p>By factoring the reverse FP equation using the identity <span class="math">½ g̃² ∇²p̃<sub>s</sub> = -∇ · (-½ g̃² p̃<sub>s</sub> ∇ log p̃<sub>s</sub>)</span>:</p>
+        
+        <div class="equation">
+            <span class="math">∂p̃<sub>s</sub>(x)/∂s = -∇ · (p̃<sub>s</sub>(x) [h(x, s) - ½ g²(T-s) ∇ log p̃<sub>s</sub>(x)])</span>
+        </div>
+        
+        <p>Equating the drift terms from this and the previous equation:</p>
+        
+        <div class="equation">
+            <span class="math">-[h(x, s) - ½ g²(T-s) ∇ log p̃<sub>s</sub>(x)] = f(x, T-s) - ½ g²(T-s) ∇ log p̃<sub>s</sub>(x)</span>
+        </div>
+        
+        <p>Solving for the reverse drift <span class="math">h(x, s)</span>:</p>
+        
+        <div class="equation">
+            <span class="math">h(x, s) = -f(x, T-s) + g²(T-s) ∇ log p̃<sub>s</sub>(x)</span>
+        </div>
+        
+        <p>Substituting <span class="math">h(p̃<sub>s</sub>, s)</span> back into the reverse SDE and replacing <span class="math">p̃<sub>s</sub>(p̃<sub>s</sub>)</span> with <span class="math">p<sub>T-s</sub>(p̃<sub>s</sub>)</span>, we get the Reverse-Time Diffusion Process Equation:</p>
+        
+        <div class="equation">
+            <span class="math">Reverse diffusion SDE: dp̃<sub>s</sub> = [-f(p̃<sub>s</sub>, T-s) + g²(T-s) ∇ log p<sub>T-s</sub>(p̃<sub>s</sub>)] ds + g(T-s) dW<sub>s</sub>, s ∈ [0,T]</span>
+        </div>
+
+        <h4>The convention of reversed time index</h4>
+        <p>The equation derived above is valid for a process <span class="math">p̃<sub>s</sub></span> running in a forward-time index <span class="math">s ∈ [0, T]</span>. However, literature, particularly in generative modeling, often maintains the original time index <span class="math">t ∈ [0, T]</span> but interprets the process as running backward from <span class="math">T</span> to <span class="math">0</span>.</p>
+        
+        <p>Let us use the original time index <span class="math">t</span>, but define the differential as a negative change <span class="math">d(-t)</span>. Let <span class="math">x(t)</span> be the reverse process, where <span class="math">t</span> now runs from <span class="math">T</span> (start) to <span class="math">0</span> (end). The equation can be written as</p>
+        
+        <div class="equation">
+            <span class="math">dx<sub>t</sub> = [f(x<sub>t</sub>, t) - g²(t) ∇ log p<sub>t</sub>(x<sub>t</sub>)] (-dt) + g(t) dW̄<sub>t</sub></span>
+        </div>
+        
+        <p>and we remind the reader that now <span class="math">t</span> decreases from <span class="math">T</span> to <span class="math">0</span>. Here, <span class="math">(-dt)</span> indicates the backward direction and <span class="math">dW̄<sub>t</sub></span> is a backward Wiener process, which means that when <span class="math">t</span> decreases, it is statistically equivalent to <span class="math">dW<sub>s</sub></span> with <span class="math">s</span> increasing.</p>
+        
+        <p>To fully express the backward time, we abuse notations and write <span class="math">-dt</span> as <span class="math">dt</span>, though it violates the convention that infinitesimal time should be positive. Then with a negative <span class="math">dt</span>, we arrive at what is seen in the diffusion model literature:</p>
+        
+        <div class="equation">
+            <span class="math">Reverse diffusion SDE (ML convention): dx<sub>t</sub> = [f(x<sub>t</sub>, t) - g²(t) ∇ log p<sub>t</sub>(x<sub>t</sub>)] dt + g(t) dW̄<sub>t</sub>, t ∈ [T,0]</span>
+        </div>
+        
+        <p>and we remind the readers again that this <span class="math">dt</span> is negative in machine learning's convention.</p>
+    </section>
+
+    <section class="section" id="discussion">
+    </section>
+</body>
+</html>
