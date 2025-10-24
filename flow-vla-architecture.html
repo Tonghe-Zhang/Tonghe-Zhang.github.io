@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding the Architecture of Flow VLAs - Tonghe Zhang</title>
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="TongheZhang" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    
+    <!-- LaTeX-style fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Computer+Modern+Serif:wght@400;700&family=Computer+Modern+Sans:wght@400;700&family=Computer+Modern+Typewriter:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-size: 1.1em;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .header h1 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            color: #34495e;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .header .author {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .header .date {
+            font-size: 1em;
+            color: #888;
+            font-style: italic;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        .abstract {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2980b9;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .abstract h2 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .abstract p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        /* Architecture diagram container */
+        .architecture-container {
+            margin: 30px 0;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .architecture-container h3 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .architecture-container iframe {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        .architecture-container .links {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .architecture-container .links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 16px;
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .architecture-container .links a:hover {
+            background-color: #3498db;
+        }
+
+        /* Links - darker blue to match index.html */
+        a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1565c0;
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+                font-size: 1.0em;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .section h2 {
+                font-size: 1.5em;
+            }
+            
+            .section h3 {
+                font-size: 1.2em;
+            }
+
+            .architecture-container iframe {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="blogs.html" class="back-link">&larr; Back to Blogs</a>
+    
+    <div class="header">
+        <h1>Understanding the Architecture of Flow VLAs</h1>
+        <div class="subtitle">A Visual Guide to π0 and π0.5 Model Architectures</div>
+        <div class="author">Tonghe Zhang</div>
+        <div class="date">October, 2025</div>
+    </div>
+
+    <div class="abstract">
+        <h2>Abstract</h2>
+        <p>This post provides detailed architectural visualizations of Flow Vision-Language-Action (VLA) models, specifically π0 and π0.5. These diagrams illustrate the key components, data flow, and structural differences between these two state-of-the-art models that combine vision, language, and action spaces for robotic control. Understanding these architectures is crucial for researchers and practitioners working on embodied AI and robot learning.</p>
+    </div>
+
+    <section class="section" id="introduction">
+        <h2>Introduction</h2>
+        <p>Flow-based Vision-Language-Action (VLA) models represent a significant advancement in embodied AI, enabling robots to process multimodal inputs and generate actions in a continuous, flow-based manner. The π0 and π0.5 models are prominent examples of this architecture, each with distinct design choices that affect their performance and capabilities.</p>
+        
+        <p>These architectures leverage flow matching techniques to model action distributions, combining visual encoders, language models, and action decoders in a unified framework. Below, we present detailed architectural diagrams for both models, highlighting their structural components and information flow.</p>
+    </section>
+
+    <section class="section" id="pi0-architecture">
+        <h2>π0 Architecture</h2>
+        <p>The π0 model represents the foundational architecture for flow-based VLAs. This diagram illustrates how the model processes visual observations and language instructions to generate robot actions through a flow matching process.</p>
+
+        <div class="architecture-container">
+            <h3>π0 Model Architecture Diagram</h3>
+            <iframe src="blogs/pi0-architecture.html" title="π0 Architecture Diagram"></iframe>
+            <div class="links">
+                <a href="blogs/pi0-architecture.html" target="_blank">Open in Full Screen</a>
+            </div>
+        </div>
+
+        <p>Key components of the π0 architecture include:</p>
+        <ul>
+            <li><strong>Vision Encoder:</strong> Processes raw visual observations from camera inputs</li>
+            <li><strong>Language Encoder:</strong> Encodes natural language instructions into semantic representations</li>
+            <li><strong>Flow Matching Module:</strong> Implements the core flow-based generation process for action synthesis</li>
+            <li><strong>Action Decoder:</strong> Transforms flow representations into executable robot actions</li>
+        </ul>
+    </section>
+
+    <section class="section" id="pi0.5-architecture">
+        <h2>π0.5 Architecture</h2>
+        <p>The π0.5 model builds upon π0 with architectural refinements and enhancements. This improved version incorporates lessons learned from the original design, offering better performance and efficiency.</p>
+
+        <div class="architecture-container">
+            <h3>π0.5 Model Architecture Diagram</h3>
+            <iframe src="blogs/pi0.5-architecture.html" title="π0.5 Architecture Diagram"></iframe>
+            <div class="links">
+                <a href="blogs/pi0.5-architecture.html" target="_blank">Open in Full Screen</a>
+            </div>
+        </div>
+
+        <p>The π0.5 architecture introduces several improvements:</p>
+        <ul>
+            <li><strong>Enhanced Vision-Language Fusion:</strong> Improved attention mechanisms for better multimodal integration</li>
+            <li><strong>Refined Flow Matching:</strong> Optimized flow generation process with better conditioning</li>
+            <li><strong>Modular Design:</strong> More flexible architecture allowing for easier adaptation to different robot platforms</li>
+            <li><strong>Efficiency Improvements:</strong> Reduced computational requirements while maintaining or improving performance</li>
+        </ul>
+    </section>
+
+    <section class="section" id="comparison">
+        <h2>Comparing π0 and π0.5</h2>
+        <p>While both models share the fundamental principle of flow-based action generation, π0.5 introduces several key innovations:</p>
+        
+        <h3>Architectural Differences</h3>
+        <ul>
+            <li><strong>Attention Mechanisms:</strong> π0.5 employs more sophisticated cross-attention between modalities</li>
+            <li><strong>Flow Generation:</strong> The flow matching process in π0.5 includes additional conditioning pathways</li>
+            <li><strong>Scalability:</strong> π0.5's modular design allows for better scaling to larger datasets and more complex tasks</li>
+            <li><strong>Training Efficiency:</strong> Improved training dynamics through better architectural inductive biases</li>
+        </ul>
+
+        <h3>Performance Implications</h3>
+        <p>These architectural differences translate to tangible improvements in robot learning scenarios. π0.5 demonstrates better sample efficiency, improved generalization to novel scenarios, and more robust performance across diverse tasks. The enhanced vision-language fusion particularly benefits tasks requiring fine-grained understanding of spatial relationships and object manipulations.</p>
+    </section>
+
+    <section class="section" id="applications">
+        <h2>Applications and Use Cases</h2>
+        <p>Flow VLA architectures like π0 and π0.5 are particularly well-suited for:</p>
+        <ul>
+            <li><strong>Manipulation Tasks:</strong> Precise object grasping, placement, and assembly operations</li>
+            <li><strong>Navigation:</strong> Goal-conditioned navigation with natural language instructions</li>
+            <li><strong>Multi-task Learning:</strong> Training a single model to handle diverse robotic tasks</li>
+            <li><strong>Imitation Learning:</strong> Learning from human demonstrations with multimodal inputs</li>
+            <li><strong>Reinforcement Learning:</strong> Fine-tuning policies with reward signals (as in <a href="https://reinflow.github.io/" target="_blank">ReinFlow</a>)</li>
+        </ul>
+    </section>
+
+    <section class="section" id="conclusion">
+        <h2>Conclusion</h2>
+        <p>Understanding the architecture of flow-based VLA models is essential for advancing embodied AI research. The π0 and π0.5 architectures demonstrate how careful design of vision-language-action pipelines can lead to powerful and flexible robot learning systems. By visualizing these architectures, we hope to facilitate further research and development in this exciting area.</p>
+        
+        <p>For more information on flow-based robot learning and reinforcement learning with flow policies, check out my work on <a href="https://reinflow.github.io/" target="_blank">ReinFlow</a> and the <a href="fokker-planck-equation.html">mathematical foundations of diffusion and flow models</a>.</p>
+    </section>
+
+    <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=8cXP7TuIBdflSY0tC7ng9is_lqo8K38nJ0rKPgdNMH0'></script>
+
+</body>
+</html>
+
