@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Rough Road Towards Robot Intelligence - Tonghe Zhang</title>
+    <link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="TongheZhang" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    
+    <!-- LaTeX-style fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Computer+Modern+Serif:wght@400;700&family=Computer+Modern+Sans:wght@400;700&family=Computer+Modern+Typewriter:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-size: 1.1em;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .header h1 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            color: #34495e;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .header .author {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .header .date {
+            font-size: 1em;
+            color: #888;
+            font-style: italic;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        .abstract {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2980b9;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .abstract p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .takeaways {
+            background-color: #fff8e1;
+            border-left: 4px solid #f57c00;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .takeaways h3 {
+            font-family: 'Computer Modern Sans', sans-serif;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .takeaways ul {
+            margin-bottom: 0;
+        }
+
+        code {
+            font-family: 'Computer Modern Typewriter', 'Courier New', monospace;
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1565c0;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+                font-size: 1.0em;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .section h2 {
+                font-size: 1.5em;
+            }
+            
+            .section h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../blogs.html" class="back-link">&larr; Back to Blogs</a>
+    
+    <div class="header">
+        <h1>A Rough Road Towards Robot Intelligence</h1>
+        <div class="subtitle">A Technical Diary on Real-World Robot Policy Deployment</div>
+        <div class="author">Tonghe Zhang</div>
+        <div class="date">January 22nd, 2025</div>
+    </div>
+
+    <div class="abstract">
+        <p>This is a technical diary documenting the common pitfalls of training robotic policies to solve challenging tasks in the real world. I record the bugs I encountered during research, along with retrospections and takeaways. I hope that by writing this blog, fewer people will make the same mistakes I did. I will also include some random philosophical thoughts on robot intelligence in general. Let's buckle up and set out on a rough road to general robot intelligence.</p>
+    </div>
+
+    <section class="section" id="deployment-struggles">
+        <h2>Deployment Struggles: The Pi0.5 Policy</h2>
+        
+        <p>Over the past two days, I have been struggling to deploy a Pi0.5 policy on a 4-YAM teleoperation hardware suite. As a newbie in deploying manipulation policies in the real world, I did not know what the best hyperparameters should be. So I consulted Grok, Claude Opus 4.5, and Gemini 3 Pro for advice, and eventually came up with a hyperparameter suite that actually didn't work well in the real world.</p>
+        
+        <p>Anyways, I got stuck for a whole day, and the major headache was that the first action of my Pi0.5 policy was super far away from the grippers, and the subsequent action frames caused the grippers to move to somewhere out-of-reach. This is ridiculous. I thought that there could be several issues:</p>
+        
+        <ol>
+            <li><strong>The fine-tuned checkpoint did not converge, or overfitted.</strong> This was actually false. The loss goes down to 5e-3 after 8k steps. In WandB log scale, the curve looks good.</li>
+            <li><strong>The evaluation codebase is wrong</strong> (highly possible)</li>
+            <li><strong>The fine-tuning hyperparameter setting is not good enough.</strong></li>
+        </ol>
+        
+        <p>So I spent extra money to let OpenAI Codex help me debug. Unfortunately, that wasted my whole day and gave me code that I couldn't parse. So the next day I got quite furious and decided to throw away everything the AI said, and get back to good-old-fashioned debugging: print logs and compare with oracles.</p>
+    </section>
+
+    <section class="section" id="debugging-process">
+        <h2>The Debugging Process</h2>
+        
+        <p>What I did the next day included:</p>
+        
+        <h3>1. Check Training Bugs</h3>
+        <p>I loaded the policy on my training machine and added code to load my last checkpoint, print the velocity loss, and action reconstruction loss on the dataset (in L1 and L2 norm). I discovered that the L1/L2 losses were huge. After consulting GPT, I discovered that I did not normalize over the batch of data, so after that the loss gets down to like 1e-3 level. So does my velocity loss. This means the policy did converge on the training dataset.</p>
+        
+        <h3>2. Verify Training Data</h3>
+        <p>Then, is the training data correct? I was forced to write an evaluation script on the deployment machine to replay my dataset actions in sim then in real. It worked quite well. So, since my training converged on real data, and my real data is correct, what happened?</p>
+        
+        <h3>3. Inspect Inference Code</h3>
+        <p>I then thoroughly checked all the inference code and discovered that Pi did not provide a perfect codebase that streamlines their normalization pipeline. I decided to be less ambitious. I started from something that worked—my training script. I simplified it to a minimal codebase that loads and builds policy successfully, and migrated it to my eval machine. However, it caused OOM when I did the eval on the eval machine to test if the model fits the training dataset, and then after deleting some local variables each step, it worked on the eval machine.</p>
+        
+        <h3>4. Normalization Pipeline Inspection</h3>
+        <p>Then I thoroughly inspected the normalization pipeline. Just as I thought everything should work, the real eval failed again. I was devastated.</p>
+        
+        <h3>5. The Breakthrough</h3>
+        <p>Then I decided to print out my actions. It suddenly dawned on me that the actions were way different from my training performance, which matches the dataset. Another thing is that when I compute the reconstruction loss on the train set, I did not use output normalization, and it fits on the train set. This is weird to me. So after canceling output normalization too for the eval script, magic happened. The first action chunk becomes near to the gripper, and the robot starts picking up the t-shirt. This is crazy. I then inspected the robot dataset and found out that the normalized state/actions do not have a zero mean, so my dataset was wrong in the first place! It was never actually normalized.</p>
+    </section>
+
+    <section class="section" id="key-takeaways">
+        <h2>Key Takeaways</h2>
+        
+        <div class="takeaways">
+            <h3>Lessons Learned</h3>
+            <ol>
+                <li><strong>Log more than just loss during training.</strong> Periodically log more information—don't just log your loss. Also add action reconstruction (in L1/L2), etc. The more offline metrics you record, the faster you figure out what's wrong. 
+                It reminds me when I do RL, I always log excessively and it really helps me quickly tune hyperparameters. Supervised learning, though conceptually simpler, should also be treated with equal respect.</li>
+                
+                <li><strong>Pay the highest attention to your data.</strong> Inspect data files yourself, try to memorize the normalization statistics on each robot joint. Then when you debug, you can even read the output actions to find where it's wrong.</li>
+                
+                <li><strong>Add sanity checks after letting AI write code.</strong> Until now, they never fully solve problems and you must be the final verifier. After normalization, you should quickly fetch a batch of data and compute its per-sample mean to see if it has zero mean (if you use mean/std normalization). Printing out the data min/max distributions are also a great idea if you use other normalizations. Also dig into your data in your dataset and during model passes.</li>
+                
+                <li><strong>Invest more time in building a debugger.</strong> Build debugging tools on your deploy machine and during training. Use more visualization for your images, and print out the statistics of your state/actions. These tools will save you in the end.</li>
+                
+                <li><strong>Check port forwarding issues.</strong> If you're using server-client communication but the visualization tools have invalid addresses, check the "Ports" window of your IDE to see if the port got transferred to other IDs.</li>
+                
+                <li><strong>Real-world deployment reveals issues simulation doesn't.</strong> I never recognized that action jerkiness is such a great problem until I deployed my model on real robots. Spend less time in simulation-only research, spend more time on-board.</li>
+            </ol>
+        </div>
+    </section>
+
+    <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=wII9vFnkfaKacgaZnePR-guYPJfB1doSVVTzoO06CUg'></script>
+
+</body>
+</html>
