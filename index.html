@@ -359,6 +359,7 @@
                 <p>
                     <strong>Jan 26th, 2026:</strong> <a href="#bfm-zero">BFM-zero</a> accepted at ICLR 2026. Thank you to the reviewers and collaborators!
                 </p>
+                <div id="news-more" style="display: none;">
                 <p>
                     <strong>Nov 6th, 2025:</strong> Released <a href="#bfm-zero">BFM-Zero</a>. Proud to lead the real-world experiments and skill composition with fantastic teammates! Check it out on <a href="https://arxiv.org/abs/2511.04131" target="_blank">arXiv</a>, <a href="https://lecar-lab.github.io/BFM-Zero/" target="_blank">project page</a>, and <a href="https://github.com/LeCAR-Lab/BFM-Zero/" target="_blank">GitHub</a>.
                 </p>
@@ -381,6 +382,10 @@
                 </p>
                 <p>
                     <strong>Aug 11th, 2025:</strong> Started my new research journey at <a href="https://www.ri.cmu.edu/">CMU RI.</a>
+                </p>
+                </div>
+                <p style="margin-top: 10px;">
+                    <a id="news-toggle" href="javascript:void(0)" onclick="toggleNews()" style="color: #2980b9; font-weight: 600;">See more &#9662;</a>
                 </p>
             </div>
         </section>
@@ -577,8 +582,8 @@
 
 <section class="section" id="visitors">
     <h2>Visitors</h2>
-    <div class="section-content" style="display: flex; justify-content: center; align-items: center; padding: 0;">
-        <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=7auZmr4sXySA2c4tMdpf6zX7Fl9_7s8tZuNmCgILKSk'></script>
+    <div class="section-content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0;">
+        <img id="clustrmaps-img" style="transform: scale(0.6); transform-origin: top center;" src="//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=7auZmr4sXySA2c4tMdpf6zX7Fl9_7s8tZuNmCgILKSk" alt="ClustrMaps visitor map">
     </div>
 </section>
 
@@ -588,6 +593,17 @@
 
 
 <script>
+    function toggleNews() {
+        var more = document.getElementById('news-more');
+        var toggle = document.getElementById('news-toggle');
+        if (more.style.display === 'none' || more.style.display === '') {
+            more.style.display = 'block';
+            toggle.innerHTML = 'See less &#9652;';
+        } else {
+            more.style.display = 'none';
+            toggle.innerHTML = 'See more &#9662;';
+        }
+    }
     function toggleBib(id) {
         var bibtexDropdown = document.getElementById(id);
         if (bibtexDropdown.style.display === 'none' || bibtexDropdown.style.display === '') {
