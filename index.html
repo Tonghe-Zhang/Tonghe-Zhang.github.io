@@ -8,6 +8,9 @@
     <link rel="icon" type="image/png" href="favicon/photo-96.png" sizes="96x96" />
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/photo-180.png" />
     <meta name="apple-mobile-web-app-title" content="Tonghe Zhang" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,110 +18,184 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #fdfdfb;
+            --surface: #f6f5f1;
+            --surface-hi: #eef4fb;
+            --text: #23262b;
+            --muted: #6b7078;
+            --heading: #1a2632;
+            --accent: #1863c4;
+            --accent-soft: #2f7bd8;
+            --border: #e6e4dc;
+            --hairline: #d8d5cc;
+            --chip-bg: #f0efe9;
+            --chip-text: #345;
+            --shadow: 0 1px 2px rgba(20,25,35,.04), 0 8px 24px rgba(20,25,35,.05);
+        }
+        body[data-theme="dark"] {
+            --bg: #0e1116;
+            --surface: #161b22;
+            --surface-hi: #15212f;
+            --text: #c9d1d9;
+            --muted: #8b949e;
+            --heading: #e6edf3;
+            --accent: #58a6ff;
+            --accent-soft: #4d95e8;
+            --border: #262c34;
+            --hairline: #2a313a;
+            --chip-bg: #1c232c;
+            --chip-text: #adbac7;
+            --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+        }
+
         body {
-            font-family: 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #ffffff;
-            max-width: 1400px;
+            font-family: 'Newsreader', 'Times New Roman', serif;
+            line-height: 1.68;
+            color: var(--text);
+            background-color: var(--bg);
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 40px 20px;
-            font-size: 1.2em; /* Set base font-size for consistency */
+            padding: 64px 28px 40px;
+            font-size: 20px;
+            transition: background-color .25s ease, color .25s ease;
         }
 
         .header {
             display: flex;
-            align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 12px;
+            align-items: center;
+            gap: 44px;
+            margin-bottom: 8px;
             padding-bottom: 40px;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--hairline);
         }
-
-        .profile-photo {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #f0f0f0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .profile-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
             flex-shrink: 0;
         }
 
-        .header-content {
-            flex: 1;
-            padding-top: 20px;
+        .profile-photo {
+            width: 208px;
+            height: 208px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--hairline);
+            box-shadow: var(--shadow);
         }
+
+        .social-row {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            justify-content: center;
+        }
+        .social-row a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            transition: color .18s ease, border-color .18s ease, transform .18s ease, background .18s ease;
+        }
+        .social-row a:hover {
+            color: #fff;
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        .social-row svg { width: 18px; height: 18px; }
+
+        .header-content { flex: 1; min-width: 0; }
 
         .header h1 {
-            font-size: 2.8em;
-            font-weight: bold; /* Make bold */
-            margin-bottom: 15px;
-            color: #2c3e50;
+            font-family: 'Fraunces', 'Times New Roman', serif;
+            font-size: 2.7rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.08;
+            margin-bottom: 18px;
+            color: var(--heading);
         }
-
-        .header .email {
-            font-size: 1.2em; /* Consistent with base */
-            color: #666;
-            font-style: normal;
-            margin-bottom: 25px;
+        .header h1 .cn-name {
+            font-weight: 400;
+            color: var(--muted);
+            font-size: 0.62em;
+            letter-spacing: 0.02em;
+            margin-left: 6px;
         }
 
         .header .intro {
-            font-size: 1.2em; /* Consistent */
-            line-height: 1.7;
-            color: #444;
-            text-align: justify;
+            font-size: 1.06rem;
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 10px;
         }
-
-        .header .intro a {
-            color: #1976d2;
+        .header .intro.tagline {
+            font-style: italic;
+            color: var(--muted);
+        }
+        .header .intro a, .header .email a {
+            color: var(--accent);
             text-decoration: none;
             font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color .15s ease;
         }
-
-        .header .intro a:hover {
-            color: #1565c0;
-            text-decoration: underline;
-        }
-
-        .header .email a {
-            color: #1976d2;
+        .header .intro a:hover, .header .email a:hover {
+            border-bottom-color: var(--accent);
             text-decoration: none;
-            font-weight: 500;
         }
-
-        .header .email a:hover {
-            color: #1565c0;
-            text-decoration: underline;
+        .header .email {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-top: 14px;
+            font-variant: normal;
         }
 
         .section {
-            margin-bottom: 50px;
+            margin-bottom: 56px;
             margin-top: 0;
         }
-        .section:first-of-type {
-            margin-top: 0;
-        }
+        .section:first-of-type { margin-top: 0; }
 
         .section h2 {
-            font-size: 2.0em;
-            font-weight: bold; /* Make bold */
-            margin-bottom: 10px; /* Reduced from 25px */
-            color: #2c3e50;
-            border-bottom: 2px solid #34495e;
-            padding-bottom: 10px;
+            font-family: 'Fraunces', 'Times New Roman', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 22px;
+            color: var(--heading);
+            padding-bottom: 0;
+            border-bottom: none;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .section h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--hairline);
         }
 
         .section h3 {
-            font-size: 1.5em;
-            font-weight: bold; /* Make bold */
+            font-family: 'Fraunces', 'Times New Roman', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-top: 30px;
+            color: var(--heading);
         }
 
         .section h33 {
             font-size: 1.5em;
-            font-weight: bold; /* Make bold */
+            font-weight: bold;
             margin-top: 30px;
         }
 
@@ -134,12 +211,16 @@
         }
 
         .section-content {
-            font-size: 1.2em; /* Consistent */
-            line-height: 1.9;  /* ← optional: slightly more vertical spacing */
-            color: #555;
-            min-height: 60px;
-            padding: 20px 0;
+            font-size: 1.02rem;
+            line-height: 1.75;
+            color: var(--text);
+            min-height: 0;
+            padding: 0;
         }
+        #news .section-content p,
+        #talks .section-content p { margin-bottom: 0.75em; }
+        #news .section-content strong,
+        #talks .section-content strong { color: var(--heading); }
 
         .placeholder {
             color: #999;
@@ -243,161 +324,200 @@
             margin-right: 0.5em;
         }
         a {
-            color: #2980b9;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 500;
         }
-        a:hover {
-            color: #3498db;
-            text-decoration: underline;
-        }
-        /* Minimal horizontal table of contents */
+        a:hover { color: var(--accent-soft); text-decoration: underline; }
+
+        /* Sticky minimal table of contents */
         .toc {
             display: flex;
-            gap: 28px;
+            flex-wrap: wrap;
+            gap: 6px;
             justify-content: center;
             align-items: center;
-            margin-top: 0;
-            margin-bottom: 30px;
-            font-size: 1.4em; /* Consistent */
+            margin: 34px auto 44px;
+            padding: 7px 10px;
+            position: sticky;
+            top: 14px;
+            z-index: 900;
+            width: fit-content;
+            max-width: 100%;
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            backdrop-filter: saturate(1.4) blur(10px);
+            -webkit-backdrop-filter: saturate(1.4) blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            box-shadow: var(--shadow);
         }
         .toc a {
-            color: #111;
+            font-family: 'Fraunces', serif;
+            color: var(--muted);
             text-decoration: none;
             font-weight: 500;
-            padding: 2px 0;
-            border-bottom: 1.5px solid transparent;
-            transition: border 0.2s, color 0.2s;
+            font-size: 0.82rem;
+            letter-spacing: 0.01em;
+            padding: 6px 14px;
+            border-radius: 999px;
+            transition: color .15s ease, background .15s ease;
         }
         .toc a:hover {
-            color: #000;
-            border-bottom: 1.5px solid #000;
-            font-weight: 600;
-        }
-        #clustrmaps, #clustrmaps iframe {
-            transform: scale(0.6); /* Reduces size to 60% of original (40% reduction) */
-            transform-origin: center; /* Ensures scaling is centered */
+            color: var(--heading);
+            background: var(--surface);
+            text-decoration: none;
         }
 
-        /* Ensure paper lists are consistent */
-        ul[style*="font-size: 1.2em"] {
-            font-size: 1.2em; /* Already set, but reinforce consistency */
-        }
-
-        /* ---- Dark mode ---- */
+        /* Theme toggle */
         .theme-toggle {
             position: fixed;
-            top: 18px;
-            right: 18px;
+            top: 16px;
+            right: 16px;
             z-index: 1000;
-            background: transparent;
-            border: 1px solid #d0d7de;
-            border-radius: 20px;
-            padding: 6px 12px;
-            font-size: 1.1em;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            width: 40px;
+            height: 40px;
+            font-size: 1.05rem;
+            line-height: 1;
             cursor: pointer;
-            color: #333;
-            transition: all 0.15s ease;
+            color: var(--text);
+            box-shadow: var(--shadow);
+            transition: transform .18s ease, border-color .18s ease;
         }
-        .theme-toggle:hover { border-color: #1976d2; }
-        body[data-theme="dark"] {
-            background-color: #0f1115;
-            color: #c9d1d9;
-        }
-        body[data-theme="dark"] .header h1,
-        body[data-theme="dark"] .section h2,
-        body[data-theme="dark"] .section h3 { color: #e6edf3; }
-        body[data-theme="dark"] .section h2 { border-bottom-color: #30363d; }
-        body[data-theme="dark"] .header { border-bottom-color: #30363d; }
-        body[data-theme="dark"] .intro,
-        body[data-theme="dark"] .section-content,
-        body[data-theme="dark"] .email { color: #c9d1d9; }
-        body[data-theme="dark"] .toc a { color: #e6edf3; }
-        body[data-theme="dark"] #pub-list li[style*="e3f2fd"],
-        body[data-theme="dark"] #pub-list li[data-topics~="highlight"] { background-color: #17212b !important; }
-        body[data-theme="dark"] a[style*="#f0f0f0"] { background: #21262d !important; color: #58a6ff !important; }
-        body[data-theme="dark"] pre,
-        body[data-theme="dark"] div[id$="-dropdown"] { background: #161b22 !important; color: #c9d1d9 !important; border-color: #30363d !important; }
-        body[data-theme="dark"] .theme-toggle { color: #c9d1d9; border-color: #30363d; }
-        body[data-theme="dark"] .pub-tab { color: #9da7b3; border-color: #30363d; }
-        body[data-theme="dark"] .pub-tab.active { background: #1f6feb; border-color: #1f6feb; color: #fff; }
+        .theme-toggle:hover { border-color: var(--accent); transform: rotate(-12deg); }
 
         /* Research topic filter tabs */
+        .pub-note { font-size: 0.85rem; color: var(--muted); margin-bottom: 18px; }
         .pub-tabs {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 28px;
+            margin-bottom: 34px;
         }
         .pub-tab {
-            font-family: 'Times New Roman', serif;
-            font-size: 0.95em;
-            color: #555;
+            font-family: 'Fraunces', serif;
+            font-size: 0.85rem;
+            color: var(--muted);
             background: transparent;
-            border: 1px solid #d0d7de;
-            border-radius: 20px;
-            padding: 5px 16px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px 16px;
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: all 0.16s ease;
         }
-        .pub-tab:hover {
-            border-color: #1976d2;
-            color: #1976d2;
-        }
+        .pub-tab:hover { border-color: var(--accent); color: var(--accent); }
         .pub-tab.active {
-            background: #1976d2;
-            border-color: #1976d2;
+            background: var(--accent);
+            border-color: var(--accent);
             color: #fff;
             font-weight: 600;
+        }
+
+        /* Publication cards */
+        #pub-list > li {
+            padding: 20px 22px 20px 20px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+        #pub-list > li:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+        }
+        /* Highlighted (representative) works — override old inline blue */
+        #pub-list > li[data-topics~="highlight"] {
+            background: var(--surface-hi) !important;
+            border-left: 3px solid var(--accent) !important;
+            border-radius: 14px !important;
+        }
+        #pub-list > li img,
+        #pub-list > li video,
+        #pub-list > li iframe {
+            border-radius: 10px !important;
+            box-shadow: var(--shadow);
+        }
+        #pub-list > li > div:last-child > div:first-child {
+            color: var(--heading);
+            font-size: 1.08rem;
+        }
+        /* Link chips (arXiv/GitHub/etc.) */
+        #pub-list a[style*="background"] {
+            background: var(--chip-bg) !important;
+            color: var(--accent) !important;
+            border: 1px solid var(--border);
+            border-radius: 999px !important;
+            padding: 4px 12px !important;
+            font-size: 0.82rem;
+            margin-right: 7px !important;
+            transition: background .15s ease, color .15s ease, border-color .15s ease;
+        }
+        #pub-list a[style*="background"]:hover {
+            background: var(--accent) !important;
+            color: #fff !important;
+            border-color: var(--accent);
+            text-decoration: none;
+        }
+        #pub-list pre {
+            background: var(--chip-bg) !important;
+            color: var(--text) !important;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            overflow-x: auto;
+        }
+        #pub-list div[id$="-dropdown"] {
+            background: var(--chip-bg) !important;
+            border-color: var(--border) !important;
+        }
+
+        /* Footer / visitor badge */
+        footer { color: var(--muted); }
+
+        @media (max-width: 760px) {
+            body { padding: 44px 18px 30px; font-size: 18px; }
+            .header { flex-direction: column; align-items: center; text-align: center; gap: 26px; }
+            .header h1 { font-size: 2.1rem; }
+            .header .intro { font-size: 1rem; }
+            .toc { position: static; }
+            #pub-list > li { flex-direction: column; align-items: center !important; text-align: center; }
         }
     </style>
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
     <div class="header">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-            <!-- <img src="figs/TongheZhangFormalPhotoHighResolution.jpg" alt="Tonghe Zhang" class="profile-photo"> -->
+        <div class="profile-col">
             <img src="figs/TongheZhangPhotoUpscaled.jpg" alt="Tonghe Zhang" class="profile-photo">
-            <div class="profile-links-row" style="display: flex; flex-direction: column; gap: 8px; justify-content: center;">
-                <div style="display: flex; flex-direction: row; gap: 22px; justify-content: center;">
-                    <a href="mailto:tonghez@andrew.cmu.edu">Email</a>
-                    <a href="https://scholar.google.com/citations?user=T_QE5rUAAAAJ&hl=en&authuser=1" target="_blank">Google Scholar</a>
-                    <a href="https://github.com/Tonghe-Zhang" target="_blank">GitHub</a>
-                </div>
-                <div style="display: flex; flex-direction: row; gap: 22px; justify-content: center;">
-                    <a href="https://huggingface.co/THZed" target="_blank">HuggingFace</a>
-                    <a href="https://www.linkedin.com/in/tonghe-zhang-3a06382bb?originalSubdomain=hk" target="_blank">LinkedIn</a>
-                    <a href="https://x.com/TongheZhang01" target="_blank">X (formerly Twitter)</a>
-                     <a href="https://twitter.com/intent/follow?screen_name=TongheZhang01" target="_blank">
-                </div>
-            </div>
-            <p align="center" style="margin-top: -8px;">
-            <a href="https://x.com/intent/follow?screen_name=TongheZhang01" target="_blank" style="
-                display: inline-block;
-                padding: 4px 10px;
-                background-color: black;
-                color: white;
-                font-weight: 500;
-                border-radius: 20px;
-                text-decoration: none;
-                font-family: Arial, sans-serif;
-                font-size: 17px;
-            ">
-                Follow @TongheZhang01
-            </a>
-            </p>
-
-
+            <nav class="social-row" aria-label="Social links">
+                <a href="mailto:tonghez@andrew.cmu.edu" title="Email" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>
+                </a>
+                <a href="https://scholar.google.com/citations?user=T_QE5rUAAAAJ&hl=en&authuser=1" target="_blank" title="Google Scholar" aria-label="Google Scholar">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 8.5l11 6.5 9-5.32V16h2V8.5zM4 13.2v3.8c0 1.66 3.58 3 8 3s8-1.34 8-3v-3.8l-8 4.73z"/></svg>
+                </a>
+                <a href="https://github.com/Tonghe-Zhang" target="_blank" title="GitHub" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.92 1.23 3.23 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58C20.56 22.29 24 17.8 24 12.5 24 5.87 18.63.5 12 .5z"/></svg>
+                </a>
+                <a href="https://huggingface.co/THZed" target="_blank" title="Hugging Face" aria-label="Hugging Face">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5A8.5 8.5 0 003.5 11c0 1.2.25 2.35.7 3.38-.36.28-.6.72-.6 1.22 0 .58.33 1.09.8 1.35-.03.16-.05.33-.05.5 0 1.1.9 2 2 2 .38 0 .74-.11 1.04-.29A8.46 8.46 0 0012 19.5a8.46 8.46 0 004.61-.34c.3.18.66.29 1.04.29 1.1 0 2-.9 2-2 0-.17-.02-.34-.05-.5.47-.26.8-.77.8-1.35 0-.5-.24-.94-.6-1.22.45-1.03.7-2.18.7-3.38A8.5 8.5 0 0012 2.5zM8.6 9.2a1.05 1.05 0 110 2.1 1.05 1.05 0 010-2.1zm6.8 0a1.05 1.05 0 110 2.1 1.05 1.05 0 010-2.1zM8 13.8h8c0 1.9-1.79 3.4-4 3.4s-4-1.5-4-3.4z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/tonghe-zhang-3a06382bb?originalSubdomain=hk" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.64h.05c.53-.95 1.83-1.95 3.77-1.95C20.4 8.69 21 11.06 21 14.14V21h-4v-6.06c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21H9z"/></svg>
+                </a>
+                <a href="https://x.com/TongheZhang01" target="_blank" title="X" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.01 4.13H5.04z"/></svg>
+                </a>
+            </nav>
         </div>
-        
+
         <div class="header-content">
-            <h1>Tonghe Zhang | 张同和</h1>
-            <p class="intro">I am a Master of Science student in Robotics at <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, 
-                <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, advised by Professor <a href="https://www.gshi.me/">Guanya Shi</a>.
-            </p>
-            <p class="intro"><em>I study how to build scalable robot systems that act efficiently and reliably in the real world.</em> 
-            </p>
-            <p class="email" style="margin-top: 10px; color: #444; font-size: 1.2em;">Email: <a href="mailto:tonghez@andrew.cmu.edu">tonghez[AT]andrew.cmu.edu</a></p>
+            <h1>Tonghe Zhang <span class="cn-name">张同和</span></h1>
+            <p class="intro">M.S. in Robotics at the <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, advised by Prof. <a href="https://www.gshi.me/">Guanya Shi</a>.</p>
+            <p class="intro tagline">Building scalable robot systems that act efficiently and reliably in the real world.</p>
+            <p class="email"><a href="mailto:tonghez@andrew.cmu.edu">tonghez [at] andrew.cmu.edu</a></p>
         </div>
     </div>
 
@@ -459,7 +579,7 @@
         </section>
         <section class="section" id="research">
             <h2>Research</h2>
-            <div style="font-family: 'Times New Roman', serif; font-size: 1.0em; color: #777; margin-bottom: 16px;">* Equal contribution. <sup>$</sup> Core contributor. Highlighted works are shaded.</div>
+            <div class="pub-note">* Equal contribution &nbsp;·&nbsp; <sup>$</sup> Core contributor &nbsp;·&nbsp; Representative works are shaded.</div>
 
             <nav class="pub-tabs" aria-label="Filter by topic">
                 <button class="pub-tab active" data-filter="highlight" onclick="filterPubs('highlight', this)">Highlight</button>
@@ -527,11 +647,11 @@
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=T_QE5rUAAAAJ&authuser=1&citation_for_view=T_QE5rUAAAAJ:d1gkVwhDpl0C">Google Scholar</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://github.com/ReinFlow/ReinFlow">GitHub</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://wandb.ai/reinflow/projects">WandB</a>
-                            <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://huggingface.co/papers/2505.22094">HuggingFace</a> <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" onclick="toggleBib('reinflow-bibtex-dropdown')">
-                                BibTex</a> </div> <div id="reinflow-bibtex-dropdown" style="display: none; background: #f0f0f0; padding: 20px; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd; width: 100%;">
-                                    <pre>@misc{zhang2025reinflowfinetuningflowmatching,&#10;      title={ReinFlow: Fine-tuning Flow Matching Policy with Online Reinforcement Learning}, &#10;      author={Tonghe Zhang and Chao Yu and Sichang Su and Yu Wang},&#10;      year={2025},&#10;      eprint={2505.22094},&#10;      archivePrefix={arXiv},&#10;      primaryClass={cs.RO},&#10;      url={https://arxiv.org/abs/2505.22094}, &#10;}
-                                    </pre>
-                                </div>
+                            <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://huggingface.co/papers/2505.22094">HuggingFace</a>
+                            <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" onclick="toggleBib('reinflow-bibtex-dropdown')">BibTex</a>
+                        </div>
+                        <div id="reinflow-bibtex-dropdown" style="display: none; background: #f0f0f0; padding: 20px; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd; width: 100%;">
+                            <pre>@misc{zhang2025reinflowfinetuningflowmatching,&#10;      title={ReinFlow: Fine-tuning Flow Matching Policy with Online Reinforcement Learning}, &#10;      author={Tonghe Zhang and Chao Yu and Sichang Su and Yu Wang},&#10;      year={2025},&#10;      eprint={2505.22094},&#10;      archivePrefix={arXiv},&#10;      primaryClass={cs.RO},&#10;      url={https://arxiv.org/abs/2505.22094}, &#10;}</pre>
                         </div>
                     </div>
                 </li>
@@ -601,7 +721,6 @@
   keywords={Adaptation models;Tracking;Imitation learning;Stability criteria;Humanoid robots;Multitasking},
   doi={10.1109/ICRA55743.2025.11127948}}</pre>
                         </div>
-                        </div>
                     </div>
                 </li>
                 <li data-topics="theory rl" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
@@ -616,7 +735,6 @@
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://arxiv.org/abs/2402.18149">arXiv</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=T_QE5rUAAAAJ&authuser=1&citation_for_view=T_QE5rUAAAAJ:2osOgNQ5qMEC">Google Scholar</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://github.com/Tonghe-Zhang/Beta-Vector-Value-Iteration.git">GitHub</a> <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" onclick="toggleBib('bibtex-dropdown')">BibTex</a> </div> <div id="bibtex-dropdown" style="display: none; background: #f0f0f0; padding: 20px; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd; width: 100%;"> <pre>@InProceedings{pmlr-v235-zhang24g,&#10;  title = 	 {Provably Efficient Partially Observable Risk-sensitive Reinforcement Learning with Hindsight Observation},&#10;  author =       {Zhang, Tonghe and Chen, Yu and Huang, Longbo},&#10;  booktitle = 	 {Proceedings of the 41st International Conference on Machine Learning},&#10;  pages = 	 {58680--58716},&#10;  year = 	 {2024},&#10;  editor = 	 {Salakhutdinov, Ruslan and Kolter, Zico and Heller, Katherine and Weller, Adrian and Oliver, Nuria and Scarlett, Jonathan and Berkenkamp, Felix},&#10;  volume = 	 {235},&#10;  series = 	 {Proceedings of Machine Learning Research},&#10;  month = 	 {21--27 Jul},&#10;  publisher =    {PMLR},&#10;  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v235/main/assets/zhang24g/zhang24g.pdf},&#10;  url = 	 {https://proceedings.mlr.press/v235/zhang24g.html},&#10;}</pre> </div>
-                        </div>
                     </div>
                 </li>
             </ul>
@@ -672,21 +790,24 @@
             if (tt) tt.textContent = '☀️';
         }
     })();
-    function filterPubs(topic, btn) {
-        document.querySelectorAll('.pub-tab').forEach(function(t) { t.classList.remove('active'); });
-        btn.classList.add('active');
+    function applyPubFilter(topic) {
         document.querySelectorAll('#pub-list > li').forEach(function(li) {
-            var topics = (li.getAttribute('data-topics') || '').split(' ');
+            var topics = (li.getAttribute('data-topics') || '').split(/\s+/);
             li.style.display = (topic === 'all' || topics.indexOf(topic) !== -1) ? 'flex' : 'none';
         });
     }
-    // Default to Highlight on load
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('#pub-list > li').forEach(function(li) {
-            var topics = (li.getAttribute('data-topics') || '').split(' ');
-            li.style.display = topics.indexOf('highlight') !== -1 ? 'flex' : 'none';
-        });
-    });
+    function filterPubs(topic, btn) {
+        document.querySelectorAll('.pub-tab').forEach(function(t) { t.classList.remove('active'); });
+        if (btn) btn.classList.add('active');
+        applyPubFilter(topic);
+    }
+    // Default to Highlight on load (runs whether or not DOM is already parsed)
+    (function initPubs() {
+        function go() { applyPubFilter('highlight'); }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', go);
+        } else { go(); }
+    })();
     function toggleNews() {
         var more = document.getElementById('news-more');
         var toggle = document.getElementById('news-toggle');
