@@ -26,7 +26,8 @@
             }
         };
     </script>
-    
+    <link rel="stylesheet" href="blog-social.css">
+
     <style>
         * {
             margin: 0;
@@ -36,98 +37,103 @@
 
         body {
             font-family: 'Computer Modern Serif', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.75;
+            color: #1a1a1a;
             background-color: #ffffff;
-            max-width: 1000px;
+            max-width: 820px;
             margin: 0 auto;
-            padding: 40px 20px;
-            font-size: 1.1em;
+            padding: 48px 28px 80px;
+            font-size: 1.18rem;
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #2c3e50;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
         }
 
         .header h1 {
-            font-family: 'Computer Modern Sans', sans-serif;
-            font-size: 2.2em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            line-height: 1.2;
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 18px;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
         }
 
         .header .subtitle {
-            font-size: 1.3em;
-            color: #34495e;
+            font-size: 1.35rem;
+            color: #444;
             margin-bottom: 20px;
             font-weight: 400;
+            line-height: 1.4;
         }
 
         .header .author {
-            font-size: 1.1em;
-            color: #666;
-            margin-bottom: 10px;
+            display: inline;
+            font-size: 1rem;
+            color: #6b7280;
         }
 
         .header .date {
-            font-size: 1em;
-            color: #888;
-            font-style: italic;
+            display: inline;
+            font-size: 1rem;
+            color: #6b7280;
+        }
+
+        .header .author::after {
+            content: "·";
+            margin: 0 8px;
+            color: #b5bcc4;
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-            color: #2980b9;
+            margin-bottom: 36px;
+            font-size: 1rem;
+            color: #1976d2;
             text-decoration: none;
             font-weight: 500;
         }
 
         .back-link:hover {
-            color: #3498db;
+            color: #1565c0;
             text-decoration: underline;
         }
 
         .abstract {
             background-color: #f8f9fa;
-            border-left: 4px solid #2980b9;
-            padding: 20px;
+            border-left: 4px solid #1976d2;
+            padding: 20px 24px;
             margin-bottom: 40px;
             border-radius: 0 8px 8px 0;
         }
 
         .abstract h2 {
             font-family: 'Computer Modern Sans', sans-serif;
-            font-size: 1.3em;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .abstract p {
-            font-size: 1.1em;
+            font-size: 1.12rem;
             line-height: 1.7;
             color: #444;
-            text-align: justify;
         }
 
         .toc {
             background-color: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 20px;
+            padding: 20px 24px;
             margin-bottom: 40px;
         }
 
         .toc h2 {
             font-family: 'Computer Modern Sans', sans-serif;
-            font-size: 1.3em;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 15px;
@@ -154,51 +160,50 @@
         }
 
         .section {
-            margin-bottom: 50px;
+            margin-bottom: 12px;
         }
 
         .section h2 {
-            font-family: 'Computer Modern Sans', sans-serif;
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #34495e;
-            padding-bottom: 10px;
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #111;
+            margin-top: 2.4em;
+            margin-bottom: 0.7em;
+            line-height: 1.25;
         }
 
         .section h3 {
             font-family: 'Computer Modern Sans', sans-serif;
-            font-size: 1.4em;
+            font-size: 1.3rem;
             font-weight: bold;
             color: #2c3e50;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            margin-top: 1.6em;
+            margin-bottom: 0.6em;
         }
 
         .section h4 {
             font-family: 'Computer Modern Sans', sans-serif;
-            font-size: 1.2em;
+            font-size: 1.12rem;
             font-weight: bold;
             color: #2c3e50;
-            margin-top: 25px;
-            margin-bottom: 12px;
+            margin-top: 1.3em;
+            margin-bottom: 0.5em;
         }
 
         .section p {
-            margin-bottom: 15px;
-            text-align: justify;
-            line-height: 1.7;
+            margin-bottom: 1.1em;
+            line-height: 1.75;
         }
 
         .section ul, .section ol {
-            margin-bottom: 15px;
+            margin-bottom: 1.1em;
             padding-left: 25px;
         }
 
         .section li {
             margin-bottom: 8px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         /* Math styling - keep LaTeX style, no italics */
@@ -279,24 +284,24 @@
         /* Responsive design */
         @media (max-width: 768px) {
             body {
-                padding: 20px 15px;
-                font-size: 1.0em;
+                padding: 28px 18px 60px;
+                font-size: 1.1rem;
             }
-            
+
             .header h1 {
-                font-size: 1.8em;
+                font-size: 2.05rem;
             }
-            
+
             .header .subtitle {
-                font-size: 1.1em;
+                font-size: 1.18rem;
             }
-            
+
             .section h2 {
-                font-size: 1.5em;
+                font-size: 1.45rem;
             }
-            
+
             .section h3 {
-                font-size: 1.2em;
+                font-size: 1.2rem;
             }
         }
 
@@ -341,6 +346,8 @@
         <div class="author">Tonghe Zhang</div>
         <div class="date">October, 2025</div>
     </div>
+
+    <div id="blog-interaction-bar"></div>
 
     <div class="abstract">
         <h2>Abstract</h2>
@@ -713,6 +720,10 @@
         
         <p>and we remind the readers again that this $\mathrm{d}t$ is negative in machine learning's convention.</p>
     </section>
+
+    <section id="blog-comments"></section>
+
+    <script type="module" src="blog-social.js"></script>
 
     <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=8cXP7TuIBdflSY0tC7ng9is_lqo8K38nJ0rKPgdNMH0'></script>
 

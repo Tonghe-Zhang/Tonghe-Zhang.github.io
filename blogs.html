@@ -12,76 +12,118 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="style.css">
     <style>
-        body { font-family: 'Times New Roman', serif; max-width: 1400px; margin: 0 auto; padding: 40px 20px; color: #333; background: #fff; }
-        h1 { color: #111; font-weight: 600; border-bottom: 1.5px solid #000; padding-bottom: 6px; margin-bottom: 24px; }
-        .blog-list { margin-top: 30px; }
-        .blog-item { 
-            margin-bottom: 40px; 
-            padding: 25px; 
-            background-color: #f8f9fa; 
-            border-radius: 12px; 
-            border-left: 4px solid #2980b9; 
-            transition: box-shadow 0.2s ease;
+        body {
+            font-family: 'Times New Roman', serif;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 48px 28px 80px;
+            color: #1a1a1a;
+            background: #fff;
+            line-height: 1.6;
         }
-        .blog-item:hover { 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 36px;
+            font-size: 1rem;
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
         }
-        .blog-item h3 { 
-            margin-bottom: 10px; 
-            font-size: 1.4em; 
-            font-weight: bold; 
-            color: #2c3e50; 
+        .back-link:hover { color: #1565c0; text-decoration: underline; }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
         }
-        .blog-item h3 a { 
-            color: #2c3e50; 
-            text-decoration: none; 
+        .page-intro {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
         }
-        .blog-item h3 a:hover { 
-            color: #2980b9; 
-            text-decoration: underline; 
+
+        .blog-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        .blog-date { 
-            color: #666; 
-            font-style: italic; 
-            margin-bottom: 15px; 
-            font-size: 1.0em; 
+
+        .blog-item {
+            padding: 26px 0;
+            border-top: 1px solid #e2e5e9;
         }
-        .blog-description { 
-            color: #555; 
-            line-height: 1.6; 
-            font-size: 1.1em; 
+        .blog-item:last-child { border-bottom: 1px solid #e2e5e9; }
+
+        .blog-item h2 {
+            font-size: 1.55rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0 0 6px;
         }
-        .placeholder { color: #999; font-style: italic; text-align: center; padding: 40px 0; }
-        a { color: #2980b9; text-decoration: none; font-weight: 500; }
-        a:hover { color: #3498db; text-decoration: underline; }
+        .blog-item h2 a {
+            color: #111;
+            text-decoration: none;
+        }
+        .blog-item h2 a:hover {
+            color: #1976d2;
+        }
+
+        .blog-date {
+            display: block;
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .blog-description {
+            color: #444;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        a { color: #1976d2; text-decoration: none; font-weight: 500; }
+        a:hover { color: #1565c0; text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            body { padding: 28px 18px 60px; }
+            h1 { font-size: 2.05rem; }
+            .blog-item h2 { font-size: 1.35rem; }
+        }
     </style>
 </head>
 <body>
-    <a href="index.html" style="display:block;margin-bottom:24px;font-size:1.1em;">&larr; Back to Home</a>
+    <a href="index.html" class="back-link">&larr; Back to Home</a>
+
     <h1>Blogs</h1>
-    <div class="blog-list">
-        <div class="blog-item">
-            <h3><a href="blogs/beyond-the-singularity.html">Beyond Singularity: The Democratic Promise of Physical AI</a></h3>
-            <p class="blog-date">June 2026</p>
+    <p class="page-intro">Essays and notes on physical AI, robot learning, and the mathematics behind generative models.</p>
+
+    <ul class="blog-list">
+        <li class="blog-item">
+            <h2><a href="blogs/beyond-the-singularity.html">Beyond Singularity: The Democratic Promise of Physical AI</a></h2>
+            <span class="blog-date">June 2026</span>
             <p class="blog-description">An essay on why robotics, the least mature branch of AI, may also be the most open and the most democratizing. It argues that physical AI&mdash;through its accessible physical interface, its dependence on operations, hardware, and global data collection, and its still-unmonopolized state&mdash;offers a chance to direct AI toward the common good of humanity.</p>
-        </div>
+        </li>
         <!-- Hidden: A Rough Road Towards Robot Intelligence (page still at blogs/a-rough-road-towards-robot-intelligence.html)
-        <div class="blog-item">
-            <h3><a href="blogs/a-rough-road-towards-robot-intelligence.html">A Rough Road Towards Robot Intelligence</a></h3>
-            <p class="blog-date">January 22nd, 2025</p>
+        <li class="blog-item">
+            <h2><a href="blogs/a-rough-road-towards-robot-intelligence.html">A Rough Road Towards Robot Intelligence</a></h2>
+            <span class="blog-date">January 22nd, 2025</span>
             <p class="blog-description">A technical diary documenting the common pitfalls of training robotic policies to solve challenging tasks in the real world. This post records bugs encountered during deploying large foundation policies on real robots.</p>
-        </div>
+        </li>
         -->
-        <div class="blog-item">
-            <h3><a href="blogs/flow-vla-architecture.html">Understanding the Architecture of Flow VLAs</a></h3>
-            <p class="blog-date">October 2025</p>
-            <p class="blog-description">A visual guide to the π0 and π0.5 model architectures. This post provides detailed architectural diagrams illustrating how Flow Vision-Language-Action models process multimodal inputs to generate robot actions through flow matching.</p>
-        </div>
-        <div class="blog-item">
-            <h3><a href="blogs/fokker-planck-equation.html">The Mathematical Building Blocks of Diffusion Generative Models</a></h3>
-            <p class="blog-date">October 2025</p>
+        <li class="blog-item">
+            <h2><a href="blogs/flow-vla-architecture.html">Understanding the Architecture of Flow VLAs</a></h2>
+            <span class="blog-date">October 2025</span>
+            <p class="blog-description">A visual guide to the &pi;0 and &pi;0.5 model architectures. This post provides detailed architectural diagrams illustrating how Flow Vision-Language-Action models process multimodal inputs to generate robot actions through flow matching.</p>
+        </li>
+        <li class="blog-item">
+            <h2><a href="blogs/fokker-planck-equation.html">The Mathematical Building Blocks of Diffusion Generative Models</a></h2>
+            <span class="blog-date">October 2025</span>
             <p class="blog-description">A comprehensive exploration of the Fokker-Planck equation and its applications in diffusion generative models, including proofs, special cases, and connections to flow matching processes. <a href="https://raw.githubusercontent.com/Tonghe-Zhang/Tonghe-Zhang.github.io/main/blogs/_Notes__DiffusionMath_.pdf">Download the PDF</a>.</p>
-        </div>
-    </div>
+        </li>
+    </ul>
 </body>
 </html>

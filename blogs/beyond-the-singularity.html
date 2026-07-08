@@ -13,6 +13,7 @@
 
     <!-- LaTeX-style fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Computer+Modern+Serif:wght@400;700&family=Computer+Modern+Sans:wght@400;700&family=Computer+Modern+Typewriter:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="blog-social.css">
 
     <style>
         * {
@@ -23,96 +24,101 @@
 
         body {
             font-family: 'Computer Modern Serif', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.75;
+            color: #1a1a1a;
             background-color: #ffffff;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
-            font-size: 1.1em;
+            padding: 48px 28px 80px;
+            font-size: 1.18rem;
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
         }
 
         .header h1 {
-            font-family: 'Computer Modern Sans', sans-serif;
-            font-size: 2.2em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            line-height: 1.2;
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 18px;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
         }
 
         .header .subtitle {
-            font-size: 1.3em;
-            color: #34495e;
+            font-size: 1.35rem;
+            color: #444;
             margin-bottom: 20px;
             font-weight: 400;
+            line-height: 1.4;
         }
 
         .header .author {
-            font-size: 1.1em;
-            color: #666;
-            margin-bottom: 10px;
+            display: inline;
+            font-size: 1rem;
+            color: #6b7280;
         }
 
         .header .date {
-            font-size: 1em;
-            color: #888;
-            font-style: italic;
+            display: inline;
+            font-size: 1rem;
+            color: #6b7280;
+        }
+
+        .header .author::after {
+            content: "·";
+            margin: 0 8px;
+            color: #b5bcc4;
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-            color: #2980b9;
+            margin-bottom: 36px;
+            font-size: 1rem;
+            color: #1976d2;
             text-decoration: none;
             font-weight: 500;
         }
 
         .back-link:hover {
-            color: #3498db;
+            color: #1565c0;
             text-decoration: underline;
         }
 
         .abstract {
             background-color: #f8f9fa;
-            border-left: 4px solid #2980b9;
-            padding: 20px;
+            border-left: 4px solid #1976d2;
+            padding: 20px 24px;
             margin-bottom: 40px;
             border-radius: 0 8px 8px 0;
         }
 
         .abstract p {
-            font-size: 1.1em;
+            font-size: 1.12rem;
             line-height: 1.7;
             color: #444;
-            text-align: justify;
         }
 
         .section {
-            margin-bottom: 50px;
+            margin-bottom: 12px;
         }
 
         .section h2 {
-            font-family: 'Computer Modern Sans', sans-serif;
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #34495e;
-            padding-bottom: 10px;
+            font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #111;
+            margin-top: 2.4em;
+            margin-bottom: 0.7em;
+            line-height: 1.25;
         }
 
         .section p {
-            margin-bottom: 15px;
-            text-align: justify;
-            line-height: 1.7;
+            margin-bottom: 1.1em;
+            line-height: 1.75;
         }
 
         a {
@@ -128,20 +134,20 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 20px 15px;
-                font-size: 1.0em;
+                padding: 28px 18px 60px;
+                font-size: 1.1rem;
             }
 
             .header h1 {
-                font-size: 1.8em;
+                font-size: 2.05rem;
             }
 
             .header .subtitle {
-                font-size: 1.1em;
+                font-size: 1.18rem;
             }
 
             .section h2 {
-                font-size: 1.5em;
+                font-size: 1.45rem;
             }
         }
     </style>
@@ -155,6 +161,9 @@
         <div class="author">Tonghe Zhang</div>
         <div class="date">June 2026</div>
     </div>
+
+    <div id="blog-interaction-bar"></div>
+
     <section class="section">
         <h2>The Singularity</h2>
         <p>Never before in human history have we stood so close to the singularity: the point at which AI, a digital species built from human experience, becomes powerful enough to escape full human control. What makes this prospect especially troubling is not only its irreversibility, but the conditions under which it is unfolding. Superhuman AI is emerging under an oligopoly. A small number of frontier laboratories, backed by extraordinary concentrations of private capital, possess the knowledge, compute, and organizational power required to build it, while the rest of the world risks falling steadily behind. It is deeply unsettling that, in the near future, even well-educated people, including many who helped build these systems, may no longer be able to fully comprehend the most advanced AI if it remains closed to the public.</p>
@@ -192,6 +201,10 @@
         <p>Although the path of large-scale data collection and end-to-end training is painful and expensive, we should not be tempted by the easier but more dangerous alternative: customized engineering and task-specific data collection for every new task. That approach may deliver fast results at first, but it soon plateaus, remains bounded by the size and skill of the engineering team, and fundamentally fails to scale. Zero-shot capability, however daunting, is the central objective of robotics, because it determines whether robots can transfer knowledge across tasks rather than be rebuilt one task at a time. In the end, whether we treat scalability as a first-class principle will determine whether physical AI becomes a genuinely high-value industry or merely another low-margin systems-integration business.</p>
         <p>And that question is not merely economic. It is ultimately about what AI is for. In my view, the purpose of developing AI should not be to replace human beings in their highest intellectual and creative pursuits, such as writing poetry, creating art, or doing mathematics. Rather, it should liberate us from the drudgery of ordinary life, returning time to us so that we may pursue meaning, deepen our bonds with others, and seek inner peace. Unfortunately, digital AI has not been fully directed toward that end. But physical AI still offers us the opportunity to shape a different future. That is why I hope more people will devote themselves to this endeavor: not merely for technological progress, but for the common good of humanity as a whole.</p>
     </section>
+
+    <section id="blog-comments"></section>
+
+    <script type="module" src="blog-social.js"></script>
 
     <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=atmLyFfpC9dK_ry-WuEqDbreUe9dEAlbbQeGesjNdyw'></script>
 

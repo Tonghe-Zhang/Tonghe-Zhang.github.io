@@ -1,0 +1,282 @@
+/* ===========================================================================
+   blog-social.css — shared styles for the interaction bar + comments section
+   Used by all blog post pages. Matches the site's serif fonts + blue accent.
+   =========================================================================== */
+
+:root {
+    --bs-accent: #1976d2;
+    --bs-accent-dark: #1565c0;
+    --bs-ink: #1a1a1a;
+    --bs-muted: #6b7280;
+    --bs-border: #e2e5e9;
+    --bs-like: #e0245e; /* heart red, X/Twitter style */
+}
+
+/* ---- Interaction bar (under title/byline, above article body) ---- */
+.blog-interaction-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 28px 0 40px;
+    padding: 14px 0;
+    border-top: 1px solid var(--bs-border);
+    border-bottom: 1px solid var(--bs-border);
+    font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+}
+
+.bs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #444;
+    background: #fff;
+    border: 1px solid var(--bs-border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bs-btn:hover {
+    border-color: var(--bs-accent);
+    color: var(--bs-accent);
+    background: #f5f9ff;
+}
+
+.bs-btn svg {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+}
+
+.bs-btn .bs-count {
+    font-variant-numeric: tabular-nums;
+    min-width: 1ch;
+}
+
+/* Like button liked state */
+.bs-btn.bs-like-btn.liked {
+    color: var(--bs-like);
+    border-color: var(--bs-like);
+    background: #fff0f4;
+}
+.bs-btn.bs-like-btn.liked svg {
+    fill: var(--bs-like);
+    stroke: var(--bs-like);
+}
+.bs-btn.bs-like-btn svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.bs-btn.bs-repost-btn svg,
+.bs-btn.bs-comment-btn svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* Config note shown when Firebase is not yet configured */
+.bs-config-note {
+    font-size: 0.9rem;
+    color: var(--bs-muted);
+    font-style: italic;
+    margin-left: auto;
+}
+
+/* ---- Toast popup ---- */
+.bs-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--bs-ink);
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 9999;
+}
+.bs-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ---- Comments section ---- */
+.blog-comments {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 2px solid var(--bs-border);
+    font-family: 'Computer Modern Serif', 'Times New Roman', serif;
+}
+
+.blog-comments h2 {
+    font-family: 'Computer Modern Sans', sans-serif;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.bs-comments-note {
+    font-size: 0.95rem;
+    color: var(--bs-muted);
+    font-style: italic;
+    margin-bottom: 24px;
+}
+
+/* Comment form */
+.bs-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.bs-comment-form input[type="text"],
+.bs-comment-form textarea {
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: var(--bs-ink);
+    padding: 10px 14px;
+    border: 1px solid var(--bs-border);
+    border-radius: 8px;
+    background: #fff;
+    width: 100%;
+    resize: vertical;
+}
+.bs-comment-form input[type="text"] {
+    max-width: 320px;
+}
+.bs-comment-form textarea {
+    min-height: 100px;
+    line-height: 1.6;
+}
+.bs-comment-form input:focus,
+.bs-comment-form textarea:focus {
+    outline: none;
+    border-color: var(--bs-accent);
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.12);
+}
+
+.bs-comment-form button {
+    align-self: flex-start;
+    font-family: inherit;
+    font-size: 1.05rem;
+    padding: 10px 24px;
+    color: #fff;
+    background: var(--bs-accent);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.18s ease;
+}
+.bs-comment-form button:hover {
+    background: var(--bs-accent-dark);
+}
+.bs-comment-form button:disabled {
+    background: #9db8d6;
+    cursor: not-allowed;
+}
+
+/* Comment list */
+.bs-comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bs-comment {
+    padding: 16px 18px;
+    background: #fafbfc;
+    border: 1px solid var(--bs-border);
+    border-radius: 10px;
+}
+
+.bs-comment-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+.bs-comment-author {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.05rem;
+}
+.bs-comment-time {
+    font-size: 0.85rem;
+    color: var(--bs-muted);
+}
+.bs-comment-text {
+    line-height: 1.65;
+    color: #333;
+    font-size: 1.08rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.bs-comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+}
+.bs-comment-actions button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 2px 4px;
+    cursor: pointer;
+    color: var(--bs-muted);
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+}
+.bs-comment-actions button svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+.bs-comment-actions .bs-clike.liked {
+    color: var(--bs-like);
+}
+.bs-comment-actions .bs-clike.liked svg {
+    fill: var(--bs-like);
+    stroke: var(--bs-like);
+}
+.bs-comment-actions .bs-clike:hover {
+    color: var(--bs-like);
+}
+.bs-comment-actions .bs-cdelete:hover {
+    color: #c0392b;
+}
+
+.bs-empty {
+    color: var(--bs-muted);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .blog-comments h2 { font-size: 1.45rem; }
+    .bs-btn { padding: 7px 13px; font-size: 0.95rem; }
+}
