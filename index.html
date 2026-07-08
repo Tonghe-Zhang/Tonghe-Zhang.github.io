@@ -392,6 +392,9 @@
             font-weight: 600;
         }
 
+        /* Truncated author lists */
+        .authors-toggle { color: var(--accent); cursor: pointer; font-weight: 500; white-space: nowrap; }
+
         /* Footer / visitor badge */
         footer { color: var(--muted); }
     </style>
@@ -427,7 +430,7 @@
             <h1>Tonghe Zhang <span class="cn-name">张同和</span></h1>
             <p class="intro">I am a M.S. in Robotics Student with Prof. <a href="https://www.gshi.me/">Guanya Shi</a> at <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, <a href="https://www.cmu.edu/">Carnegie Mellon University</a>.</p>
             <p class="intro tagline">I work on building robot learning system at scale that act reliably in the real world.</p>
-            <p class="email"><a href="mailto:tonghez@andrew.cmu.edu">tonghez [at] andrew.cmu.edu</a></p>
+            <p class="email">Email: <a href="mailto:tonghez@andrew.cmu.edu">tonghez [at] andrew.cmu.edu</a></p>
         </div>
     </div>
 
@@ -768,4 +771,36 @@
             bibtexDropdown.style.display = 'none';
         }
     }
+    // Truncate long author lists (> 7 authors) with a show-all / show-less toggle.
+    function toggleAuthors(link) {
+        var div = link.parentNode;
+        var more = div.querySelector('.more-authors');
+        var sep = div.querySelector('.more-authors-sep');
+        var hidden = more.style.display === 'none';
+        more.style.display = hidden ? 'inline' : 'none';
+        if (sep) sep.style.display = hidden ? 'inline' : 'none';
+        link.textContent = hidden ? 'show less' : '… show all authors';
+    }
+    (function initAuthors() {
+        function go() {
+            document.querySelectorAll('#pub-list > li').forEach(function(li) {
+                var content = li.querySelector(':scope > div:last-child');
+                if (!content) return;
+                var divs = content.querySelectorAll(':scope > div');
+                var authorDiv = divs[1];
+                if (!authorDiv || authorDiv.textContent.indexOf('Zhang') === -1) return;
+                var parts = authorDiv.innerHTML.trim().split(/,\s*/);
+                if (parts.length <= 7) return;
+                var first = parts.slice(0, 7).join(', ');
+                var rest = parts.slice(7).join(', ');
+                authorDiv.innerHTML = first +
+                    '<span class="more-authors-sep" style="display:none">, </span>' +
+                    '<span class="more-authors" style="display:none">' + rest + '</span> ' +
+                    '<a href="javascript:void(0)" class="authors-toggle" onclick="toggleAuthors(this)">… show all authors</a>';
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', go);
+        } else { go(); }
+    })();
 </script>
