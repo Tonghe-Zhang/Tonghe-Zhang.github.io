@@ -62,20 +62,21 @@
         var data = (points || []).map(function (p) { return { lat: p.lat, lng: p.lng }; });
         if (!globe) {
             globe = Globe()(elGlobe)
-                .globeImageUrl("lib/earth-night.jpg")
+                .globeImageUrl("lib/earth-blue-marble.jpg")
                 .backgroundColor("rgba(0,0,0,0)")
+                .showGraticules(true)
                 .width(elGlobe.clientWidth)
                 .height(elGlobe.clientHeight)
-                .pointOfView({ lat: 20, lng: 10, altitude: 2.3 })
+                .pointOfView({ lat: 20, lng: 10, altitude: 2.0 })
                 .pointsData(data)
                 .pointLat("lat").pointLng("lng")
-                .pointColor(function () { return "#4da3ff"; })
-                .pointAltitude(0.01)
-                .pointRadius(0.34)
-                .atmosphereColor("#3a86ff")
-                .atmosphereAltitude(0.18);
+                .pointColor(function () { return "#ff3b3b"; })
+                .pointAltitude(0.02)
+                .pointRadius(0.45)
+                .atmosphereColor("#6cb2ff")
+                .atmosphereAltitude(0.22);
             var c = globe.controls();
-            c.autoRotate = true; c.autoRotateSpeed = 0.55; c.enableZoom = false;
+            c.autoRotate = true; c.autoRotateSpeed = 0.6; c.enableZoom = false;
         } else {
             globe.pointsData(data);
         }
