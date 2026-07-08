@@ -232,9 +232,9 @@
             flex-wrap: nowrap;
         }
         .timeline-date {
-            min-width: 140px;
+            min-width: 130px;
             font-weight: bold;
-            color: #2c3e50;
+            color: var(--heading);
             font-variant-numeric: tabular-nums;
             flex-shrink: 0;
             white-space: nowrap;
@@ -642,20 +642,20 @@
         <section class="section" id="talks">
             <h2>Talks &amp; Press</h2>
             <div class="section-content">
-                <p>
-                    <strong>Jun 16th, 2026:</strong>
-                    <a href="#enpire">ENPIRE</a> is featured on the NVIDIA website.
-                    <a href="https://research.nvidia.com/labs/gear/enpire/" target="_blank">Read more.</a>
-                </p>
-                <p>
-                    <strong>Dec 9th, 2025:</strong>
-                    BFM-Zero is featured in the CMU Robotics Institute newsletter.
-                    <a href="https://www.ri.cmu.edu/helping-robots-think-on-their-feet/">Read more.</a>
-                </p>
-                <p>
-                    <strong>Jun 16th, 2025:</strong>
-                    Talk at Tsinghua University on online RL for flow matching policies.
-                </p>
+                <ul class="timeline-list">
+                    <li class="timeline-item">
+                        <span class="timeline-date">2026-06</span>
+                        <span class="timeline-desc"><a href="#enpire">ENPIRE</a> is featured on the NVIDIA website. <a href="https://research.nvidia.com/labs/gear/enpire/" target="_blank">Read more.</a></span>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2025-12</span>
+                        <span class="timeline-desc">BFM-Zero is featured in the CMU Robotics Institute newsletter. <a href="https://www.ri.cmu.edu/helping-robots-think-on-their-feet/">Read more.</a></span>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2025-06</span>
+                        <span class="timeline-desc">Talk at Tsinghua University on online RL for flow matching policies.</span>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -683,12 +683,27 @@
         <section class="section" id="awards">
             <h2>Awards &amp; Honors</h2>
             <div class="section-content">
-                <ul>
-                    <li><strong>2025-07:</strong> Beijing Municipal Outstanding Graduate</li>
-                    <li><strong>2025-07:</strong> Tsinghua University Excellent Graduate</li>
-                    <li><strong>2024-10:</strong> National Scholarship of China</li>
-                    <li><strong>2023-10:</strong> National Scholarship of China</li>
-                    <li><strong>2023-10:</strong> Excellent Student Leader, Tsinghua University</li>
+                <ul class="timeline-list">
+                    <li class="timeline-item">
+                        <span class="timeline-date">2025-07</span>
+                        <span class="timeline-desc">Beijing Municipal Outstanding Graduate</span>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2025-07</span>
+                        <span class="timeline-desc">Tsinghua University Excellent Graduate</span>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2024-10</span>
+                        <span class="timeline-desc">National Scholarship of China</span>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2023-10</span>
+                        <span class="timeline-desc">National Scholarship of China</span>
+                    </li>
+                    <li class="timeline-item">
+                        <span class="timeline-date">2023-10</span>
+                        <span class="timeline-desc">Excellent Student Leader, Tsinghua University</span>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -771,7 +786,7 @@
             bibtexDropdown.style.display = 'none';
         }
     }
-    // Truncate long author lists (> 7 authors) with a show-all / show-less toggle.
+    // Truncate long author lists (> 6 authors) with a show-all / show-less toggle.
     function toggleAuthors(link) {
         var div = link.parentNode;
         var more = div.querySelector('.more-authors');
@@ -790,9 +805,9 @@
                 var authorDiv = divs[1];
                 if (!authorDiv || authorDiv.textContent.indexOf('Zhang') === -1) return;
                 var parts = authorDiv.innerHTML.trim().split(/,\s*/);
-                if (parts.length <= 7) return;
-                var first = parts.slice(0, 7).join(', ');
-                var rest = parts.slice(7).join(', ');
+                if (parts.length <= 6) return;
+                var first = parts.slice(0, 6).join(', ');
+                var rest = parts.slice(6).join(', ');
                 authorDiv.innerHTML = first +
                     '<span class="more-authors-sep" style="display:none">, </span>' +
                     '<span class="more-authors" style="display:none">' + rest + '</span> ' +
