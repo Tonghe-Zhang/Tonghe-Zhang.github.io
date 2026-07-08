@@ -395,6 +395,31 @@
         /* Truncated author lists */
         .authors-toggle { color: var(--accent); cursor: pointer; font-weight: 500; white-space: nowrap; }
 
+        /* Experience — logo + when + where */
+        .exp-list { list-style: none; padding: 0; margin: 0; }
+        .exp-item {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            padding: 12px 0;
+        }
+        .exp-logo {
+            width: 130px;
+            height: 46px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .exp-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        body[data-theme="dark"] .exp-logo img { filter: brightness(0) invert(1) opacity(.85); }
+        .exp-when { min-width: 175px; flex-shrink: 0; font-weight: bold; color: var(--heading); font-variant-numeric: tabular-nums; }
+        .exp-where { flex: 1; min-width: 0; }
+        @media (max-width: 600px) {
+            .exp-item { flex-wrap: wrap; gap: 10px; }
+            .exp-when { min-width: 0; }
+        }
+
         /* Footer / visitor badge */
         footer { color: var(--muted); }
     </style>
@@ -679,11 +704,33 @@
         <section class="section" id="experience">
             <h2>Professional Experience</h2>
             <div class="section-content">
-                <p><strong>Jun 2026 – Present:</strong> Research intern, <a href="https://www.amazon.science/" target="_blank">Amazon Frontier AI &amp; Robotics (FAR)</a>. Large-scale robot learning for manipulation.</p>
-                <p><strong>Nov 2024 – May 2025:</strong> Research assistant, <a href="https://www.ee.tsinghua.edu.cn/en/" target="_blank">Department of Electronic Engineering, Tsinghua University</a>. Fine-tuning diffusion and flow matching policies with online RL.</p>
-                <p><strong>Jul 2024 – Oct 2024:</strong> Algorithm intern, <a href="https://en.noetixrobotics.com/" target="_blank">Noetix Robotics</a>. Versatile, anthropomorphic humanoid locomotion via sim-to-real RL.</p>
-                <p><strong>Feb 2024 – Sep 2024:</strong> Research assistant, <a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>. Distributed policy optimization theory under partial observability.</p>
-                <p><strong>Jul 2023 – Feb 2024:</strong> Research assistant, <a href="https://iiis.tsinghua.edu.cn/en/" target="_blank">Institute for Interdisciplinary Information Sciences, Tsinghua University</a>. Statistical theory of risk-sensitive partially observable RL.</p>
+                <ul class="exp-list">
+                    <li class="exp-item">
+                        <span class="exp-logo"><img src="figs/amazon_logo.png" alt="Amazon"></span>
+                        <span class="exp-when">Jun 2026 – Present</span>
+                        <span class="exp-where"><a href="https://www.amazon.science/" target="_blank">Amazon Frontier AI &amp; Robotics</a></span>
+                    </li>
+                    <li class="exp-item">
+                        <span class="exp-logo"><img src="figs/ee_tsinghua_logo.png" alt="Tsinghua EE"></span>
+                        <span class="exp-when">Nov 2024 – May 2025</span>
+                        <span class="exp-where"><a href="https://www.ee.tsinghua.edu.cn/en/" target="_blank">Electronic Engineering, Tsinghua University</a></span>
+                    </li>
+                    <li class="exp-item">
+                        <span class="exp-logo"><img src="figs/noetix_logo.png" alt="Noetix Robotics"></span>
+                        <span class="exp-when">Jul 2024 – Oct 2024</span>
+                        <span class="exp-where"><a href="https://en.noetixrobotics.com/" target="_blank">Noetix Robotics</a></span>
+                    </li>
+                    <li class="exp-item">
+                        <span class="exp-logo"><img src="figs/cmu-logo-horizontal.png" alt="CMU"></span>
+                        <span class="exp-when">Feb 2024 – Sep 2024</span>
+                        <span class="exp-where"><a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a></span>
+                    </li>
+                    <li class="exp-item">
+                        <span class="exp-logo"><img src="figs/iiis_tsinghua_logo_horizontal.png" alt="IIIS Tsinghua"></span>
+                        <span class="exp-when">Jul 2023 – Feb 2024</span>
+                        <span class="exp-where"><a href="https://iiis.tsinghua.edu.cn/en/" target="_blank">IIIS, Tsinghua University</a></span>
+                    </li>
+                </ul>
             </div>
         </section>
         <section class="section" id="awards">
