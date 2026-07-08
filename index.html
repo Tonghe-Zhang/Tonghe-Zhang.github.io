@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tonghe Zhang - Personal Homepage</title>
-    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-    <link rel="shortcut icon" href="favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="TongheZhang" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="icon" type="image/png" href="favicon/photo-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon/photo-96.png" sizes="96x96" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/photo-180.png" />
+    <meta name="apple-mobile-web-app-title" content="Tonghe Zhang" />
     <style>
         * {
             margin: 0;
@@ -285,9 +283,77 @@
         ul[style*="font-size: 1.2em"] {
             font-size: 1.2em; /* Already set, but reinforce consistency */
         }
+
+        /* ---- Dark mode ---- */
+        .theme-toggle {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 1000;
+            background: transparent;
+            border: 1px solid #d0d7de;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            color: #333;
+            transition: all 0.15s ease;
+        }
+        .theme-toggle:hover { border-color: #1976d2; }
+        body[data-theme="dark"] {
+            background-color: #0f1115;
+            color: #c9d1d9;
+        }
+        body[data-theme="dark"] .header h1,
+        body[data-theme="dark"] .section h2,
+        body[data-theme="dark"] .section h3 { color: #e6edf3; }
+        body[data-theme="dark"] .section h2 { border-bottom-color: #30363d; }
+        body[data-theme="dark"] .header { border-bottom-color: #30363d; }
+        body[data-theme="dark"] .intro,
+        body[data-theme="dark"] .section-content,
+        body[data-theme="dark"] .email { color: #c9d1d9; }
+        body[data-theme="dark"] .toc a { color: #e6edf3; }
+        body[data-theme="dark"] #pub-list li[style*="e3f2fd"],
+        body[data-theme="dark"] #pub-list li[data-topics~="highlight"] { background-color: #17212b !important; }
+        body[data-theme="dark"] a[style*="#f0f0f0"] { background: #21262d !important; color: #58a6ff !important; }
+        body[data-theme="dark"] pre,
+        body[data-theme="dark"] div[id$="-dropdown"] { background: #161b22 !important; color: #c9d1d9 !important; border-color: #30363d !important; }
+        body[data-theme="dark"] .theme-toggle { color: #c9d1d9; border-color: #30363d; }
+        body[data-theme="dark"] .pub-tab { color: #9da7b3; border-color: #30363d; }
+        body[data-theme="dark"] .pub-tab.active { background: #1f6feb; border-color: #1f6feb; color: #fff; }
+
+        /* Research topic filter tabs */
+        .pub-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+        .pub-tab {
+            font-family: 'Times New Roman', serif;
+            font-size: 0.95em;
+            color: #555;
+            background: transparent;
+            border: 1px solid #d0d7de;
+            border-radius: 20px;
+            padding: 5px 16px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .pub-tab:hover {
+            border-color: #1976d2;
+            color: #1976d2;
+        }
+        .pub-tab.active {
+            background: #1976d2;
+            border-color: #1976d2;
+            color: #fff;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
     <div class="header">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
             <!-- <img src="figs/TongheZhangFormalPhotoHighResolution.jpg" alt="Tonghe Zhang" class="profile-photo"> -->
@@ -338,12 +404,11 @@
     <div class="main-content">
         <nav class="toc" aria-label="Table of Contents">
             <a href="#news">News</a>
-            <a href="#talks">Talks</a>
             <a href="#research">Research</a>
-            <a href="#social">Social Services</a>
-            <a href="professional_experience.html">Professional Experience</a> 
+            <a href="#talks">Talks</a>
+            <a href="professional_experience.html">Experience</a>
             <a href="education.html">Education</a>
-            <a href="awards.html">Awards & Honors</a>
+            <a href="awards.html">Awards</a>
             <a href="blogs.html">Blogs</a>
             <!-- <a href="#professional_experience">Professional Experience</a>
             <a href="#blogs">Blogs</a>
@@ -392,34 +457,23 @@
                 </p>
             </div>
         </section>
-        <section class="section" id="talks">
-            <h2>Talks and Press Coverage</h2>
-            <div class="section-content">
-                <p>
-                    <strong>Jun 16th, 2026:</strong>
-                    <a href="#enpire">ENPIRE</a> is featured on the NVIDIA website!
-                    <a href="https://research.nvidia.com/labs/gear/enpire/" target="_blank">Click here to read more.</a>
-                </p>
-                <p>
-                    <strong>Dec 9th, 2025:</strong>
-                    BFM-zero was featured in the CMU Robotics Institute newsletter.
-                    <a href="https://www.ri.cmu.edu/helping-robots-think-on-their-feet/">Click here to read the article.</a>
-                </p>
-
-                <p>
-                    <strong>Jun 16th, 2025:</strong>
-                    Delivered a talk at Tsinghua University on online RL for flow matching policies.
-                </p>
-            </div>
-        </section>
         <section class="section" id="research">
             <h2>Research</h2>
-            <div style="font-family: 'Times New Roman', serif; font-size: 1.2em; margin-bottom: 10px;">* Denotes equal contribution. <sup>$</sup> Denotes core contributors. Representative works are highlighted. </div>
+            <div style="font-family: 'Times New Roman', serif; font-size: 1.0em; color: #777; margin-bottom: 16px;">* Equal contribution. <sup>$</sup> Core contributor. Highlighted works are shaded.</div>
 
-            <h3 style="margin-bottom: 20px; font-size: 1.5em; font-weight: bold;">Representative Works</h3>
-            <ul style="font-family: 'Times New Roman', serif; font-size: 1.2em; line-height: 1.8; list-style-type: none; padding-left: 0;">
-                <li id="enpire" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px; background-color: #e3f2fd; border-radius: 12px; border-left: 4px solid #1976d2;">
-                    <video style="width: 150px; height: 150px; border-radius: 8px; margin-top: 14px; margin-left: 15px; flex-shrink: 0; object-fit: cover;" src="figs/enpire-teaser.mp4" autoplay loop muted playsinline preload="auto"></video>
+            <nav class="pub-tabs" aria-label="Filter by topic">
+                <button class="pub-tab active" data-filter="highlight" onclick="filterPubs('highlight', this)">Highlight</button>
+                <button class="pub-tab" data-filter="foundation" onclick="filterPubs('foundation', this)">Foundation Model</button>
+                <button class="pub-tab" data-filter="manipulation" onclick="filterPubs('manipulation', this)">Manipulation</button>
+                <button class="pub-tab" data-filter="humanoid" onclick="filterPubs('humanoid', this)">Humanoid</button>
+                <button class="pub-tab" data-filter="rl" onclick="filterPubs('rl', this)">Reinforcement Learning</button>
+                <button class="pub-tab" data-filter="theory" onclick="filterPubs('theory', this)">Theory</button>
+                <button class="pub-tab" data-filter="all" onclick="filterPubs('all', this)">All</button>
+            </nav>
+
+            <ul id="pub-list" style="font-family: 'Times New Roman', serif; font-size: 1.2em; line-height: 1.8; list-style-type: none; padding-left: 0;">
+                <li id="enpire" data-topics="highlight foundation manipulation" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px; background-color: #e3f2fd; border-radius: 12px; border-left: 4px solid #1976d2;">
+                    <video style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px; flex-shrink: 0; object-fit: cover;" src="figs/enpire-teaser.mp4" autoplay loop muted playsinline preload="auto"></video>
                     <div style="flex: 1; min-width: 0;">
                         <div style="font-weight: bold; margin-bottom: 5px;">ENPIRE: Agentic Robot Policy Self-Improvement in the Real World</div>
                         <div style="margin-bottom: 5px;">Wenli Xiao*, Jia Xie*, <strong>Tonghe Zhang*</strong>, Haotian Lin*, Letian "Max" Fu, Haoru Xue, Jalen Lu, Yi Yang, Cunxi Dai, Zi Wang, Jimmy Wu, Guanzhi Wang, S. Shankar Sastry, Ken Goldberg, Linxi "Jim" Fan, Yuke Zhu, Guanya Shi.</div>
@@ -432,8 +486,8 @@
                         </div>
                     </div>
                 </li>
-                <li id="bfm-zero" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px; background-color: #e3f2fd; border-radius: 12px; border-left: 4px solid #1976d2;">
-                    <iframe style="width: 150px; height: 150px; border-radius: 8px; margin-top: 14px; margin-left: 15px; flex-shrink: 0; border: none;" src="https://www.youtube.com/embed/jYI-LZNvUY4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <li id="bfm-zero" data-topics="highlight foundation humanoid rl" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px; background-color: #e3f2fd; border-radius: 12px; border-left: 4px solid #1976d2;">
+                    <iframe style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px; flex-shrink: 0; border: none;" src="https://www.youtube.com/embed/jYI-LZNvUY4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div style="flex: 1; min-width: 0;">            
                         <div style="font-weight: bold; margin-bottom: 5px;">BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning</div>
                         <div style="margin-bottom: 5px;">Yitang Li*<sup>$</sup>, Zhengyi Luo*<sup>$</sup>, <strong>Tonghe Zhang<sup>$</sup></strong>, Cunxi Dai<sup>$</sup>, Anssi Kanervisto, Andrea Tirinzoni, Haoyang Weng, Kris Kitani, Mateusz Guzek, Ahmed Touati, Alessandro Lazaric, Matteo Pirotta, Guanya Shi.</div>
@@ -459,8 +513,8 @@
                         </div>
                     </div>
                 </li>
-                <li id="reinflow" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px; background-color: #e3f2fd; border-radius: 12px; border-left: 4px solid #1976d2;">
-                    <img src="figs/reinflow-icon.gif" alt="ReinFlow Icon" style="width: 150px; height: 150px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
+                <li id="reinflow" data-topics="highlight rl manipulation" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px; background-color: #e3f2fd; border-radius: 12px; border-left: 4px solid #1976d2;">
+                    <img src="figs/reinflow-icon.gif" alt="ReinFlow Icon" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div>
                         <div style="font-weight: bold; margin-bottom: 5px;">ReinFlow: Fine-tuning Flow Matching Policy with Online Reinforcement Learning</div>
                         <div style="margin-bottom: 5px;"><strong>Tonghe Zhang</strong>, Chao Yu, Sichang Su, Yu Wang.</div>
@@ -481,11 +535,8 @@
                         </div>
                     </div>
                 </li>
-            </ul>
-            <h3 style="margin-bottom: 20px; font-size: 1.5em; font-weight: bold;">More Projects</h3>
-            <ul style="font-family: 'Times New Roman', serif; font-size: 1.2em; line-height: 1.8; list-style-type: none; padding-left: 0;">
-                <li id="pi-rl" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
-                    <img src="figs/pi_rl-icon.gif" alt="Pi RL Icon" style="width: 150px; height: 150px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
+                <li id="pi-rl" data-topics="foundation manipulation rl" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
+                    <img src="figs/pi_rl-icon.gif" alt="Pi RL Icon" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div style="flex: 1; min-width: 0;">
                         <div style="font-weight: bold; margin-bottom: 5px;">π<sub>RL</sub>: Online RL Fine-tuning for Flow-based Vision-Language-Action Models</div>
                         <div style="margin-bottom: 5px;">Kang Chen*, Zhihao Liu*, <strong>Tonghe Zhang*</strong>, Zhen Guo, Si Xu, Hao Lin, Hongzhi Zang, Quanlu Zhang, Zhaofei Yu, Guoliang Fan, Tiejun Huang, Yu Wang, Chao Yu.</div>
@@ -511,8 +562,8 @@
                         </div>
                     </div>
                 </li>
-                <li id="sac-flow" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
-                    <img src="figs/sac-flow.png" alt="SAC Flow" style="width: 150px; height: 150px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
+                <li id="sac-flow" data-topics="rl" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
+                    <img src="figs/sac-flow.png" alt="SAC Flow" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div>
                         <div style="font-weight: bold; margin-bottom: 5px;">Sample-Efficient Reinforcement Learning of Flow Policies via Sequence Modeling</div>
                         <div style="margin-bottom: 5px;">Yixian Zhang*, Shu'ang Yu*, <strong>Tonghe Zhang</strong>, Mo Guang, Haojia Hui, Kaiwen Long, Yu Wang, Chao Yu, Wenbo Ding.</div>
@@ -525,8 +576,8 @@
                         </div>
                     </div>
                 </li>
-                <li style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
-                    <img src="figs/thinkonyourfeet-icon.gif" alt="Think on Your Feet Icon" style="width: 150px; height: 150px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
+                <li data-topics="humanoid rl" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
+                    <img src="figs/thinkonyourfeet-icon.gif" alt="Think on Your Feet Icon" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div>
                         <div style="font-weight: bold; margin-bottom: 5px;">Think on Your Feet: Seamless Transition between Human-like Locomotions in Response to Changing Commands</div>
                         <div style="margin-bottom: 5px;">Huaxing Huang*, Wenhao Cui*, <strong>Tonghe Zhang*</strong>, Shengtao Li, Chenxu Hu, Tianchu Zhang, Liang Zheng, Ziyang Tang, Jinchao Han, Bangyu Qin, Tianchu Zhang, Shipu Zhang, Zheyuan Jiang.</div>
@@ -553,8 +604,8 @@
                         </div>
                     </div>
                 </li>
-                <li style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
-                    <img src="figs/riskpomdp-icon.jpg" alt="Risk POMDP Icon" style="width: 150px; height: 150px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
+                <li data-topics="theory rl" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">
+                    <img src="figs/riskpomdp-icon.jpg" alt="Risk POMDP Icon" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div>
                         <div style="font-weight: bold; margin-bottom: 5px;">Provably Efficient Partially-observable Risk-sensitive Reinforcement Learning</div>
                         <div style="margin-bottom: 5px;"><strong>Tonghe Zhang*</strong>, Yu Chen*, Longbo Huang.</div>
@@ -570,7 +621,26 @@
                 </li>
             </ul>
         </section>
-        
+        <section class="section" id="talks">
+            <h2>Talks &amp; Press</h2>
+            <div class="section-content">
+                <p>
+                    <strong>Jun 16th, 2026:</strong>
+                    <a href="#enpire">ENPIRE</a> is featured on the NVIDIA website.
+                    <a href="https://research.nvidia.com/labs/gear/enpire/" target="_blank">Read more.</a>
+                </p>
+                <p>
+                    <strong>Dec 9th, 2025:</strong>
+                    BFM-Zero is featured in the CMU Robotics Institute newsletter.
+                    <a href="https://www.ri.cmu.edu/helping-robots-think-on-their-feet/">Read more.</a>
+                </p>
+                <p>
+                    <strong>Jun 16th, 2025:</strong>
+                    Talk at Tsinghua University on online RL for flow matching policies.
+                </p>
+            </div>
+        </section>
+
 <section class="section" id="social">
     <h2>Community Services</h2>
     <div class="section-content">
@@ -584,6 +654,37 @@
 
 
 <script>
+    function toggleTheme() {
+        var b = document.body;
+        var dark = b.getAttribute('data-theme') === 'dark';
+        b.setAttribute('data-theme', dark ? 'light' : 'dark');
+        document.querySelector('.theme-toggle').textContent = dark ? '🌙' : '☀️';
+        try { localStorage.setItem('theme', dark ? 'light' : 'dark'); } catch (e) {}
+    }
+    (function() {
+        var saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        if (saved === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            var tt = document.querySelector('.theme-toggle');
+            if (tt) tt.textContent = '☀️';
+        }
+    })();
+    function filterPubs(topic, btn) {
+        document.querySelectorAll('.pub-tab').forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+        document.querySelectorAll('#pub-list > li').forEach(function(li) {
+            var topics = (li.getAttribute('data-topics') || '').split(' ');
+            li.style.display = (topic === 'all' || topics.indexOf(topic) !== -1) ? 'flex' : 'none';
+        });
+    }
+    // Default to Highlight on load
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('#pub-list > li').forEach(function(li) {
+            var topics = (li.getAttribute('data-topics') || '').split(' ');
+            li.style.display = topics.indexOf('highlight') !== -1 ? 'flex' : 'none';
+        });
+    });
     function toggleNews() {
         var more = document.getElementById('news-more');
         var toggle = document.getElementById('news-toggle');
