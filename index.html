@@ -401,16 +401,17 @@
             border: 1px solid var(--border);
             border-radius: 20px;
             background: var(--surface);
-            box-shadow: 0 2px 6px rgba(20,25,35,.06), 0 8px 20px rgba(20,25,35,.05);
+            box-shadow: 0 3px 10px rgba(20,25,35,.12), 0 12px 30px rgba(20,25,35,.10);
             transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
             margin-bottom: 0 !important;
         }
         #pub-list > li:hover {
             transform: translateY(-5px);
-            box-shadow: 0 14px 36px rgba(20,25,35,.16);
+            box-shadow: 0 8px 18px rgba(20,25,35,.18), 0 20px 48px rgba(20,25,35,.20);
             border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
         }
-        body[data-theme="dark"] #pub-list > li:hover { box-shadow: 0 14px 36px rgba(0,0,0,.5); }
+        body[data-theme="dark"] #pub-list > li { box-shadow: 0 3px 10px rgba(0,0,0,.5), 0 12px 30px rgba(0,0,0,.4); }
+        body[data-theme="dark"] #pub-list > li:hover { box-shadow: 0 20px 48px rgba(0,0,0,.6); }
         /* Venue tag rendered in normal black, like the author line */
         #pub-list .venue { color: var(--text) !important; }
 
@@ -579,7 +580,6 @@
         </section>
         <section class="section" id="research">
             <h2>Research</h2>
-            <div class="pub-note">* Equal contribution &nbsp;·&nbsp; <sup>$</sup> Core contributor</div>
 
             <nav class="pub-tabs" aria-label="Filter by topic">
                 <button class="pub-tab active" data-filter="highlight" onclick="filterPubs('highlight', this)">Highlight</button>
@@ -591,6 +591,7 @@
                 <button class="pub-tab" data-filter="theory" onclick="filterPubs('theory', this)">Theory</button>
                 <button class="pub-tab" data-filter="all" onclick="filterPubs('all', this)">All</button>
             </nav>
+            <div class="pub-note">* Equal contribution &nbsp;·&nbsp; <sup>$</sup> Core contributor</div>
 
             <ul id="pub-list" style="font-family: 'Times New Roman', serif; font-size: 1.2em; line-height: 1.8; list-style-type: none; padding-left: 0;">
                 <li id="enpire" data-topics="highlight agent manipulation" style="margin-bottom: 40px; display: flex; align-items: flex-start; gap: 20px;">

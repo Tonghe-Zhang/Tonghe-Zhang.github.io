@@ -61,22 +61,44 @@
         if (typeof Globe === "undefined") { elGlobe.classList.add("globe-unavailable"); return; }
         var data = (points || []).map(function (p) { return { lat: p.lat, lng: p.lng }; });
         if (!globe) {
+            var dark = document.body.getAttribute("data-theme") === "dark";
             globe = Globe()(elGlobe)
-                .globeImageUrl("lib/earth-blue-marble.jpg")
                 .backgroundColor("rgba(0,0,0,0)")
-                .showGraticules(true)
+                .showGlobe(true)
+                .showAtmosphere(true)
+                .atmosphereColor(dark ? "#3f86d0" : "#9ccaf5")
+                .atmosphereAltitude(0.28)
+                .globeImageUrl(null)
                 .width(elGlobe.clientWidth)
                 .height(elGlobe.clientHeight)
-                .pointOfView({ lat: 20, lng: 10, altitude: 2.0 })
+                // continents as flat sky-blue polygons (no terrain photo)
+                .polygonCapColor(function () { return dark ? "#2f6fb0" : "#7fb3e8"; })
+                .polygonSideColor(function () { return "rgba(0,0,0,0)"; })
+                .polygonStrokeColor(function () { return dark ? "#4f96e0" : "#5b9bd8"; })
+                .polygonAltitude(0.008)
+                // visitor dots
                 .pointsData(data)
                 .pointLat("lat").pointLng("lng")
-                .pointColor(function () { return "#ff3b3b"; })
-                .pointAltitude(0.02)
-                .pointRadius(0.45)
-                .atmosphereColor("#6cb2ff")
-                .atmosphereAltitude(0.22);
+                .pointColor(function () { return "#ff5a5a"; })
+                .pointAltitude(0.03)
+                .pointRadius(0.5);
+            // pale ocean sphere (mutate existing material — no THREE constructor)
+            try {
+                var mat = globe.globeMaterial();
+                mat.color.set(dark ? "#0e2233" : "#eaf4ff");
+                if ("shininess" in mat) mat.shininess = 3;
+                mat.transparent = true; mat.opacity = dark ? 0.95 : 0.96;
+            } catch (e) {}
+            globe.pointOfView({ lat: 20, lng: 10, altitude: 2.4 }, 0);
             var c = globe.controls();
             c.autoRotate = true; c.autoRotateSpeed = 0.6; c.enableZoom = false;
+            fetch("lib/countries.geojson").then(function (r) { return r.json(); })
+                .then(function (geo) {
+                    var feats = geo.features.filter(function (f) {
+                        return f.properties && f.properties.ISO_A2 !== "AQ"; // drop Antarctica
+                    });
+                    globe.polygonsData(feats);
+                }).catch(function () {});
         } else {
             globe.pointsData(data);
         }
