@@ -78,9 +78,16 @@
             height: 250px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #f0f0f0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--surface);
+            box-shadow: 0 4px 14px rgba(20,25,35,.14), 0 10px 30px rgba(20,25,35,.12);
+            transition: transform .25s ease, box-shadow .25s ease;
         }
+        .profile-photo:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(20,25,35,.22), 0 22px 50px rgba(20,25,35,.18);
+        }
+        body[data-theme="dark"] .profile-photo { box-shadow: 0 4px 14px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.4); }
+        body[data-theme="dark"] .profile-photo:hover { box-shadow: 0 12px 28px rgba(0,0,0,.6), 0 22px 50px rgba(0,0,0,.5); }
 
         .social-row {
             display: flex;
