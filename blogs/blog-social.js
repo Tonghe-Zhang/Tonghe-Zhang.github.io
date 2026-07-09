@@ -31,13 +31,14 @@ var LS_CLIKE_PREFIX = "blogCLiked:" + postId + ":";
 var LS_STOREID = "blogStoreId:" + postId;
 
 var storeId = STORE_IDS[postId] || localStorage.getItem(LS_STOREID) || null;
-var state = { likes: 0, comments: [] };   // local mirror of the remote object
+var state = { views: 0, likes: 0, comments: [] };   // local mirror of the remote object
 var polling = false;
 
 // ---------------------------------------------------------------------------
 // icons
 // ---------------------------------------------------------------------------
 var ICON = {
+    eye: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>',
     heart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.7-4.35-9.3-8.05C.9 10.2 1.4 6.9 4.1 5.6c2-1 4.2-.3 5.4 1.3L12 9l2.5-2.1c1.2-1.6 3.4-2.3 5.4-1.3 2.7 1.3 3.2 4.6 1.4 7.35C18.7 16.65 12 21 12 21z"/></svg>',
     share: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>',
     comment: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
@@ -92,6 +93,7 @@ function loadState() {
         .then(function (r) { return r.json(); })
         .then(function (j) {
             var d = (j && j.data) || {};
+            state.views = typeof d.views === "number" ? d.views : 0;
             state.likes = typeof d.likes === "number" ? d.likes : 0;
             state.comments = Array.isArray(d.comments) ? d.comments : [];
             return state;
@@ -102,7 +104,7 @@ function saveState() {
         return fetch(API + "/" + id, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: "thz-blog:" + postId, data: { likes: state.likes, comments: state.comments } })
+            body: JSON.stringify({ name: "thz-blog:" + postId, data: { views: state.views, likes: state.likes, comments: state.comments } })
         });
     });
 }
@@ -116,6 +118,8 @@ function buildBar() {
     bar.classList.add("blog-interaction-bar");
     var liked = localStorage.getItem(LS_LIKE_KEY) === "1";
     bar.innerHTML =
+        '<span class="bs-btn bs-views" aria-label="View count" title="Views">' +
+            ICON.eye + '<span class="bs-count" id="bs-view-count">' + state.views + '</span></span>' +
         '<button type="button" class="bs-btn bs-like-btn' + (liked ? " liked" : "") +
             '" aria-pressed="' + (liked ? "true" : "false") + '" aria-label="Like this post">' +
             ICON.heart + '<span class="bs-count" id="bs-like-count">' + state.likes + '</span></button>' +
@@ -265,14 +269,23 @@ function onDeleteComment(id) {
 // ===========================================================================
 // boot
 // ===========================================================================
+function refreshCounts() {
+    var v = document.getElementById("bs-view-count");
+    var l = document.getElementById("bs-like-count");
+    if (v) v.textContent = state.views;
+    if (l) l.textContent = state.likes;
+}
 function boot() {
     buildBar();
     buildComments();
-    // pull live data, then refresh UI
+    // pull live data, increment views once, then refresh UI
     loadState().then(function () {
-        var countEl = document.getElementById("bs-like-count");
-        if (countEl) countEl.textContent = state.likes;
+        refreshCounts();
         renderComments();
+        // count this page load as a view, then persist
+        state.views = (state.views || 0) + 1;
+        refreshCounts();
+        return saveState();
     }).catch(function () {});
 }
 if (document.readyState === "loading") {

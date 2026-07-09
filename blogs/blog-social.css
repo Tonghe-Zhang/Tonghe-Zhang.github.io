@@ -75,7 +75,27 @@
     stroke-width: 2;
 }
 
+/* View counter — static, not clickable */
+.bs-btn.bs-views {
+    cursor: default;
+    background: transparent;
+    border-color: transparent;
+    color: var(--bs-muted, #6b7280);
+    padding-left: 4px;
+}
+.bs-btn.bs-views:hover {
+    border-color: transparent;
+    color: var(--bs-muted, #6b7280);
+    background: transparent;
+}
+.bs-btn.bs-views svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
 .bs-btn.bs-repost-btn svg,
+.bs-btn.bs-share-btn svg,
 .bs-btn.bs-comment-btn svg {
     fill: none;
     stroke: currentColor;
