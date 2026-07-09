@@ -412,6 +412,31 @@
         }
         body[data-theme="dark"] #pub-list > li { box-shadow: 0 3px 10px rgba(0,0,0,.5), 0 12px 30px rgba(0,0,0,.4); }
         body[data-theme="dark"] #pub-list > li:hover { box-shadow: 0 20px 48px rgba(0,0,0,.6); }
+
+        /* ---------- Dark-mode fixes ---------- */
+        /* body text that was hardcoded dark -> light */
+        body[data-theme="dark"] .section-content,
+        body[data-theme="dark"] .header .intro,
+        body[data-theme="dark"] .header .email { color: var(--text); }
+        /* link chips (arXiv / Website / GitHub ...): drop the white pill, show plain blue links */
+        body[data-theme="dark"] #pub-list a[style*="background"] {
+            background: transparent !important;
+            color: var(--accent) !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            margin-right: 16px !important;
+        }
+        body[data-theme="dark"] #pub-list a[style*="background"]:hover { text-decoration: underline; }
+        /* logos: don't invert colored logos to solid white — give them a white plate so text stays readable */
+        body[data-theme="dark"] .track-logo img { filter: none !important; }
+        body[data-theme="dark"] .track-card .track-logo {
+            background: #fff;
+            border-radius: 8px;
+            padding: 4px 8px;
+            height: auto;
+            max-height: 46px;
+        }
+        body[data-theme="dark"] .track-card .track-logo img { max-height: 38px; }
         /* Venue tag rendered in normal black, like the author line */
         #pub-list .venue { color: var(--text) !important; }
 
