@@ -74,8 +74,8 @@
         }
 
         .profile-photo {
-            width: 250px;
-            height: 250px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--surface);
@@ -92,47 +92,51 @@
         .social-row {
             display: flex;
             flex-direction: row;
-            gap: 8px;
-            justify-content: center;
+            gap: 22px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            margin-top: 20px;
             overflow: visible;
         }
         .social-row a {
             position: relative;
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
+            justify-content: flex-start;
+            gap: 6px;
+            width: 54px;
+            border: none;
+            background: none;
+            transition: transform .18s ease;
+            font-family: 'Times New Roman', serif;
+            font-size: 0.62rem;
+            color: var(--muted);
+        }
+        .social-row a > svg {
+            width: 54px;
+            height: 54px;
+            display: block;
+            padding: 13px;
             border-radius: 50%;
             border: 1px solid var(--border);
             background: #fff;
-            transition: transform .18s ease, box-shadow .18s ease;
+            box-sizing: border-box;
+            transition: box-shadow .18s ease;
         }
         .social-row a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,.12);
+            transform: translateY(-3px);
             text-decoration: none;
+            color: var(--accent);
         }
-        .social-row svg { width: 20px; height: 20px; display: block; }
-        body[data-theme="dark"] .social-row a { background: #f4f4f4; }
-        /* Pure-CSS hover label below each social icon */
+        .social-row a:hover > svg { box-shadow: 0 5px 14px rgba(0,0,0,.15); }
+        body[data-theme="dark"] .social-row a > svg { background: #f4f4f4; }
+        /* always-visible label below each social icon */
         .social-row a::after {
             content: attr(data-label);
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 6px;
-            font-family: 'Times New Roman', serif;
-            font-size: 0.7rem;
-            color: var(--muted);
-            background: var(--bg);
             white-space: nowrap;
             pointer-events: none;
-            opacity: 0;
-            transition: opacity .15s ease;
         }
-        .social-row a:hover::after { opacity: 1; }
 
         .header-content { flex: 1; padding-top: 20px; min-width: 0; }
 
@@ -541,14 +545,22 @@
     <div class="header">
         <div class="profile-col">
             <img src="figs/TongheZhangPhotoUpscaled.jpg" alt="Tonghe Zhang" class="profile-photo">
+        </div>
+
+        <div class="header-content">
+            <h1>Tonghe Zhang <span class="cn-name">张同和</span></h1>
+            <p class="email"><a href="mailto:tonghez@andrew.cmu.edu">tonghez [at] andrew.cmu.edu</a></p>
+            <p class="intro">I am a M.S. in Robotics Student at <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, <a href="https://www.cmu.edu/">Carnegie Mellon University</a>,<br>advised by Professor <a href="https://www.gshi.me/">Guanya Shi</a>.</p>
+            <p class="intro tagline">I work on building scalable robot learning system that act reliably in the real world.</p>
+            <p class="intro">Previously, I completed my B.E. in Electronic Engineering from <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>.</p>
             <nav class="social-row" aria-label="Social links">
                 <a href="mailto:tonghez@andrew.cmu.edu" title="Email" aria-label="Email" data-label="Email">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
                 </a>
-                <a href="https://scholar.google.com/citations?user=T_QE5rUAAAAJ&hl=en&authuser=1" target="_blank" title="Google Scholar" aria-label="Google Scholar" data-label="Google Scholar">
+                <a href="https://scholar.google.com/citations?user=T_QE5rUAAAAJ&hl=en&authuser=1" target="_blank" title="Google Scholar" aria-label="Google Scholar" data-label="Scholar">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/><path fill="#356ac3" d="M12 24a7 7 0 0 1 0-14z"/><path fill="#a0c3ff" d="M12 10 0 5.7 12 0l12 5.7z"/><path fill="#76a7fa" d="M12 10 0 5.7 12 0z"/></svg>
                 </a>
-                <a href="https://x.com/intent/follow?screen_name=TongheZhang01" target="_blank" title="Follow me on X" aria-label="Follow me on X" data-label="Follow me on X">
+                <a href="https://x.com/intent/follow?screen_name=TongheZhang01" target="_blank" title="Follow me on X" aria-label="Follow me on X" data-label="X">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.01 4.13H5.04z"/></svg>
                 </a>
                 <a href="https://www.linkedin.com/in/tonghe-zhang-3a06382bb?originalSubdomain=hk" target="_blank" title="LinkedIn" aria-label="LinkedIn" data-label="LinkedIn">
@@ -557,18 +569,10 @@
                 <a href="https://github.com/Tonghe-Zhang" target="_blank" title="GitHub" aria-label="GitHub" data-label="GitHub">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#181717"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.92 1.23 3.23 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58C20.56 22.29 24 17.8 24 12.5 24 5.87 18.63.5 12 .5z"/></svg>
                 </a>
-                <a href="https://huggingface.co/TongheZhangTH" target="_blank" title="Hugging Face" aria-label="Hugging Face" data-label="Hugging Face">
+                <a href="https://huggingface.co/TongheZhangTH" target="_blank" title="Hugging Face" aria-label="Hugging Face" data-label="HuggingFace">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12.5" r="8.3" fill="#FFD21E"/><path fill="#3a3a3a" d="M8.9 10.4a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1zm6.2 0a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1zM8.5 14.6h7c-.2 1.8-1.7 3.1-3.5 3.1s-3.3-1.3-3.5-3.1z"/><path fill="#FF9D0B" d="M5 13.6c-.5 0-.9.4-.9.9 0 .3.2.6.4.8-.2.1-.4.4-.4.7 0 .5.4.9.9.9.2 0 .5-.1.6-.3.1.5.5.8 1 .8V13.7c-.5 0-.9.3-1 .8-.1-.5-.6-.9-.6-.9zm14 0c.5 0 .9.4.9.9 0 .3-.2.6-.4.8.2.1.4.4.4.7 0 .5-.4.9-.9.9-.2 0-.5-.1-.6-.3-.1.5-.5.8-1 .8V13.7c.5 0 .9.3 1 .8.1-.5.6-.9.6-.9z"/></svg>
                 </a>
             </nav>
-        </div>
-
-        <div class="header-content">
-            <h1>Tonghe Zhang <span class="cn-name">张同和</span></h1>
-            <p class="intro">I am a M.S. in Robotics Student at <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, <a href="https://www.cmu.edu/">Carnegie Mellon University</a>,<br>advised by Professor <a href="https://www.gshi.me/">Guanya Shi</a>.</p>
-            <p class="intro tagline">I work on building scalable robot learning system that act reliably in the real world.</p>
-            <p class="intro">Previously, I completed my B.E. in Electronic Engineering from <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>.</p>
-            <p class="email">Email: <a href="mailto:tonghez@andrew.cmu.edu">tonghez [at] andrew.cmu.edu</a></p>
         </div>
     </div>
 
