@@ -451,6 +451,9 @@
         body[data-theme="dark"] .track-card .track-logo img { max-height: 38px; }
         /* Venue tag rendered in normal black, like the author line */
         #pub-list .venue { color: var(--text) !important; }
+        /* fixed-width date so the '|' separators align vertically */
+        .mdate { display: inline-block; width: 4.7em; color: var(--muted); font-variant-numeric: tabular-nums; }
+        .mdate-sep { color: var(--muted); margin-right: 0.5em; }
         /* paper title links: keep black, subtle hover */
         #pub-list .pub-title a { color: var(--heading); text-decoration: none; }
         #pub-list .pub-title a:hover { color: var(--accent); text-decoration: underline; }
@@ -585,32 +588,32 @@
             <h2>News</h2>
             <div class="section-content">
                 <p>
-                    <span style="color: var(--muted);">Jun 2026 |</span> New blog: <a href="blogs/beyond-the-singularity.html">Beyond Singularity: The Democratic Promise of Physical AI</a>.
+                    <span class="mdate">Jun 2026</span><span class="mdate-sep">|</span> New blog: <a href="blogs/beyond-the-singularity.html">Beyond Singularity: The Democratic Promise of Physical AI</a>.
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Jun 2026 |</span> Released <a href="#enpire">ENPIRE</a>, a coding agent harness for real-world policy self-improvement.
+                    <span class="mdate">Jun 2026</span><span class="mdate-sep">|</span> Released <a href="#enpire">ENPIRE</a>, a coding agent harness for real-world policy self-improvement.
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Jan 2026 |</span> <a href="#bfm-zero">BFM-zero</a> accepted at ICLR 2026.
+                    <span class="mdate">Jan 2026</span><span class="mdate-sep">|</span> <a href="#bfm-zero">BFM-zero</a> accepted at ICLR 2026.
                 </p>
                 <div id="news-more" style="display: none;">
                 <p>
-                    <span style="color: var(--muted);">Nov 2025 |</span> Released <a href="#bfm-zero">BFM-Zero</a>.
+                    <span class="mdate">Nov 2025</span><span class="mdate-sep">|</span> Released <a href="#bfm-zero">BFM-Zero</a>.
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Oct 2025 |</span> Released <a href="#pi-rl">π<sub>RL</sub></a>, online RL fine-tuning for flow VLAs.
+                    <span class="mdate">Oct 2025</span><span class="mdate-sep">|</span> Released <a href="#pi-rl">π<sub>RL</sub></a>, online RL fine-tuning for flow VLAs.
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Oct 2025 |</span> New blog: <a href="blogs/flow-vla-architecture.html">Understanding the Architecture of Flow VLAs (π0 and π0.5)</a>.
+                    <span class="mdate">Oct 2025</span><span class="mdate-sep">|</span> New blog: <a href="blogs/flow-vla-architecture.html">Understanding the Architecture of Flow VLAs (π0 and π0.5)</a>.
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Oct 2025 |</span> My <a href="blogs/fokker-planck-equation.html">blog on the Fokker-Planck equation</a> is online.
+                    <span class="mdate">Oct 2025</span><span class="mdate-sep">|</span> My <a href="blogs/fokker-planck-equation.html">blog on the Fokker-Planck equation</a> is online.
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Sep 2025 |</span> <a href="#reinflow">ReinFlow</a> accepted at NeurIPS 2025.
+                    <span class="mdate">Sep 2025</span><span class="mdate-sep">|</span> <a href="#reinflow">ReinFlow</a> accepted at NeurIPS 2025.
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Aug 2025 |</span> Started at <a href="https://www.ri.cmu.edu/">CMU RI</a>.
+                    <span class="mdate">Aug 2025</span><span class="mdate-sep">|</span> Started at <a href="https://www.ri.cmu.edu/">CMU RI</a>.
                 </p>
                 </div>
                 <p style="margin-top: 0; margin-bottom: 0;">
@@ -784,13 +787,13 @@
             <h2>Essays &amp; Blogs</h2>
             <div class="section-content">
                 <p>
-                    <span style="color: var(--muted);">Jun 2026 |</span> <a href="blogs/beyond-the-singularity.html">Beyond Singularity: The Democratic Promise of Physical AI</a>
+                    <span class="mdate">Jun 2026</span><span class="mdate-sep">|</span> <a href="blogs/beyond-the-singularity.html">Beyond Singularity: The Democratic Promise of Physical AI</a>
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Oct 2025 |</span> <a href="blogs/flow-vla-architecture.html">Understanding the Architecture of Flow VLAs</a>
+                    <span class="mdate">Oct 2025</span><span class="mdate-sep">|</span> <a href="blogs/flow-vla-architecture.html">Understanding the Architecture of Flow VLAs</a>
                 </p>
                 <p>
-                    <span style="color: var(--muted);">Oct 2025 |</span> <a href="blogs/fokker-planck-equation.html">The Mathematical Building Blocks of Diffusion Generative Models</a>
+                    <span class="mdate">Oct 2025</span><span class="mdate-sep">|</span> <a href="blogs/fokker-planck-equation.html">The Mathematical Building Blocks of Diffusion Generative Models</a>
                 </p>
             </div>
         </section>
@@ -858,9 +861,9 @@
         <section class="section" id="talks">
             <h2>Talks &amp; Press</h2>
             <div class="section-content">
-                <p><span style="color: var(--muted);">Jun 2026 |</span> ENPIRE is featured on the NVIDIA website. <a href="https://research.nvidia.com/labs/gear/enpire/" target="_blank">Read more.</a></p>
-                <p><span style="color: var(--muted);">Dec 2025 |</span> BFM-Zero is featured in the CMU Robotics Institute newsletter. <a href="https://www.ri.cmu.edu/helping-robots-think-on-their-feet/">Read more.</a></p>
-                <!-- <p><span style="color: var(--muted);">Jun 2025 |</span> Invited talk at Tsinghua University on online RL for flow matching policies.</p> -->
+                <p><span class="mdate">Jun 2026</span><span class="mdate-sep">|</span> ENPIRE is featured on the NVIDIA website. <a href="https://research.nvidia.com/labs/gear/enpire/" target="_blank">Read more.</a></p>
+                <p><span class="mdate">Dec 2025</span><span class="mdate-sep">|</span> BFM-Zero is featured in the CMU Robotics Institute newsletter. <a href="https://www.ri.cmu.edu/helping-robots-think-on-their-feet/">Read more.</a></p>
+                <!-- <p><span class="mdate">Jun 2025</span><span class="mdate-sep">|</span> Invited talk at Tsinghua University on online RL for flow matching policies.</p> -->
             </div>
         </section>
 
@@ -896,11 +899,11 @@
         <section class="section" id="awards">
             <h2>Awards &amp; Honors</h2>
             <div class="section-content">
-                <p><span style="color: var(--muted);">Jul 2025 |</span> Beijing Outstanding Graduate <span style="color: var(--muted);">(&lt;1%)</span></p>
-                <p><span style="color: var(--muted);">Jul 2025 |</span> Tsinghua University Excellent Graduate <span style="color: var(--muted);">(&lt;1%)</span></p>
-                <p><span style="color: var(--muted);">Oct 2024 |</span> National Scholarship of China <span style="color: var(--muted);">(&lt;1%)</span></p>
-                <p><span style="color: var(--muted);">Oct 2023 |</span> National Scholarship of China <span style="color: var(--muted);">(&lt;1%)</span></p>
-                <p><span style="color: var(--muted);">Oct 2023 |</span> Excellent Student Leader, Tsinghua University <span style="color: var(--muted);">(&lt;1%)</span></p>
+                <p><span class="mdate">Jul 2025</span><span class="mdate-sep">|</span> Beijing Outstanding Graduate <span style="color: var(--muted);">(&lt;1%)</span></p>
+                <p><span class="mdate">Jul 2025</span><span class="mdate-sep">|</span> Tsinghua University Excellent Graduate <span style="color: var(--muted);">(&lt;1%)</span></p>
+                <p><span class="mdate">Oct 2024</span><span class="mdate-sep">|</span> National Scholarship of China <span style="color: var(--muted);">(&lt;1%)</span></p>
+                <p><span class="mdate">Oct 2023</span><span class="mdate-sep">|</span> National Scholarship of China <span style="color: var(--muted);">(&lt;1%)</span></p>
+                <p><span class="mdate">Oct 2023</span><span class="mdate-sep">|</span> Excellent Student Leader, Tsinghua University <span style="color: var(--muted);">(&lt;1%)</span></p>
             </div>
         </section>
     </div>
