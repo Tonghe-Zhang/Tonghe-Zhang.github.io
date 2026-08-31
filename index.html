@@ -450,11 +450,14 @@
         }
         body[data-theme="dark"] .track-card .track-logo img { max-height: 38px; }
         /* Venue tag rendered in normal black, like the author line */
-        #pub-list .venue { color: var(--text) !important; }
+        #pub-list .venue { color: var(--muted) !important; }
         /* fixed-width date so the '|' separators align vertically */
         .mdate { display: inline-block; width: 4.7em; color: var(--muted); font-variant-numeric: tabular-nums; }
         .mdate-sep { color: var(--muted); margin-right: 0.5em; }
         /* paper title links: keep black, subtle hover */
+        #pub-list .pub-authors,
+        #pub-list .pub-tldr { color: var(--muted); }
+        #pub-list .pub-authors strong { color: var(--muted); }
         #pub-list .pub-title a { color: var(--heading); text-decoration: none; }
         #pub-list .pub-title a:hover { color: var(--accent); text-decoration: underline; }
 
@@ -641,9 +644,9 @@
                     <video style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px; flex-shrink: 0; object-fit: cover;" src="figs/enpire-teaser.mp4" autoplay loop muted playsinline preload="auto"></video>
                     <div style="flex: 1; min-width: 0;">
                         <div class="pub-title" style="font-weight: bold; margin-bottom: 5px;"><a href="https://research.nvidia.com/labs/gear/enpire/" target="_blank">ENPIRE: Agentic Robot Policy Self-Improvement in the Real World</a></div>
-                        <div style="margin-bottom: 5px;">Wenli Xiao*, Jia Xie*, <strong>Tonghe Zhang*</strong>, Haotian Lin*, Letian "Max" Fu, Haoru Xue, Jalen Lu, Yi Yang, Cunxi Dai, Zi Wang, Jimmy Wu, Guanzhi Wang, S. Shankar Sastry, Ken Goldberg, Linxi "Jim" Fan, Yuke Zhu, Guanya Shi.</div>
+                        <div class="pub-authors" style="margin-bottom: 5px;">Wenli Xiao*, Jia Xie*, <strong>Tonghe Zhang*</strong>, Haotian Lin*, Letian "Max" Fu, Haoru Xue, Jalen Lu, Yi Yang, Cunxi Dai, Zi Wang, Jimmy Wu, Guanzhi Wang, S. Shankar Sastry, Ken Goldberg, Linxi "Jim" Fan, Yuke Zhu, Guanya Shi.</div>
                         <div style="margin-bottom: 10px;"><span class="venue">COLM WAB 2026 &middot; COLM LSEI 2026</span></div>
-                        <div style="margin-bottom: 10px;">TL;DR: Coding agents autonomously self-improve real-world dexterous manipulation policies.</div>
+                        <div class="pub-tldr" style="margin-bottom: 10px;">TL;DR: Coding agents autonomously self-improve real-world dexterous manipulation policies.</div>
                         <div style="margin-bottom: 10px;">
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://research.nvidia.com/labs/gear/enpire/" target="_blank">Website</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://arxiv.org/pdf/2606.19980" target="_blank">arXiv</a>
@@ -655,9 +658,9 @@
                     <iframe style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px; flex-shrink: 0; border: none;" src="https://www.youtube.com/embed/jYI-LZNvUY4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div style="flex: 1; min-width: 0;">            
                         <div class="pub-title" style="font-weight: bold; margin-bottom: 5px;"><a href="https://lecar-lab.github.io/BFM-Zero/" target="_blank">BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control<br>Using Unsupervised Reinforcement Learning</a></div>
-                        <div style="margin-bottom: 5px;">Yitang Li*<sup>$</sup>, Zhengyi Luo*<sup>$</sup>, <strong>Tonghe Zhang<sup>$</sup></strong>, Cunxi Dai<sup>$</sup>, Anssi Kanervisto, Andrea Tirinzoni, Haoyang Weng, Kris Kitani, Mateusz Guzek, Ahmed Touati, Alessandro Lazaric, Matteo Pirotta, Guanya Shi.</div>
+                        <div class="pub-authors" style="margin-bottom: 5px;">Yitang Li*<sup>$</sup>, Zhengyi Luo*<sup>$</sup>, <strong>Tonghe Zhang<sup>$</sup></strong>, Cunxi Dai<sup>$</sup>, Anssi Kanervisto, Andrea Tirinzoni, Haoyang Weng, Kris Kitani, Mateusz Guzek, Ahmed Touati, Alessandro Lazaric, Matteo Pirotta, Guanya Shi.</div>
                         <div style="margin-bottom: 10px;"><span class="venue">ICLR 2025</span></div>
-                        <div style="margin-bottom: 10px;">TL;DR: Humanoid behavior foundation model via unsupervised RL.</div>
+                        <div class="pub-tldr" style="margin-bottom: 10px;">TL;DR: Humanoid behavior foundation model via unsupervised RL.</div>
                         <div style="margin-bottom: 10px;">
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://lecar-lab.github.io/BFM-Zero/" target="_blank">Website</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://arxiv.org/abs/2511.04131" target="_blank">arXiv</a>
@@ -682,9 +685,9 @@
                     <img src="figs/reinflow-icon.gif" alt="ReinFlow Icon" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div>
                         <div class="pub-title" style="font-weight: bold; margin-bottom: 5px;"><a href="https://reinflow.github.io/" target="_blank">ReinFlow: Fine-tuning Flow Matching Policy with Online Reinforcement Learning</a></div>
-                        <div style="margin-bottom: 5px;"><strong>Tonghe Zhang</strong>, Chao Yu, Sichang Su, Yu Wang.</div>
+                        <div class="pub-authors" style="margin-bottom: 5px;"><strong>Tonghe Zhang</strong>, Chao Yu, Sichang Su, Yu Wang.</div>
                         <div style="margin-bottom: 10px;"><span class="venue">NeurIPS 2025</span></div>
-                        <div style="margin-bottom: 10px;">TL;DR: Injecting learnable noise to fine-tune flow matching policies and VLAs with policy gradient.</div>
+                        <div class="pub-tldr" style="margin-bottom: 10px;">TL;DR: Injecting learnable noise to fine-tune flow matching policies and VLAs with policy gradient.</div>
                         <div style="margin-bottom: 10px;">
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://reinflow.github.io/">Website</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://arxiv.org/abs/2505.22094">arXiv</a>
@@ -703,9 +706,9 @@
                     <img src="figs/pi_rl-icon.gif" alt="Pi RL Icon" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div style="flex: 1; min-width: 0;">
                         <div class="pub-title" style="font-weight: bold; margin-bottom: 5px;"><a href="https://arxiv.org/abs/2510.25889" target="_blank">π<sub>RL</sub>: Online RL Fine-tuning for Flow-based Vision-Language-Action Models</a></div>
-                        <div style="margin-bottom: 5px;">Kang Chen*, Zhihao Liu*, <strong>Tonghe Zhang*</strong>, Zhen Guo, Si Xu, Hao Lin, Hongzhi Zang, Quanlu Zhang, Zhaofei Yu, Guoliang Fan, Tiejun Huang, Yu Wang, Chao Yu.</div>
+                        <div class="pub-authors" style="margin-bottom: 5px;">Kang Chen*, Zhihao Liu*, <strong>Tonghe Zhang*</strong>, Zhen Guo, Si Xu, Hao Lin, Hongzhi Zang, Quanlu Zhang, Zhaofei Yu, Guoliang Fan, Tiejun Huang, Yu Wang, Chao Yu.</div>
                         <div style="margin-bottom: 10px;"><span style="color: var(--muted);">Preprint</span></div>
-                        <div style="margin-bottom: 10px;">TL;DR: Online RL fine-tunes flow-based VLAs (π0.5, GR00T N1.5) via large-scale parallel simulation.</div>
+                        <div class="pub-tldr" style="margin-bottom: 10px;">TL;DR: Online RL fine-tunes flow-based VLAs (π0.5, GR00T N1.5) via large-scale parallel simulation.</div>
                         <div style="margin-bottom: 10px;">
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://arxiv.org/abs/2510.25889" target="_blank">arXiv</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://github.com/RLinf/RLinf" target="_blank">GitHub</a>
@@ -730,9 +733,9 @@
                     <img src="figs/sac-flow.png" alt="SAC Flow" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div>
                         <div class="pub-title" style="font-weight: bold; margin-bottom: 5px;"><a href="https://sac-flow.github.io/" target="_blank">Sample-Efficient Reinforcement Learning of Flow Policies via Sequence Modeling</a></div>
-                        <div style="margin-bottom: 5px;">Yixian Zhang*, Shu'ang Yu*, <strong>Tonghe Zhang</strong>, Mo Guang, Haojia Hui, Kaiwen Long, Yu Wang, Chao Yu, Wenbo Ding.</div>
+                        <div class="pub-authors" style="margin-bottom: 5px;">Yixian Zhang*, Shu'ang Yu*, <strong>Tonghe Zhang</strong>, Mo Guang, Haojia Hui, Kaiwen Long, Yu Wang, Chao Yu, Wenbo Ding.</div>
                         <div style="margin-bottom: 10px;"><span class="venue">ICLR 2025</span></div>
-                        <div style="margin-bottom: 10px;">TL;DR: Training flow matching policies via off-policy RL by treating the process as RNN/Transformer.</div>
+                        <div class="pub-tldr" style="margin-bottom: 10px;">TL;DR: Training flow matching policies via off-policy RL by treating the process as RNN/Transformer.</div>
                         <div style="margin-bottom: 10px;">
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://arxiv.org/pdf/2509.25756" target="_blank">arXiv</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://github.com/Elessar123/SAC-FLOW" target="_blank">GitHub</a>
@@ -744,9 +747,9 @@
                     <img src="figs/thinkonyourfeet-icon.gif" alt="Think on Your Feet Icon" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div>
                         <div class="pub-title" style="font-weight: bold; margin-bottom: 5px;"><a href="https://ieeexplore.ieee.org/document/11127948" target="_blank">Think on Your Feet: Seamless Transition between Human-like Locomotions in Response to Changing Commands</a></div>
-                        <div style="margin-bottom: 5px;">Huaxing Huang*, Wenhao Cui*, <strong>Tonghe Zhang*</strong>, Shengtao Li, Chenxu Hu, Tianchu Zhang, Liang Zheng, Ziyang Tang, Jinchao Han, Bangyu Qin, Tianchu Zhang, Shipu Zhang, Zheyuan Jiang.</div>
+                        <div class="pub-authors" style="margin-bottom: 5px;">Huaxing Huang*, Wenhao Cui*, <strong>Tonghe Zhang*</strong>, Shengtao Li, Chenxu Hu, Tianchu Zhang, Liang Zheng, Ziyang Tang, Jinchao Han, Bangyu Qin, Tianchu Zhang, Shipu Zhang, Zheyuan Jiang.</div>
                         <div style="margin-bottom: 10px;"><span class="venue">ICRA 2025</span></div>
-                        <div style="margin-bottom: 10px;">TL;DR: Imitation and sim2real RL teaches humanoid to interpolate between lifelike locomotion skills.</div>
+                        <div class="pub-tldr" style="margin-bottom: 10px;">TL;DR: Imitation and sim2real RL teaches humanoid to interpolate between lifelike locomotion skills.</div>
                         <div style="margin-bottom: 10px;">
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://ieeexplore.ieee.org/document/11127948">IEEE Xplore</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://arxiv.org/abs/2502.18901">arXiv</a>
@@ -771,9 +774,9 @@
                     <img src="figs/riskpomdp-icon.jpg" alt="Risk POMDP Icon" style="width: 220px; height: 220px; border-radius: 8px; margin-top: 14px; margin-left: 15px;">
                     <div>
                         <div class="pub-title" style="font-weight: bold; margin-bottom: 5px;"><a href="https://proceedings.mlr.press/v235/zhang24g.html" target="_blank">Provably Efficient Partially-observable Risk-sensitive Reinforcement Learning</a></div>
-                        <div style="margin-bottom: 5px;"><strong>Tonghe Zhang*</strong>, Yu Chen*, Longbo Huang.</div>
+                        <div class="pub-authors" style="margin-bottom: 5px;"><strong>Tonghe Zhang*</strong>, Yu Chen*, Longbo Huang.</div>
                         <div style="margin-bottom: 10px;"><span class="venue">ICML 2024</span></div>
-                        <div style="margin-bottom: 10px;">TL;DR: Establishing a statistical theory for the sample complexity of risk-sensitive RL under partial observability.</div>
+                        <div class="pub-tldr" style="margin-bottom: 10px;">TL;DR: Establishing a statistical theory for the sample complexity of risk-sensitive RL under partial observability.</div>
                         <div style="margin-bottom: 10px;">
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://proceedings.mlr.press/v235/zhang24g.html">PMLR</a>
                             <a style="background: #f0f0f0; padding: 5px 10px; border-radius: 4px; text-decoration: none; color: #2980b9; margin-right: 10px;" href="https://arxiv.org/abs/2402.18149">arXiv</a>
